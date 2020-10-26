@@ -1,0 +1,1065 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/favicon.png">
+  <link rel="icon" type="image/png" href="/blog/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="吃面多放葱">
+  <meta name="keywords" content="">
+  <title>Objective-C Runtime - 吃面多放葱的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/blog/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/blog/">&nbsp;<strong>吃面多放葱</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/blog/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2017-11-20 21:25" pubdate>
+        2017年11月20日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.8k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      59
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">Objective-C Runtime</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <p>描述macOS OC运行时库支持的函数和数据结构.</p>
+<h2 id="通览"><a href="#通览" class="headerlink" title="通览"></a>通览</h2><p>OC运行时是一个运行时库,该库用来支持OC语言的动态属性.并且这种情况对所有的的Objectiv-C的app都有关系.OC运行时库支持的函数实现在 /usr/lib/libobjc.A.dylib中的分享库中可以查到.(自己测试是在资源库文件夹下面)</p>
+<p>在OC编程中,您完全没有必要直接地使用OC运行时库.这些Api的主要作用是作为OC和其他语言的桥接层.或者更底层的调试.</p>
+<p>OC运行时库在macOS 中的实现是特殊的.对于其他平台,GNU编译集合使用类似的Api提供了一种不同的的实现.这个文档只包含了macOS的实现.</p>
+<p>底层的OC运行时Api在OS X 版本10.5中做了显著更新.许多函数和所有现有的数据结构被替换为新的函数.老的函数和数据结构在32位模式下被弃用.64位模式下仍然存在.Api在64位模式下约束了一些在32位模式下表示的整型数据值.比如 class Count, protocol Count, methods per class, ivars per class, arguments per method, sizeof(all arguments) per method, class version number.另外,新的Objective-C ABI 对32位模式下的对象实例化约束更多.并且三个其他的24位模式下表示的一些值 methods per class, ivars per class, sizeof(a single ivar).最后,<br>老式的NXHashTable和NXMapTable被限制到四百万项.</p>
+<blockquote>
+<p>字符串编码<br>在运行时API中所有的字符指针应该<br> 被看作UTF-8编码格式.</p>
+</blockquote>
+<h2 id="该文档适用哪些人"><a href="#该文档适用哪些人" class="headerlink" title="该文档适用哪些人?"></a>该文档适用哪些人?</h2><p>这个文档适用那些对OC运行时有兴趣学习的读者.<br>因为这不是关于C的文档.该文档仅当做对OC开发者的一些拓展.</p>
+<h2 id="Topics"><a href="#Topics" class="headerlink" title="Topics"></a>Topics</h2><h3 id="与Class一起使用"><a href="#与Class一起使用" class="headerlink" title="与Class一起使用"></a>与Class一起使用</h3><pre><code class="hljs reasonml">
+<span class="hljs-comment">/*</span>
+<span class="hljs-comment"> cls: 一个类对象</span>
+<span class="hljs-comment"> 返回值: 类的名称,如果传Nil则为空字符串</span>
+<span class="hljs-comment"> **/</span>
+
+func <span class="hljs-keyword">class</span><span class="hljs-constructor">_getName(<span class="hljs-params">_</span> <span class="hljs-params">cls</span>:AnyClass?)</span> -&gt; UnsafePointer&lt;Int8&gt;
+
+<span class="hljs-comment">/*</span>
+<span class="hljs-comment"> cls: 一个类对象</span>
+<span class="hljs-comment"> 返回值: 该类的父类. 如果cls为根类或者cls为Nil的话,返回值为Nil</span>
+<span class="hljs-comment"> </span>
+<span class="hljs-comment"> 讨论:</span>
+<span class="hljs-comment"> 你应该通常使用NSObject的 superclass()方法替换该方法</span>
+<span class="hljs-comment"> **/</span>
+
+func <span class="hljs-keyword">class</span><span class="hljs-constructor">_getSuperclass(<span class="hljs-params">_</span> <span class="hljs-params">cls</span>: AnyClass?)</span> -&gt; AnyClass?
+
+<span class="hljs-comment">/*</span>
+<span class="hljs-comment"> 返回一个布尔值, 该值表示是否一个类对象是一个元类</span>
+<span class="hljs-comment"> </span>
+<span class="hljs-comment"> cls: 一个类对象</span>
+<span class="hljs-comment"> 返回值: 如果参数是一个元类,则返回true. 如果非元类,则返回false,或者参数为Nil也返回false.</span>
+<span class="hljs-comment"></span>
+<span class="hljs-comment"> **/</span>
+
+func <span class="hljs-keyword">class</span><span class="hljs-constructor">_isMetaClass(<span class="hljs-params">_</span> <span class="hljs-params">cls</span>: AnyClass?)</span> -&gt; Bool
+
+<span class="hljs-comment">/*</span>
+<span class="hljs-comment"> 返回一个类的实例占用内存的大小</span>
+<span class="hljs-comment"> </span>
+<span class="hljs-comment"> cls: 一个类对象</span>
+<span class="hljs-comment"> 返回值: 类实例的占用的字节.如果参数为Nil则返回0</span>
+<span class="hljs-comment">**/</span>
+
+func <span class="hljs-keyword">class</span><span class="hljs-constructor">_getInstanceSize(<span class="hljs-params">_</span> <span class="hljs-params">cls</span>: AnyClass?)</span> -&gt; Int
+
+
+<span class="hljs-comment">/*</span>
+<span class="hljs-comment"> 返回给定类的一个指定实例变量</span>
+<span class="hljs-comment"> </span>
+<span class="hljs-comment"> cls: 想要获取实例变量的类</span>
+<span class="hljs-comment"> name: 去获取的实例变量名</span>
+<span class="hljs-comment"> 返回值: 指定名字的实例变量的指针</span>
+<span class="hljs-comment">**/</span>
+
+func <span class="hljs-keyword">class</span><span class="hljs-constructor">_getInstanceVariable(<span class="hljs-params">_</span> <span class="hljs-params">cls</span>: AnyClass?, <span class="hljs-params">_</span> <span class="hljs-params">name</span>: UnsafePointer&lt;Int8&gt;)</span> -&gt; Ivar?
+
+<span class="hljs-comment">/*</span>
+<span class="hljs-comment"> 返回某个类指定名字的类变量</span>
+<span class="hljs-comment"> </span>
+<span class="hljs-comment"> cls: 要获取类变量的类</span>
+<span class="hljs-comment"> name: 要获取的类变量名称</span>
+<span class="hljs-comment"> 返回值: 指定名字的类变量的指针</span>
+<span class="hljs-comment">**/</span>
+
+func <span class="hljs-keyword">class</span><span class="hljs-constructor">_getClassVariable(<span class="hljs-params">_</span> <span class="hljs-params">cls</span>: AnyClass?, <span class="hljs-params">_</span> <span class="hljs-params">name</span>: UnsagePointer&lt;Int8&gt;)</span> -&gt;Ivar?
+
+<span class="hljs-comment">/*</span>
+<span class="hljs-comment"> 给一个类添加一个实例变量</span>
+<span class="hljs-comment"> </span>
+<span class="hljs-comment"> 返回值: 如果实例变量加入成功,返回true.否则返回false(比如该类已经包含一个相同名字的实例变量)</span>
+<span class="hljs-comment"> </span>
+<span class="hljs-comment"> 讨论:</span>
+<span class="hljs-comment"> 这个函数只能在objc_allocateClassPair(_:_:_:)之后调用.在objc_registerClassPair(_:)之前调用.不支持给一个已经注册过的类添加实例变量.</span>
+<span class="hljs-comment"> </span>
+<span class="hljs-comment"> 操作的类不能使元类.不支持给一个元类添加实例变量.</span>
+<span class="hljs-comment"> </span>
+<span class="hljs-comment"> 实例变量以字节的最小对齐方式为1&lt;&lt;align.实例变量的最小对齐方式取决于实例变量的类型和设备的架构.对于任意指针类型的变量,传log2(sizeof(pointer_type))</span>
+<span class="hljs-comment"></span>
+<span class="hljs-comment"> **/</span>
+
+func <span class="hljs-keyword">class</span><span class="hljs-constructor">_addIvar(<span class="hljs-params">_</span> <span class="hljs-params">cls</span>: AnyClass?,<span class="hljs-params">_</span> <span class="hljs-params">name</span>: UnsagePointer&lt;Int8&gt;, <span class="hljs-params">_</span> <span class="hljs-params">size</span>: Int, <span class="hljs-params">_</span> <span class="hljs-params">alignment</span>: UInt8, <span class="hljs-params">_</span> <span class="hljs-params">types</span>: UnsagePointer&lt;Int8&gt;?)</span> -&gt; Bool
+
+<span class="hljs-comment">/*</span>
+<span class="hljs-comment"> 获取类的实例变量列表</span>
+<span class="hljs-comment"> </span>
+<span class="hljs-comment"> cls: 需要拷贝属性列表的类</span>
+<span class="hljs-comment"> outCount: 在返回时,包含返回数组的长度.如果outCount是NULL,则不反悔该长度.</span>
+<span class="hljs-comment"> 返回值: 一个指针数组描述类声明的实例变量.任何被父类声明的实例变量不包含在内.数组包含* outCount指针，后跟一个空终止符。您必须使用free()函数释放数组.</span>
+<span class="hljs-comment"> 如果类声明中没有实例变量.或者cls为Nil,则返回NULL 并且*coutCount指针为0</span>
+<span class="hljs-comment"> **/</span>
+
+func <span class="hljs-keyword">class</span><span class="hljs-constructor">_copyIvarList(<span class="hljs-params">_</span> <span class="hljs-params">cls</span>: AnyClass?, <span class="hljs-params">_</span> <span class="hljs-params">outCount</span>: UnsafeMutablePointer&lt;UInt32&gt;?)</span> -&gt; UnsafeMutablePointer&lt;Ivar&gt;?
+
+<span class="hljs-comment">//返回指定类实例变量布局的描述</span>
+func <span class="hljs-keyword">class</span><span class="hljs-constructor">_getIvarLayout(AnyClass?)</span>
+
+<span class="hljs-comment">//设置指定类实例变量布局</span>
+func <span class="hljs-keyword">class</span><span class="hljs-constructor">_setIvarLayout(AnyClass?, UnsafePointer&lt;UInt8&gt;?)</span>
+
+<span class="hljs-comment">//返回弱引用实例变量的布局描述</span>
+func <span class="hljs-keyword">class</span><span class="hljs-constructor">_getWeakIvarLayout(AnyClass?)</span>
+
+<span class="hljs-comment">//设置弱引用实例变量的布局</span>
+func <span class="hljs-keyword">class</span><span class="hljs-constructor">_setWeakIvarLayout(AnyClas?, UnsafePointer&lt;UInt8&gt;?)</span>
+
+<span class="hljs-comment">/*</span>
+<span class="hljs-comment"> 返回指定类的指定名称的属性</span>
+<span class="hljs-comment"> </span>
+<span class="hljs-comment"> 返回值: 一个objc_property_t类型的指针.如果类中并未声明该名称属性或者cls为Nil则返回NULL.</span>
+<span class="hljs-comment"> **/</span>
+func <span class="hljs-keyword">class</span><span class="hljs-constructor">_getProperty(<span class="hljs-params">_</span> <span class="hljs-params">cls</span>: AnyClass?, <span class="hljs-params">_</span> <span class="hljs-params">name</span>: UnsafePointer&lt;Int8&gt;)</span> -&gt; objc_property_t?
+
+<span class="hljs-comment">/*</span>
+<span class="hljs-comment"> 描述声明的一个类的属性</span>
+<span class="hljs-comment"> </span>
+<span class="hljs-comment"> cls: 想要检查的类</span>
+<span class="hljs-comment"> outCount: 在返回时,包含返回数组的长度.如果outCount 是NULL,数组长度不返回.</span>
+<span class="hljs-comment"> 返回值: objc_property_t类型的指针数组.任何父类声明的属性不包含在内.数组包含* outCount指针，后跟一个空终止符。您必须使用free()函数释放数组.</span>
+<span class="hljs-comment"> 如果类声明中没有实例变量.或者cls为Nil,则返回NULL 并且*coutCount指针为0</span>
+<span class="hljs-comment"> **/</span>
+
+func <span class="hljs-keyword">class</span><span class="hljs-constructor">_copyPropertyList(<span class="hljs-params">_</span> <span class="hljs-params">cls</span>: AnyClass?, <span class="hljs-params">_</span> <span class="hljs-params">outCount</span>: UnsageMutablePointer&lt;UInt32&gt;?)</span> -&gt; UnsafeMutablePointer&lt;objc_property_t&gt;?
+
+<span class="hljs-comment">/*添加一个新方法给指定类.指定方法名和方法实现</span>
+<span class="hljs-comment"></span>
+<span class="hljs-comment">  cls:需要添加方法的类 </span>
+<span class="hljs-comment">  name: 指定添加的方法名  </span>
+<span class="hljs-comment">  imp: 方法的实现的函数,该函数必须携带两个参数 self 和  _cmd</span>
+<span class="hljs-comment">  types: 一个字符数组,用来描述方法的参数类型.参考苹果官方文档 [Type Encodings](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html#//apple_ref/doc/uid/TP40008048-CH100)</span>
+<span class="hljs-comment">  返回值: 如果添加成功,返回true 否则返回false(例如添加的方法已经存在)</span>
+<span class="hljs-comment">  </span>
+<span class="hljs-comment">  讨论:</span>
+<span class="hljs-comment">  该方法会重载父类的实现,但是并不会替换在这个类中已经存在的实现.想要改变已经存在的实现的话,使用method_setImplementation(_:_:)</span>
+<span class="hljs-comment">  一个OC方法仅仅是一个C的函数.该函数携带至少两个参数----self 和 _cmd.举例,给定下列函数</span>
+<span class="hljs-comment"></span>
+<span class="hljs-comment">  void myMethodIMP(id self, SEL _cmd)</span>
+<span class="hljs-comment">  &#123;</span>
+<span class="hljs-comment">    //implementation ...</span>
+<span class="hljs-comment">    </span>
+<span class="hljs-comment">  &#125;</span>
+<span class="hljs-comment">  </span>
+<span class="hljs-comment">  您可以动态添加该函数到一个类中作为一个方法.(调用 resolveThisMethodDynamically) 像这样:</span>
+<span class="hljs-comment">  </span>
+<span class="hljs-comment">  class_addMethod([self class], @selector(resolveThisMethodDynamically), (IMP) myMethodIMP, &quot;v@:&quot;);</span>
+<span class="hljs-comment">  </span>
+<span class="hljs-comment"> **/</span>
+
+func  <span class="hljs-keyword">class</span><span class="hljs-constructor">_addMethod(<span class="hljs-params">_</span> <span class="hljs-params">cls</span>:AnyClass?,<span class="hljs-params">_</span> <span class="hljs-params">name</span>:Selector,<span class="hljs-params">_</span> <span class="hljs-params">imp</span>:IMP,<span class="hljs-params">_</span> <span class="hljs-params">types</span>: UnsagePointer&lt;Int8&gt;?)</span>
+
+<span class="hljs-comment">/*</span>
+<span class="hljs-comment"> 获取一个类的指定实例方法</span>
+<span class="hljs-comment"> </span>
+<span class="hljs-comment"> aClass: 要检查的类</span>
+<span class="hljs-comment"> aSelector: 要获取方法的选择器</span>
+<span class="hljs-comment"> 返回值: 指定方法选择器所对应的方法实现,如果指定类或者它的父类不包含指定选择器的实例方法则返回NULL.</span>
+<span class="hljs-comment"> </span>
+<span class="hljs-comment"> 讨论:</span>
+<span class="hljs-comment"> 注意这个函数搜索父类的实现,而class_copyMethodList(_:_:)是不会的</span>
+<span class="hljs-comment"> **/</span>
+
+func <span class="hljs-keyword">class</span><span class="hljs-constructor">_getInstanceMethod(<span class="hljs-params">_</span> <span class="hljs-params">cls</span>:AnyClass?,<span class="hljs-params">_</span> <span class="hljs-params">name</span>: Selector)</span> -&gt; Method?
+
+<span class="hljs-comment">/*</span>
+<span class="hljs-comment"> 返回指定类指定名称的类方法</span>
+<span class="hljs-comment"> </span>
+<span class="hljs-comment"> aClass: 一个雷定义的指针.该类包含您想要获取的方法.</span>
+<span class="hljs-comment"> aSelector: 一个SEL类型的指针.该SEL包含你想要获取的方法.</span>
+<span class="hljs-comment"> 返回值: Method的指针.对应指定类指定方法选择器的实现.如果该类或者它的父类不包含这个类方法,则返回NULL.</span>
+<span class="hljs-comment"> </span>
+<span class="hljs-comment"> 讨论:</span>
+<span class="hljs-comment"> 注意这个函数搜索父类的方法实现.class_copyMethodList(_:_:)不搜索</span>
+<span class="hljs-comment"> **/</span>
+
+ func <span class="hljs-keyword">class</span><span class="hljs-constructor">_getClassMethod(<span class="hljs-params">_</span> <span class="hljs-params">cls</span>: AnyClass?, <span class="hljs-params">_</span> <span class="hljs-params">name</span>: Selector)</span> -&gt; Method?
+ 
+<span class="hljs-comment">/*</span>
+<span class="hljs-comment"> 返回一个类的实例方法列表</span>
+<span class="hljs-comment"> </span>
+<span class="hljs-comment"> cls: 想要检测的类</span>
+<span class="hljs-comment"> outCount: 在返回时,包含数组的长度.如果outCounte是NULL,则不返回.</span>
+<span class="hljs-comment"> 返回值: Method类型的指针数组.表示该类所有的实例方法实现.</span>
+<span class="hljs-comment"> 不包含父类的实例方法实现.该数组包含*outCount指针后面跟一个空终止符.您必须使用free()函数释放该数组.</span>
+<span class="hljs-comment"> </span>
+<span class="hljs-comment"> 如果该类没有实例方法.或者该类为Nil,则返回NULL并且*outCount是0</span>
+<span class="hljs-comment"> </span>
+<span class="hljs-comment"> 讨论:</span>
+<span class="hljs-comment"> </span>
+<span class="hljs-comment"> 获取一个类的类方法列表.使用class_copyMethodList(object_getClass(cls), &amp;count)</span>
+<span class="hljs-comment"> 获取父类的方法列表,使用class_getInstanceMethod(_:_:)或者class_getClassMehtod(_:_:)</span>
+<span class="hljs-comment"> **/</span>
+
+func <span class="hljs-keyword">class</span><span class="hljs-constructor">_copyMethodList(<span class="hljs-params">_</span> <span class="hljs-params">cls</span>: AnyClass?, <span class="hljs-params">_</span> <span class="hljs-params">outCount</span>: UnsageMutablePointer&lt;UInt32&gt;?)</span> -&gt; UnsafeMutablePointer&lt;Method&gt;?
+
+<span class="hljs-comment">/*</span>
+<span class="hljs-comment"> 替换指定类的方法的实现</span>
+<span class="hljs-comment"> </span>
+<span class="hljs-comment"> cls:要修改的类</span>
+<span class="hljs-comment"> name: 一个方法选择器用来确认哪个方法实现要被替换</span>
+<span class="hljs-comment"> imp:新的方法实现.</span>
+<span class="hljs-comment"> types: 一个字符串集合,用来描述参数的类型.必须至少携带两个参数, self 和_cmd, 第二个和第三个字符必须为&quot;@:&quot;(第一个参数为返回类型)</span>
+<span class="hljs-comment"> </span>
+<span class="hljs-comment"> 返回值: 修改的类之前的方法实现.</span>
+<span class="hljs-comment"> </span>
+<span class="hljs-comment"> 讨论:</span>
+<span class="hljs-comment">可以通过两种方式实现该函数行为:</span>
+<span class="hljs-comment">如果方法名不存在,通过call_addMethod(_:_:_:_:)方法的调用添加函数实现.按照types添加参数类型和返回值类型.</span>
+<span class="hljs-comment">如果方法名存在,他的IMP通过method_setImplementation(_:_:)方法的调用来替换函数实现.types参数被忽略.</span>
+<span class="hljs-comment"></span>
+<span class="hljs-comment"> **/</span>
+
+func <span class="hljs-keyword">class</span><span class="hljs-constructor">_replaceMethod(<span class="hljs-params">_</span> <span class="hljs-params">cls</span>:AnyClass?, <span class="hljs-params">_</span> <span class="hljs-params">name</span>: Selector,<span class="hljs-params">_</span> <span class="hljs-params">imp</span>: IMP, <span class="hljs-params">_</span> <span class="hljs-params">types</span>: UnsafePointer&lt;Int8&gt;?)</span> -&gt; IMP?
+
+<span class="hljs-comment">/*</span>
+<span class="hljs-comment"> 获取指定实例方法的实现</span>
+<span class="hljs-comment"></span>
+<span class="hljs-comment"> cls: 指定类</span>
+<span class="hljs-comment"> name: 方法选择器</span>
+<span class="hljs-comment"> 返回值: 返回函数指针,如果cls为Nil,则返回NULL.</span>
+<span class="hljs-comment"> </span>
+<span class="hljs-comment"> 讨论:</span>
+<span class="hljs-comment"> </span>
+<span class="hljs-comment"> class_getMethodImplementation(_:_:)可能会比method_getImplementtation(class_getInstanceMethod(cls, name))更快一些.</span>
+<span class="hljs-comment"> </span>
+<span class="hljs-comment"> 返回的函数指针可能是运行时的函数，而不是实际的方法实现。例如，如果类的实例不响应选择器，那么返回的函数指针将是运行时消息转发机制的一部分。</span>
+<span class="hljs-comment"> **/</span> 
+
+func <span class="hljs-keyword">class</span><span class="hljs-constructor">_getMethodImplementation(<span class="hljs-params">_</span> <span class="hljs-params">cls</span>: AnyClass?,<span class="hljs-params">_</span> <span class="hljs-params">name</span>: Selector)</span> -&gt; IMP?
+
+<span class="hljs-comment">/*</span>
+<span class="hljs-comment"> 返回将要被调用的指定消息的函数指针</span>
+<span class="hljs-comment"> </span>
+<span class="hljs-comment"> cls: 指定的类</span>
+<span class="hljs-comment"> name: 一个方法选择器</span>
+<span class="hljs-comment"> 返回值: 返回函数指针,如果cls为Nil,则返回NULL.</span>
+<span class="hljs-comment"> **/</span> 
+
+func <span class="hljs-keyword">class</span><span class="hljs-constructor">_getMethodImplementation_stret(<span class="hljs-params">_</span> <span class="hljs-params">cls</span>: AnyClass?,<span class="hljs-params">_</span> <span class="hljs-params">name</span>: Selector)</span> -&gt; IMP?
+
+<span class="hljs-comment">/*</span>
+<span class="hljs-comment">返回一个布尔值表示是否一个实例响应了指定方法</span>
+<span class="hljs-comment"></span>
+<span class="hljs-comment">cls : 响应消息的类</span>
+<span class="hljs-comment">sel : 一个方法选择器</span>
+<span class="hljs-comment">返回值: 响应方法,则返回true,否则返回false</span>
+<span class="hljs-comment"></span>
+<span class="hljs-comment">讨论:</span>
+<span class="hljs-comment">通常使用NSObject的responds(to:)或者instancesRespond(to:)方法来替换该方法.</span>
+<span class="hljs-comment"> **/</span>
+func <span class="hljs-keyword">class</span><span class="hljs-constructor">_respondsToSelector(AnyClass?, Selector)</span>
+
+<span class="hljs-comment">/*</span>
+<span class="hljs-comment"> 给一个类添加一个协议</span>
+<span class="hljs-comment"> </span>
+<span class="hljs-comment"> cls: 要改动的类</span>
+<span class="hljs-comment"> outCount: 要添加到该类的协议</span>
+<span class="hljs-comment"> 返回值: 添加成功,返回ture;否则false(比如该类中已经存在该协议)</span>
+<span class="hljs-comment"></span>
+<span class="hljs-comment"> **/</span>
+func <span class="hljs-keyword">class</span><span class="hljs-constructor">_addProtocol(<span class="hljs-params">_</span> <span class="hljs-params">cls</span>: AnyClass?, <span class="hljs-params">_</span> <span class="hljs-params">protocol</span>: Protocol)</span> -&gt; Bool
+
+<span class="hljs-comment">/*</span>
+<span class="hljs-comment"> 给一个类添加一个属性</span>
+<span class="hljs-comment"> </span>
+<span class="hljs-comment"> cls: 要改动的类</span>
+<span class="hljs-comment"> name: 属性名</span>
+<span class="hljs-comment"> attributes: 属性的描述(readonly, nonatomic, asign...)</span>
+<span class="hljs-comment"> attributeCount: 属性描述的数量</span>
+<span class="hljs-comment"> 返回值: 添加成功,返回true,否则false(比如已经存在该属性)</span>
+<span class="hljs-comment"> **/</span>
+
+func <span class="hljs-keyword">class</span><span class="hljs-constructor">_addProperty(<span class="hljs-params">_</span> <span class="hljs-params">cls</span>: AnyClass?, <span class="hljs-params">_</span> <span class="hljs-params">name</span>: UnsagePointer&lt;Int8&gt;, <span class="hljs-params">_</span> <span class="hljs-params">attributes</span>: UnsafePointer&lt;<span class="hljs-params">objc_property_attribute_t</span>&gt;?, <span class="hljs-params">_</span> <span class="hljs-params">attributeCounte</span>: UInt32)</span> -&gt; Bool
+
+<span class="hljs-comment">/*</span>
+<span class="hljs-comment"> 替换一个类的属性</span>
+<span class="hljs-comment"> **/</span>
+func <span class="hljs-keyword">class</span><span class="hljs-constructor">_replaceProperty(<span class="hljs-params">_</span> <span class="hljs-params">cls</span>:AnyClass?, <span class="hljs-params">_</span> <span class="hljs-params">name</span>: UnsafePointer&lt;Int8&gt;, <span class="hljs-params">_</span> <span class="hljs-params">attributes</span>: UnsafePointer&lt;<span class="hljs-params">objc_property_attribute_t</span>&gt;?, <span class="hljs-params">_</span> <span class="hljs-params">attrubuteCount</span>: UInt32)</span>
+
+<span class="hljs-comment">/*</span>
+<span class="hljs-comment"> 返回一个布尔值 表示是否一个类执行指定协议方法</span>
+<span class="hljs-comment"> </span>
+<span class="hljs-comment"> 通常使用NSObject的conforms(to:) 来替换它</span>
+<span class="hljs-comment"> **/</span>
+
+func <span class="hljs-keyword">class</span><span class="hljs-constructor">_conformsToProtocol(<span class="hljs-params">_</span> <span class="hljs-params">cls</span>: AnyClass?,<span class="hljs-params">_</span> <span class="hljs-params">protocol</span>: Protocol?)</span> -&gt; Bool
+<span class="hljs-comment">/*</span>
+<span class="hljs-comment"> 描述一个类包含的协议</span>
+<span class="hljs-comment"> cls: 指定的类</span>
+<span class="hljs-comment"> outCount: 返回数组的长度.如果outCount是NULL,返回值不包含数组的长度.</span>
+<span class="hljs-comment"> 返回值: Protocol* 类型的指针数组.描述类中包含的协议.父类的协议不包含其中.数组中包含*outCount指针,并庚随一个空的终止符.必须使用free()函数释放数组.</span>
+<span class="hljs-comment"> </span>
+<span class="hljs-comment"> 返回值: 如果cls中没有协议,或者cls为Nil,返回NULL并且*outCount为0</span>
+<span class="hljs-comment"> **/</span>
+
+func <span class="hljs-keyword">class</span><span class="hljs-constructor">_copyProtocolList(<span class="hljs-params">_</span> <span class="hljs-params">cls</span>: AnyClass?,<span class="hljs-params">_</span> <span class="hljs-params">outCount</span>: UnsafeMutablePointer&lt;UInt32&gt;?)</span>  -&gt; AutoreleasingUnsafeMutablePointer&lt;Protocol&gt;?
+
+<span class="hljs-comment">//返回类定义的版本号</span>
+func <span class="hljs-keyword">class</span><span class="hljs-constructor">_getVersion(AnyClass?)</span>
+
+<span class="hljs-comment">//设置一个类定义的版本号</span>
+func <span class="hljs-keyword">class</span><span class="hljs-constructor">_setVersion(AnyClass, Int32)</span>
+
+</code></pre>
+
+<h3 id="添加Class"><a href="#添加Class" class="headerlink" title="添加Class"></a>添加Class</h3><pre><code class="hljs swift">
+<span class="hljs-comment">/*</span>
+<span class="hljs-comment"> 创建一个类和元类</span>
+<span class="hljs-comment"> </span>
+<span class="hljs-comment"> superclass: 新创建类的父类.如果创建一个根类则为Nil</span>
+<span class="hljs-comment"> name: 新创建类的类名.该字符串会被拷贝.</span>
+<span class="hljs-comment"> extraBytes: 类和元类末尾为索引实例变量而分配的字节数.通常为0</span>
+<span class="hljs-comment"> 返回值: 新创建的类.或者为Nil如果该类无法被创建(比如使用的名字已经被使用)</span>
+<span class="hljs-comment"> </span>
+<span class="hljs-comment"> 讨论:</span>
+<span class="hljs-comment"> 可以获取新创建元类的指针通过调用object_getClass(newClass).</span>
+<span class="hljs-comment"> 创建一个类.需要先调用objc_allocateClassPair(_:_:_:).然后设置类的特性使用诸如class_addMethod(_:_:_:_:)和class_addIvar(_:_:_:_:_:)这些方法.当你创建完该类后.调用objc_registerClassPair(_:)注册该类后才可以使用.</span>
+<span class="hljs-comment"> </span>
+<span class="hljs-comment"> 实例方法和实例变量应该添加到自身类中.类方法应该添加到元类中.</span>
+<span class="hljs-comment"> </span>
+<span class="hljs-comment"> **/</span>
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">objc_allocateClassPair</span><span class="hljs-params">(<span class="hljs-number">_</span> superclass: AnyClass?, <span class="hljs-number">_</span> name: UnsafePointer&lt;Int8&gt;, <span class="hljs-number">_</span> extraBytes: Int)</span></span> -&gt; <span class="hljs-type">AnyClass?</span>
+
+<span class="hljs-comment">/*</span>
+<span class="hljs-comment"> 销毁一个类和它关联的元类.</span>
+<span class="hljs-comment"> </span>
+<span class="hljs-comment"> 讨论:</span>
+<span class="hljs-comment"> 如果cls类实例或者它的任何子类存在的话,不要调用该函数.</span>
+<span class="hljs-comment"> **/</span>
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">objc_disposeClassPair</span><span class="hljs-params">(<span class="hljs-number">_</span> cls: AnyClass)</span></span>
+
+<span class="hljs-comment">//注册一个类 该类已使用objc_allocateClassPair(_:_:_:)方法创建</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">objc_registerClassPair</span><span class="hljs-params">(AnyClass)</span></span>
+
+<span class="hljs-comment">/*</span>
+<span class="hljs-comment"> 在Foundation框架下的KVO使用</span>
+<span class="hljs-comment"> </span>
+<span class="hljs-comment"> 讨论:</span>
+<span class="hljs-comment"> 自身不要调用该函数</span>
+<span class="hljs-comment"> **/</span>
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">objc_duplicateClass</span><span class="hljs-params">(AnyClass, UnsafePointer&lt;Int8&gt;, Int)</span></span>
+</code></pre>
+
+<h3 id="与实例一起使用"><a href="#与实例一起使用" class="headerlink" title="与实例一起使用"></a>与实例一起使用</h3><pre><code class="hljs swift">
+<span class="hljs-comment">/*</span>
+<span class="hljs-comment"> 读取一个对象中实例变量的值</span>
+<span class="hljs-comment"> 讨论:</span>
+<span class="hljs-comment"> 如果实例变量名已知的话,object_getIvar(_:_:)比object_getInstanceVariable获取值更快一些.</span>
+<span class="hljs-comment"> **/</span>
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">object_getIvar</span><span class="hljs-params">(<span class="hljs-number">_</span> obj: <span class="hljs-keyword">Any</span>?,<span class="hljs-number">_</span> ivar: Ivar)</span></span> -&gt; <span class="hljs-type">Any?</span>
+
+<span class="hljs-comment">//设置一个对象实例变量的值</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">object_setIvar</span><span class="hljs-params">(<span class="hljs-number">_</span> obj: <span class="hljs-keyword">Any</span>?,<span class="hljs-number">_</span> ivar: Ivar,<span class="hljs-number">_</span> varlue: <span class="hljs-keyword">Any</span>?)</span></span>
+
+<span class="hljs-comment">//返回某对象的类名</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">object_getClassName</span><span class="hljs-params">(_obj: <span class="hljs-keyword">Any</span>?)</span></span>
+
+<span class="hljs-comment">//返回实例对象的类对象</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">object_getClass</span><span class="hljs-params">(<span class="hljs-number">_</span> obj: <span class="hljs-keyword">Any</span>?)</span></span> -&gt; <span class="hljs-type">AnyClass?</span>
+
+<span class="hljs-comment">//设置一个对象的类 返回值为对象之前所属的类对象.</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">object_setClass</span><span class="hljs-params">(<span class="hljs-number">_</span> obj: <span class="hljs-keyword">Any</span>?,<span class="hljs-number">_</span> cls: AnyClass)</span></span> -&gt; <span class="hljs-type">AnyClass?</span>
+</code></pre>
+
+<h3 id="获取类定义"><a href="#获取类定义" class="headerlink" title="获取类定义"></a>获取类定义</h3><pre><code class="hljs go"><span class="hljs-comment">//获取已注册类定义的列表</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">objc_getClassList</span><span class="hljs-params">(AutoreleasingUnsafeMutablePointer&lt;AnyClass&gt;?, Int32)</span></span>
+
+<span class="hljs-comment">//创建并且返回所有已注册的类定义的指针列表</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">objc_copyClassList</span><span class="hljs-params">(UnsafeMutablePointer&lt;UInt32&gt;?)</span></span>
+
+<span class="hljs-comment">//返回某个类的类定义</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">objc_lookUpClass</span><span class="hljs-params">(UnsafePointer&lt;Int8&gt;)</span></span>
+
+<span class="hljs-comment">//返回某个类的类定义</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">objc_getClass</span><span class="hljs-params">(UnsafePointer&lt;Int8&gt;)</span></span>
+
+<span class="hljs-comment">//返回某个类的类定义</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">objc_getRequiredClass</span><span class="hljs-params">(UnsafePointer&lt;Int8&gt;)</span></span>
+
+<span class="hljs-comment">//返回某个类的元类定义</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">objc_getMetaClass</span><span class="hljs-params">(UnsafePointer&lt;Int8&gt;)</span></span>
+</code></pre>
+
+<h3 id="与实例变量一起使用"><a href="#与实例变量一起使用" class="headerlink" title="与实例变量一起使用"></a>与实例变量一起使用</h3><pre><code class="hljs go"><span class="hljs-comment">//返回实例变量名称</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">ivar_getName</span><span class="hljs-params">(Ivar)</span></span>
+
+<span class="hljs-comment">//返回实例变量的类型</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">ivar_getTypeEncoding</span><span class="hljs-params">(Ivar)</span></span>
+
+<span class="hljs-comment">//返回一个实例变量相对内存基址的偏移值</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">ivar_getOffset</span><span class="hljs-params">(Ivar)</span></span>
+</code></pre>
+
+<h3 id="关联引用"><a href="#关联引用" class="headerlink" title="关联引用"></a>关联引用</h3><pre><code class="hljs swift"><span class="hljs-comment">//使用指定key和关联策略设置某个对象的关联值</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">objc_setAssociateObject</span><span class="hljs-params">(<span class="hljs-keyword">Any</span>, UnsafeRawPointer, <span class="hljs-keyword">Any</span>?, objc_AssociationPoicy)</span></span>
+
+<span class="hljs-comment">//返回某个对象该key下对应的关联值</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">objc_getAssociateObject</span><span class="hljs-params">(<span class="hljs-keyword">Any</span>, UnsafeRawPointer)</span></span>
+
+<span class="hljs-comment">//移除某个对象所有关联对象</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">objc_removeAssociateObjects</span><span class="hljs-params">(<span class="hljs-keyword">Any</span>)</span></span>
+</code></pre>
+
+<h3 id="与方法一起使用"><a href="#与方法一起使用" class="headerlink" title="与方法一起使用"></a>与方法一起使用</h3><pre><code class="hljs swift"><span class="hljs-comment">/*</span>
+<span class="hljs-comment"> 返回方法的SEL</span>
+<span class="hljs-comment"> </span>
+<span class="hljs-comment"> 讨论:</span>
+<span class="hljs-comment"> 获取C字符串的方法名.调用sel_getName(method_getName(method))</span>
+<span class="hljs-comment"> **/</span>
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">method_getName</span><span class="hljs-params">(<span class="hljs-number">_</span> m: Method)</span></span> -&gt; <span class="hljs-type">Selector</span>
+
+<span class="hljs-comment">//返回IMP类型的函数指针</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">method_getImplementation</span><span class="hljs-params">(<span class="hljs-number">_</span> m: Method)</span></span> -&gt; <span class="hljs-type">IMP</span>
+
+<span class="hljs-comment">//返回一个字符串描述方法的参数和返回类型</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">method_getTypeEncoding</span><span class="hljs-params">(<span class="hljs-number">_</span> m: Method)</span></span> -&gt; <span class="hljs-type">UnsafePointer</span>&lt;<span class="hljs-type">Int8</span>&gt;?
+
+<span class="hljs-comment">//返回一个字符串描述方法的返回类型</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">method_copyReturnType</span><span class="hljs-params">(Method)</span></span>
+
+<span class="hljs-comment">//返回一个字符串描述方法的单个参数类型</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">method_copyArgumentType</span><span class="hljs-params">(Method, UInt32)</span></span>
+
+<span class="hljs-comment">//通过引用返回一个字符串描述方法的返回值类型</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">method_getReturnType</span><span class="hljs-params">(Method, UInt32)</span></span>
+
+<span class="hljs-comment">//返回一个方法接受的参数数量</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">method_getNumberOfArguments</span><span class="hljs-params">(Method)</span></span>
+
+<span class="hljs-comment">//通过引用返回一个字符串描述方法单个参数的类型</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">method_getArgumentType</span><span class="hljs-params">(Method, UInt32, UnsafeMutablePointer&lt;Int8&gt;?, Int)</span></span>
+
+<span class="hljs-comment">//返回某个方法的结构描述</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">method_getDescription</span><span class="hljs-params">(Method)</span></span>
+
+<span class="hljs-comment">//设置某个方法的实现</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">method_setImplementation</span><span class="hljs-params">(<span class="hljs-number">_</span> m: Method, <span class="hljs-number">_</span> imp: IMP)</span></span> -&gt; <span class="hljs-type">IMP</span>
+
+<span class="hljs-comment">/*</span>
+<span class="hljs-comment"> 交换两个方法的实现</span>
+<span class="hljs-comment"> </span>
+<span class="hljs-comment"> IMP imp1 = method_getImplementation(m1);</span>
+<span class="hljs-comment"> IMP imp2 = method_getImplementation(m2);</span>
+<span class="hljs-comment"> method_setImplementation(m1, imp2);</span>
+<span class="hljs-comment"> method_setImplementation(m2, imp1);</span>
+<span class="hljs-comment"> </span>
+<span class="hljs-comment"> **/</span> 
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">method_exchangeImplementations</span><span class="hljs-params">(_m1: Method,<span class="hljs-number">_</span> m2: Method)</span></span>
+</code></pre>
+
+<h3 id="与库一起使用"><a href="#与库一起使用" class="headerlink" title="与库一起使用"></a>与库一起使用</h3><pre><code class="hljs go">
+<span class="hljs-comment">//返回所有加载的OC框架和动态库名称  </span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">objc_copyImageNames</span><span class="hljs-params">(UnsafeMutablePointer&lt;UInt32&gt;?)</span></span>
+
+<span class="hljs-comment">//返回动态库中一个类的原始格式的名称</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">objc_getImageName</span><span class="hljs-params">(AnyClass?)</span></span>
+
+<span class="hljs-comment">//返回某个库或者框架中所有类的名称</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">objc_copyClassNameForImage</span><span class="hljs-params">(UnsafePointer&lt;Int8&gt;, UnsafeMutablePointer&lt;UInt32&gt;?)</span></span>
+
+</code></pre>
+
+<h3 id="与Selectors一起使用"><a href="#与Selectors一起使用" class="headerlink" title="与Selectors一起使用"></a>与Selectors一起使用</h3><pre><code class="hljs go">
+<span class="hljs-comment">//返回某一方法的名称</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">sel_getName</span><span class="hljs-params">(Selector)</span></span>
+
+<span class="hljs-comment">//在OC runtime系统中注册一个方法,映射方法名到一个selector,并且返回selector的值</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">sel_registerName</span><span class="hljs-params">(UnsafePointer&lt;Int8&gt;)</span></span>
+
+<span class="hljs-comment">//注册一个方法名到 OC runtime系统中</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">sel_getUid</span><span class="hljs-params">(UnsafePointer&lt;Int8&gt;)</span></span>
+
+<span class="hljs-comment">//返回一个布尔值 表示两个方法是否相等</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">sel_isEqual</span><span class="hljs-params">(Selector, Selector)</span></span>
+</code></pre>
+
+<h3 id="与协议一起使用"><a href="#与协议一起使用" class="headerlink" title="与协议一起使用"></a>与协议一起使用</h3><pre><code class="hljs swift"><span class="hljs-comment">//返回指定协议</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">objc_getProtocol</span><span class="hljs-params">(UnsafePointer&lt;Int8&gt;)</span></span>
+
+<span class="hljs-comment">//以数组形式返回runtime中所有已知协议</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">objc_copyProtocolList</span><span class="hljs-params">(UnsafeMutablePointer&lt;UInt32&gt;)</span></span>
+
+<span class="hljs-comment">//创建一个协议实例</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">objc_allocateProtocol</span><span class="hljs-params">(UnsafePointer&lt;Int8&gt;)</span></span>
+
+<span class="hljs-comment">//在OC运行时系统中注册一个新协议</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">objc_registerProtocol</span><span class="hljs-params">(<span class="hljs-keyword">Protocol</span>)</span></span>
+
+<span class="hljs-comment">//给协议添加一个方法</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">protocol_addMethodDescription</span><span class="hljs-params">(<span class="hljs-keyword">Protocol</span>, Selector, UnsafePointer&lt;Int8&gt;?, Bool, Bool)</span></span>
+
+<span class="hljs-comment">//添加注册过的协议到正在构建的协议中</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">protocol_addProtocol</span><span class="hljs-params">(<span class="hljs-keyword">Protocol</span>, <span class="hljs-keyword">Protocol</span>)</span></span>
+
+<span class="hljs-comment">//添加属性到正在构建的协议中</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">protocol_addProperty</span><span class="hljs-params">(<span class="hljs-keyword">Protocol</span>, UnsafePointer&lt;Int8&gt;, UnsafePointer&lt;objc_property_attribute_t&gt;?, UInt32, Bool, Bool)</span></span>
+
+<span class="hljs-comment">//返回协议名称</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">protocol_getName</span><span class="hljs-params">(<span class="hljs-keyword">Protocol</span>)</span></span>
+
+<span class="hljs-comment">//返回布尔值 表示是否两个协议相等</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">protocol_isEqual</span><span class="hljs-params">(<span class="hljs-keyword">Protocol</span>?, <span class="hljs-keyword">Protocol</span>?)</span></span>
+
+<span class="hljs-comment">//返回满足给定协议的方法描述数组</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">protocol_copyMethodDescriptionList</span><span class="hljs-params">(<span class="hljs-keyword">Protocol</span>, Bool, Bool, UnsafeMutablePointer&lt;UInt32&gt;?)</span></span>
+
+<span class="hljs-comment">//返回满足给定协议的指定方法的方法描述</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">protocol_getMethodDescription</span><span class="hljs-params">(<span class="hljs-keyword">Protocol</span>, Selector, Bool, Bool)</span></span>
+
+<span class="hljs-comment">//返回一个协议声明的属性数组</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">protocol_copyPropertyList</span><span class="hljs-params">(<span class="hljs-keyword">Protocol</span>, UnsafeMutablePointer&lt;UInt32&gt;)</span></span>
+
+<span class="hljs-comment">//返回给定协议的指定属性</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">protocol_getProperty</span><span class="hljs-params">(<span class="hljs-keyword">Protocol</span>, UnsafePointer&lt;Int8&gt;, Bool, Bool)</span></span>
+
+<span class="hljs-comment">//返回适用某协议的协议数组</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">protocol_copyProtocolList</span><span class="hljs-params">(<span class="hljs-keyword">Protocol</span>, UnsafeMutablePointer&lt;UInt32&gt;)</span></span>
+
+<span class="hljs-comment">//返回一个布尔值 表示是否一个协议遵循另一个协议</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">protocol_comformsToProtocol</span><span class="hljs-params">(<span class="hljs-keyword">Protocol</span>?, <span class="hljs-keyword">Protocol</span>?)</span></span>
+</code></pre>
+
+<h3 id="与属性一起使用"><a href="#与属性一起使用" class="headerlink" title="与属性一起使用"></a>与属性一起使用</h3><pre><code class="hljs reasonml"><span class="hljs-comment">//返回属性名</span>
+func property<span class="hljs-constructor">_getName(<span class="hljs-params">_</span> <span class="hljs-params">property</span>: <span class="hljs-params">objc_property_t</span>)</span> -&gt; UnsafePointer&lt;Int8&gt;
+
+<span class="hljs-comment">//返回一个属性的的特征字符串</span>
+func property<span class="hljs-constructor">_getAttributes(<span class="hljs-params">_</span> <span class="hljs-params">property</span>: <span class="hljs-params">objc_property_t</span>)</span> -&gt; UnsafePointer&lt;Int8&gt;
+
+<span class="hljs-comment">//返回指定特征名的属性值</span>
+func property<span class="hljs-constructor">_copyAttributeValue(<span class="hljs-params">_</span> <span class="hljs-params">property</span>: <span class="hljs-params">objc_property_t</span>,<span class="hljs-params">_</span> <span class="hljs-params">attributeName</span>: UnsafePointer&lt;Int8&gt;)</span> -&gt; UnsafeMutablePointer&lt;Int8&gt;?
+
+<span class="hljs-comment">//返回指定属性的属性特征数组</span>
+func property<span class="hljs-constructor">_copyAttributeList(<span class="hljs-params">_</span> <span class="hljs-params">property</span>: <span class="hljs-params">objc_property_t</span>, <span class="hljs-params">_</span> <span class="hljs-params">outCount</span>: UnsafeMutablePointer&lt;UInt32&gt;?)</span> -&gt; UnsafeMutablePointer&lt;objc_property_attribute_t&gt;?
+</code></pre>
+
+<h3 id="OC语言特色的使用"><a href="#OC语言特色的使用" class="headerlink" title="OC语言特色的使用"></a>OC语言特色的使用</h3><pre><code class="hljs swift"><span class="hljs-comment">//当在foreach迭代中检测到一个突变时，由编译器插入。</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">objc_enumerationMutation</span><span class="hljs-params">(<span class="hljs-keyword">Any</span>)</span></span>
+
+<span class="hljs-comment">//设置当前的突变处理</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">objc_setEnumerationMutationHandler</span><span class="hljs-params">(<span class="hljs-params">(<span class="hljs-params">(<span class="hljs-keyword">Any</span>)</span></span></span></span> -&gt; <span class="hljs-type">Void</span>)?)
+
+<span class="hljs-comment">//给一个函数创建一个指针  当方法被调用的使用调用指定Block</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">imp_implementationWithBlock</span><span class="hljs-params">(<span class="hljs-keyword">Any</span>)</span></span>
+
+<span class="hljs-comment">//返回与一个已经创建使用的IMP关联的Block</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">imp_getBlock</span><span class="hljs-params">(IMP)</span></span>
+
+<span class="hljs-comment">//取消与已经创建使用的IMP关联的Block</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">imp_removeBlock</span><span class="hljs-params">(IMP)</span></span>
+
+<span class="hljs-comment">//加载被弱引用的对象并返回它</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">objc_loadWeak</span><span class="hljs-params">()</span></span>
+
+<span class="hljs-comment">//存储一个弱引用变量值</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">objc_storeWeak</span><span class="hljs-params">(AutoreleasingUnsafeMutablePointer&lt;AnyObject?&gt;, <span class="hljs-keyword">Any</span>?)</span></span>
+</code></pre>
+
+<h3 id="类定义数据结构"><a href="#类定义数据结构" class="headerlink" title="类定义数据结构"></a>类定义数据结构</h3><pre><code class="hljs awk"><span class="hljs-regexp">//</span>在类定义中表示一个方法类型
+typealias Method
+
+<span class="hljs-regexp">//</span>表示一个实例变量类型
+typealias Ivar
+
+<span class="hljs-regexp">//</span>表示一个分类类型
+typealias Category
+
+<span class="hljs-regexp">//</span>表示一个OC声明的属性类型
+typealias objc_property_t
+
+<span class="hljs-regexp">//</span>定义一个OC方法
+struct objc_method_description
+
+<span class="hljs-regexp">//</span>定义一个属性特性
+struct objc_property_attribute_t
+</code></pre>
+
+<h3 id="实例数据类型"><a href="#实例数据类型" class="headerlink" title="实例数据类型"></a>实例数据类型</h3><p>  这些是表示对象,类,父类的数据类型</p>
+<ul>
+<li>objc_object 指向一个实例对象的指针</li>
+<li>objc_object 表示一个实例对象</li>
+<li>objc_super  一个实例对象的父类</li>
+</ul>
+<pre><code class="hljs gauss"><span class="hljs-comment">//一个类的实例的指针</span>
+<span class="hljs-keyword">struct</span> <span class="hljs-type">objc_object</span>
+
+//指定实例对象的父类
+<span class="hljs-type">struct</span> objc_super
+</code></pre>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/categories/iOS/">iOS</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/runtime/">runtime</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/2017/11/26/iOS/iOS-Router/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Router</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/2017/11/07/iOS/JavaScriptCore%E4%B8%8EWebView/">
+                        <span class="hidden-mobile">JavaScriptCore与WebView</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/debouncer.js" ></script>
+<script  src="/blog/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/blog/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/blog/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "Objective-C Runtime&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/blog/js/local-search.js" ></script>
+  <script>
+    var path = "/blog/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

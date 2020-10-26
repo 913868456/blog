@@ -1,0 +1,574 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/favicon.png">
+  <link rel="icon" type="image/png" href="/blog/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="吃面多放葱">
+  <meta name="keywords" content="">
+  <title>Cocoapods - 吃面多放葱的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/blog/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/blog/">&nbsp;<strong>吃面多放葱</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/blog/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2017-05-18 22:39" pubdate>
+        2017年5月18日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      766 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      10
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">Cocoapods</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <h3 id="使用CocoaPods"><a href="#使用CocoaPods" class="headerlink" title="使用CocoaPods"></a>使用CocoaPods</h3><h4 id="安装CocoaPods"><a href="#安装CocoaPods" class="headerlink" title="安装CocoaPods"></a>安装CocoaPods</h4><p>打开命令行</p>
+<pre><code class="hljs awk"><span class="hljs-regexp">//</span> OSX <span class="hljs-number">10.11</span>后安装CocoaPods命令
+sudo gem install -n <span class="hljs-regexp">/usr/</span>local/bin cocoapods -v <span class="hljs-number">1.9</span>.<span class="hljs-number">0</span></code></pre>
+<h4 id="项目使用CocoaPods"><a href="#项目使用CocoaPods" class="headerlink" title="项目使用CocoaPods"></a>项目使用CocoaPods</h4><ul>
+<li><p>生成Podfile，进入.xcodeproj文件所在目录</p>
+<pre><code class="hljs csharp">pod <span class="hljs-keyword">init</span></code></pre>
+</li>
+<li><p>Podfile</p>
+</li>
+</ul>
+<pre><code class="hljs delphi"><span class="hljs-keyword">platform</span> :ios, <span class="hljs-string">&#x27;8.0&#x27;</span>
+
+target <span class="hljs-string">&#x27;AppName&#x27;</span> <span class="hljs-keyword">do</span>
+
+<span class="hljs-keyword">end</span> 
+</code></pre>
+
+<ul>
+<li>引入不同的库，并指定版本</li>
+</ul>
+<pre><code class="hljs nginx"><span class="hljs-attribute">pod</span> <span class="hljs-string">&#x27;X&#x27;</span>, <span class="hljs-string">&#x27;~&gt; 1.1&#x27;</span>
+</code></pre>
+
+<ul>
+<li>引入非CocoaPods公共Git仓库中的库，并可以指定具体的commit, branch 或者 tag, 编译版本</li>
+</ul>
+<pre><code class="hljs arcade">pod <span class="hljs-string">&#x27;Y&#x27;</span>, :<span class="hljs-function"><span class="hljs-params">git</span> =&gt;</span> <span class="hljs-string">&#x27;https://github.com/NSHipster/Y.git&#x27;</span>, :<span class="hljs-function"><span class="hljs-params">commit</span> =&gt;</span> <span class="hljs-string">&#x27;b4dc0ffee&#x27;</span>
+pod <span class="hljs-string">&#x27;LookinServer&#x27;</span>, :<span class="hljs-function"><span class="hljs-params">configurations</span> =&gt;</span> [<span class="hljs-string">&#x27;Debug&#x27;</span>]
+</code></pre>
+<ul>
+<li>引入私有库   </li>
+</ul>
+<pre><code class="hljs awk"><span class="hljs-regexp">//</span>添加私有库地址到本地的cocopods中
+$ pod repo add REPO_NAME SOURCE_URL
+
+<span class="hljs-regexp">//</span>Podfile文件中添加私有库源
+source <span class="hljs-string">&#x27;URL_TO_REPOSITORY&#x27;</span>
+</code></pre>
+
+<ul>
+<li>安装所需要的库</li>
+</ul>
+<pre><code class="hljs cmake">pod <span class="hljs-keyword">install</span></code></pre>
+<p>Cocoapods 会你用递归分析所有需求，最后序列化为Podfile.lock（建议将 podfile.lock和.xcworkspace 纳入Git版本管理中，该文件记录这Pod里面相关库的历史安装版本）</p>
+<p>比如，如果两个库都需要使用AFNetworking，CocoaPods 会确定一个同时能被这两库使用的版本，然后将同一个安装版本链接到两个不同的库中。</p>
+<p>CocoaPods 会创建一个新的包含之前安装好的静态库 Xcode 项目，然后将它们链接成一个新的 libPods.a target。你原有的项目将会依赖这个新的静态库。一个 xcworkspace 文件会被创建，从此之后，你应该只打开这个 xcworkspace 文件来进行开发。</p>
+<ul>
+<li>升级指定库</li>
+</ul>
+<pre><code class="hljs nginx"><span class="hljs-attribute">pod</span> update <span class="hljs-string">&#x27;C&#x27;</span></code></pre>
+<ul>
+<li>升级私有库</li>
+</ul>
+<pre><code class="hljs ebnf"><span class="hljs-attribute">pod repo update REPO_NAME</span></code></pre>
+
+<ul>
+<li>尝试使用Cocoapod</li>
+</ul>
+<pre><code class="hljs actionscript">pod <span class="hljs-keyword">try</span> <span class="hljs-string">&#x27;D&#x27;</span></code></pre>
+
+<h3 id="建立自己的CocoaPods"><a href="#建立自己的CocoaPods" class="headerlink" title="建立自己的CocoaPods"></a>建立自己的CocoaPods</h3><h4 id="规范"><a href="#规范" class="headerlink" title="规范"></a>规范</h4><p>.podspec文件作为 CocoaPods 的一个独立单元，包含了名称，版本，许可证，和源码文件等所有信息。</p>
+<p>以下是Alamofire的podspec文件内容</p>
+<pre><code class="hljs pgsql">Pod::Spec.<span class="hljs-built_in">new</span> <span class="hljs-keyword">do</span> |s|
+  s.name = <span class="hljs-string">&#x27;Alamofire&#x27;</span>
+  s.version = <span class="hljs-string">&#x27;5.3.0&#x27;</span>
+  s.license = <span class="hljs-string">&#x27;MIT&#x27;</span>
+  s.<span class="hljs-keyword">summary</span> = <span class="hljs-string">&#x27;Elegant HTTP Networking in Swift&#x27;</span>
+  s.homepage = <span class="hljs-string">&#x27;https://github.com/Alamofire/Alamofire&#x27;</span>
+  s.authors = &#123; <span class="hljs-string">&#x27;Alamofire Software Foundation&#x27;</span> =&gt; <span class="hljs-string">&#x27;info@alamofire.org&#x27;</span> &#125;
+  s.source = &#123; :git =&gt; <span class="hljs-string">&#x27;https://github.com/Alamofire/Alamofire.git&#x27;</span>, :tag =&gt; s.<span class="hljs-keyword">version</span> &#125;
+  s.documentation_url = <span class="hljs-string">&#x27;https://alamofire.github.io/Alamofire/&#x27;</span>
+
+  s.ios.deployment_target = <span class="hljs-string">&#x27;10.0&#x27;</span>
+  s.osx.deployment_target = <span class="hljs-string">&#x27;10.12&#x27;</span>
+  s.tvos.deployment_target = <span class="hljs-string">&#x27;10.0&#x27;</span>
+  s.watchos.deployment_target = <span class="hljs-string">&#x27;3.0&#x27;</span>
+
+  s.swift_versions = [<span class="hljs-string">&#x27;5.1&#x27;</span>, <span class="hljs-string">&#x27;5.2&#x27;</span>, <span class="hljs-string">&#x27;5.3&#x27;</span>]
+
+  s.source_files = <span class="hljs-string">&#x27;Source/*.swift&#x27;</span>
+
+  s.frameworks = <span class="hljs-string">&#x27;CFNetwork&#x27;</span>
+<span class="hljs-keyword">end</span>
+
+</code></pre>
+
+<p>一旦把这个.podspec发布到公共数据库中，任何想使用它的开发者，只需要在 Podfile 中加入如下声明即可：</p>
+<pre><code class="hljs nginx"><span class="hljs-attribute">pod</span> <span class="hljs-string">&#x27;Alamofire&#x27;</span>, <span class="hljs-string">&#x27;~&gt; 5.0&#x27;</span>
+</code></pre>
+<p>.podspec文件也可以作为管理内部代码的利器：</p>
+<pre><code class="hljs arcade">pod <span class="hljs-string">&#x27;Z&#x27;</span>, :<span class="hljs-function"><span class="hljs-params">path</span> =&gt;</span> <span class="hljs-string">&#x27;path/to/directory/with/podspec&#x27;</span></code></pre>
+
+<h4 id="发布CocoaPods"><a href="#发布CocoaPods" class="headerlink" title="发布CocoaPods"></a>发布CocoaPods</h4><p>CocoaPods 0.33 中加入了Trunk服务。</p>
+<p>要想使用 Trunk 服务，首先你需要注册自己的电脑。这很简单，只要你指明你的邮箱地址（spec 文件中的）和名称即可。</p>
+<pre><code class="hljs elixir"><span class="hljs-variable">$ </span>pod trunk register mattt<span class="hljs-variable">@nshipster</span>.com <span class="hljs-string">&quot;Mattt Thompson&quot;</span></code></pre>
+<p>至此，你就可以通过以下命令来方便地发布和升级你的 Pod！</p>
+<pre><code class="hljs reasonml">$ pod trunk push <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">NAME</span>.</span></span>podspec
+</code></pre>
+
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p><a target="_blank" rel="noopener" href="https://guides.cocoapods.org/">CocoaPods</a></p>
+<p><a target="_blank" rel="noopener" href="https://nshipster.cn/cocoapods/">NSHipster</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/categories/%E5%B7%A5%E5%85%B7/">工具</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86/">依赖管理</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/2017/10/10/iOS/Xcode-module-compiled-with-Swift-3-1-cannot-be-imported-in-Swift-3-2--/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Xcode问题</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/2017/05/16/iOS/iOS%E5%8F%8B%E7%9B%9F%E7%AC%AC%E4%B8%89%E6%96%B9%E7%99%BB%E5%BD%95/">
+                        <span class="hidden-mobile">友盟三方登录</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/debouncer.js" ></script>
+<script  src="/blog/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/blog/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/blog/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "Cocoapods&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/blog/js/local-search.js" ></script>
+  <script>
+    var path = "/blog/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

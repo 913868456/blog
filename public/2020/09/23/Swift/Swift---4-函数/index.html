@@ -1,0 +1,506 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/favicon.png">
+  <link rel="icon" type="image/png" href="/blog/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="吃面多放葱">
+  <meta name="keywords" content="">
+  <title>函数 - 吃面多放葱的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/blog/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/blog/">&nbsp;<strong>吃面多放葱</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/blog/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-09-23 18:25" pubdate>
+        2020年9月23日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      607 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      8
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">函数</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <h4 id="函数参数标签和参数名"><a href="#函数参数标签和参数名" class="headerlink" title="函数参数标签和参数名"></a>函数参数标签和参数名</h4><p>每个函数参数都有参数标签和参数名称。 调用函数时使用参数标签; 每个参数都写在函数调用中，其参数标签之前。 参数名称用于实现该函数。 默认情况下，<strong>参数使用其参数名称作为参数标号.</strong></p>
+<p>如果你不想给一个参数添加参数标签,你可以在该参数名前画一个(_)来替代参数标签;</p>
+<pre><code class="hljs less"><span class="hljs-selector-tag">func</span> <span class="hljs-selector-tag">someFunction</span>(_ <span class="hljs-attribute">firstParameterName</span>: Int, <span class="hljs-attribute">secondParameterName</span>: Int) &#123;
+    <span class="hljs-comment">// In the function body, firstParameterName and secondParameterName</span>
+    <span class="hljs-comment">// refer to the argument values for the first and second parameters.</span>
+&#125;
+<span class="hljs-selector-tag">someFunction</span>(<span class="hljs-number">1</span>, <span class="hljs-attribute">secondParameterName</span>: <span class="hljs-number">2</span>)
+
+摘录来自: <span class="hljs-selector-tag">Apple</span> <span class="hljs-selector-tag">Inc</span>. “<span class="hljs-selector-tag">The</span> <span class="hljs-selector-tag">Swift</span> <span class="hljs-selector-tag">Programming</span> <span class="hljs-selector-tag">Language</span> (Swift <span class="hljs-number">4</span>)”。 <span class="hljs-selector-tag">iBooks</span>.</code></pre>
+
+<h4 id="默认参数值"><a href="#默认参数值" class="headerlink" title="默认参数值"></a>默认参数值</h4><p>在参数类型后面添加等号然后分配一个默认值,当调用该函数时,若不给其中有默认值得参数赋值,则参数值为默认值;</p>
+<pre><code class="hljs less"><span class="hljs-selector-tag">func</span> <span class="hljs-selector-tag">someFunction</span>(<span class="hljs-attribute">parameterWithoutDefault</span>: Int, <span class="hljs-attribute">parameterWithDefault</span>: Int = <span class="hljs-number">12</span>) &#123;
+    <span class="hljs-comment">// If you omit the second argument when calling this function, then</span>
+    <span class="hljs-comment">// the value of parameterWithDefault is 12 inside the function body.</span>
+&#125;
+<span class="hljs-selector-tag">someFunction</span>(<span class="hljs-attribute">parameterWithoutDefault</span>: <span class="hljs-number">3</span>, <span class="hljs-attribute">parameterWithDefault</span>: <span class="hljs-number">6</span>) <span class="hljs-comment">// parameterWithDefault is 6</span>
+<span class="hljs-selector-tag">someFunction</span>(<span class="hljs-attribute">parameterWithoutDefault</span>: <span class="hljs-number">4</span>) <span class="hljs-comment">// parameterWithDefault is 12</span>
+
+摘录来自: <span class="hljs-selector-tag">Apple</span> <span class="hljs-selector-tag">Inc</span>. “<span class="hljs-selector-tag">The</span> <span class="hljs-selector-tag">Swift</span> <span class="hljs-selector-tag">Programming</span> <span class="hljs-selector-tag">Language</span> (Swift <span class="hljs-number">4</span>)”。 <span class="hljs-selector-tag">iBooks</span>.</code></pre>
+<h4 id="变量参数-Variadic-Parameters"><a href="#变量参数-Variadic-Parameters" class="headerlink" title="变量参数(Variadic Parameters)"></a>变量参数(Variadic Parameters)</h4><pre><code class="hljs angelscript">func arithmeticMean(_ numbers: Double...) -&gt; Double &#123;
+    var total: Double = <span class="hljs-number">0</span>
+    <span class="hljs-keyword">for</span> number <span class="hljs-keyword">in</span> numbers &#123;
+        total += number
+    &#125;
+    <span class="hljs-keyword">return</span> total / Double(numbers.count)
+&#125;
+arithmeticMean(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>)
+<span class="hljs-comment">// returns 3.0, which is the arithmetic mean of these five numbers</span>
+
+摘录来自: Apple Inc. “The Swift Programming Language (Swift <span class="hljs-number">4</span>)”。 iBooks. 
+</code></pre>
+<blockquote>
+<p>NOTE<br>A function may have at most one variadic parameter.”<br>摘录来自: Apple Inc. “The Swift Programming Language (Swift 4)。 iBooks.</p>
+</blockquote>
+<h4 id="In-Out-Parameters"><a href="#In-Out-Parameters" class="headerlink" title="In-Out Parameters"></a>In-Out Parameters</h4><p>函数参数默认是常量。 尝试从该函数体内更改函数参数的值会导致编译错误。 这意味着您不能错误地更改参数的值。 如果您想要一个函数修改参数的值，并且在函数调用结束后希望这些更改保持不变，请将该参数定义为in-out参数。</p>
+<p>给in-out参数赋值时,必须为变量,并且在变量类型之前加(&amp;),来证明这个参数是可以被函数改变的;</p>
+<blockquote>
+<p>NOTE<br>In-out parameters cannot have default values, and variadic parameters cannot be marked as inout.”<br>摘录来自: Apple Inc. “The Swift Programming Language (Swift 4)”。 iBooks. </p>
+</blockquote>
+<p>举例来讲,两个变量交换值</p>
+<pre><code class="hljs angelscript">func swapTwoInts(_ a: <span class="hljs-keyword">inout</span> Int, _ b: <span class="hljs-keyword">inout</span> Int) &#123;
+    let temporaryA = a
+    a = b
+    b = temporaryA
+&#125;
+
+var someInt = <span class="hljs-number">3</span>
+var anotherInt = <span class="hljs-number">107</span>
+
+swapTwoInts(&amp;someInt, &amp;anotherInt)
+
+print(<span class="hljs-string">&quot;someInt is now \(someInt), and anotherInt is now \(anotherInt)&quot;</span>)
+<span class="hljs-comment">// Prints &quot;someInt is now 107, and anotherInt is now 3</span>
+
+摘录来自: Apple Inc. “The Swift Programming Language (Swift <span class="hljs-number">4</span>)。 iBooks. 
+</code></pre>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/categories/Swift/">Swift</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/Swift/">Swift</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/debouncer.js" ></script>
+<script  src="/blog/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/blog/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/blog/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "函数&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/blog/js/local-search.js" ></script>
+  <script>
+    var path = "/blog/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

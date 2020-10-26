@@ -1,0 +1,574 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/favicon.png">
+  <link rel="icon" type="image/png" href="/blog/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="吃面多放葱">
+  <meta name="keywords" content="">
+  <title>JavaScriptCore与WebView - 吃面多放葱的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/blog/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/blog/">&nbsp;<strong>吃面多放葱</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/blog/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2017-11-07 21:57" pubdate>
+        2017年11月7日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      541 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      8
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">JavaScriptCore与WebView</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <h3 id="Html中JS-与-Native交互情况"><a href="#Html中JS-与-Native交互情况" class="headerlink" title="Html中JS 与 Native交互情况"></a>Html中JS 与 Native交互情况</h3><ul>
+<li>Native调用JS</li>
+<li>JS调用Native</li>
+</ul>
+<h3 id="一-获取WebView的JSContext"><a href="#一-获取WebView的JSContext" class="headerlink" title="一.  获取WebView的JSContext"></a>一.  获取WebView的JSContext</h3><pre><code class="hljs swift"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">webViewDidFinishLoad</span><span class="hljs-params">(<span class="hljs-number">_</span> webView: UIWebView)</span></span> &#123;
+    
+    <span class="hljs-keyword">self</span>.context = webView.value(forKeyPath: <span class="hljs-string">&quot;documentView.webView.mainFrame.javaScriptContext&quot;</span>) <span class="hljs-keyword">as</span>? <span class="hljs-type">JSContext</span>
+&#125;</code></pre>
+
+<blockquote>
+<p>不同网页JSContext不同,只有在 webViewDidFinishLoad() 方法中获取,才能获取当前网页的JSContext</p>
+</blockquote>
+<h3 id="二-Native调用JS"><a href="#二-Native调用JS" class="headerlink" title="二.   Native调用JS"></a>二.   Native调用JS</h3><p>Html中JS提供的接口</p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
+	
+<span class="javascript">	  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handler</span>(<span class="hljs-params">argument</span>) </span>&#123;</span>
+
+<span class="javascript">        <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&quot;jsContent&quot;</span>).innerHTML = argument[<span class="hljs-string">&quot;name&quot;</span>] + <span class="hljs-string">&quot; &quot;</span> + argument[<span class="hljs-string">&quot;age&quot;</span>] + <span class="hljs-string">&quot;岁 &quot;</span> +  argument[<span class="hljs-string">&quot;job&quot;</span>]</span>
+
+      &#125;
+<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+<p>Native调用方法</p>
+<pre><code class="hljs swift"> <span class="hljs-comment">//本地调用JS方法</span>
+<span class="hljs-meta">@objc</span> <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">nativeCallJS</span><span class="hljs-params">()</span></span> &#123;
+
+    <span class="hljs-comment">//方法一 (直接执行JS脚本)</span>
+    <span class="hljs-keyword">let</span> scriptStr = <span class="hljs-string">&quot;handler(&#123;&#x27;name&#x27;:&#x27;小明&#x27;, &#x27;age&#x27;:&#x27;18&#x27;,&#x27;job&#x27;:&#x27;学生&#x27;&#125;)&quot;</span>
+    <span class="hljs-keyword">let</span> <span class="hljs-number">_</span> = <span class="hljs-keyword">self</span>.context?.evaluateScript(scriptStr)
+    
+    <span class="hljs-comment">//方法二 (获取函数,然后调用函数传参)</span>
+    <span class="hljs-keyword">let</span> handleFunc = <span class="hljs-keyword">self</span>.context?.objectForKeyedSubscript(<span class="hljs-string">&quot;handler&quot;</span>)
+    <span class="hljs-keyword">let</span> paraDic = [<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;小明&quot;</span>, <span class="hljs-string">&quot;age&quot;</span>: <span class="hljs-number">18</span>, <span class="hljs-string">&quot;job&quot;</span>:<span class="hljs-string">&quot;学生&quot;</span>] <span class="hljs-keyword">as</span> [<span class="hljs-type">String</span> : <span class="hljs-type">Any</span>]
+    <span class="hljs-keyword">let</span> <span class="hljs-number">_</span> = handleFunc?.call(withArguments: [paraDic])
+
+&#125;</code></pre>
+<h3 id="三-JS调用Native"><a href="#三-JS调用Native" class="headerlink" title="三.    JS调用Native"></a>三.    JS调用Native</h3><h4 id="方式一-使用Block-Swift-用闭包"><a href="#方式一-使用Block-Swift-用闭包" class="headerlink" title="方式一: 使用Block(Swift 用闭包)"></a>方式一: 使用Block(Swift 用闭包)</h4><pre><code class="hljs objectivec">- (<span class="hljs-keyword">void</span>)webViewDidFinishLoad:(<span class="hljs-built_in">UIWebView</span> *)webView&#123;
+
+    <span class="hljs-comment">//获取JS运行环境</span>
+    _context = [webView valueForKeyPath:<span class="hljs-string">@&quot;documentView.webView.mainFrame.javaScriptContext&quot;</span>];
+    <span class="hljs-comment">//html调用无参数OC</span>
+    _context[<span class="hljs-string">@&quot;test1&quot;</span>] = ^()&#123;
+        [<span class="hljs-keyword">self</span> method1];
+    &#125;;
+    
+    _context[<span class="hljs-string">@&quot;test2&quot;</span>] = ^()&#123;
+        
+        <span class="hljs-built_in">NSArray</span> *args = [JSContext currentArguments];<span class="hljs-comment">//传过来的参数</span>
+        <span class="hljs-built_in">NSString</span> *name = args[<span class="hljs-number">0</span>];
+        <span class="hljs-built_in">NSString</span> *str = args[<span class="hljs-number">1</span>];
+        [<span class="hljs-keyword">self</span> method2:name and:str];
+    &#125;;
+
+&#125;
+</code></pre>
+
+<h4 id="方式二-使用JSExport"><a href="#方式二-使用JSExport" class="headerlink" title="方式二: 使用JSExport"></a>方式二: 使用JSExport</h4><pre><code class="hljs swift"><span class="hljs-meta">@objc</span> <span class="hljs-class"><span class="hljs-keyword">protocol</span> <span class="hljs-title">SwiftBridgeProtocol</span>: <span class="hljs-title">JSExport</span></span>&#123;
+   
+    <span class="hljs-comment">//JS调用本地方法(无参数)</span>
+    <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">method1</span><span class="hljs-params">()</span></span>
+    <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">method2</span><span class="hljs-params">(<span class="hljs-number">_</span> title: String, <span class="hljs-number">_</span> message: String)</span></span>
+    <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">method3</span><span class="hljs-params">(<span class="hljs-number">_</span> handlerName: String)</span></span>
+&#125;
+
+<span class="hljs-meta">@objc</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SwiftBrige</span>: <span class="hljs-title">NSObject</span>, <span class="hljs-title">SwiftBridgeProtocol</span></span>&#123;
+    
+    <span class="hljs-keyword">weak</span> <span class="hljs-keyword">var</span> controller: <span class="hljs-type">UIViewController?</span>
+    <span class="hljs-keyword">weak</span> <span class="hljs-keyword">var</span> context   : <span class="hljs-type">JSContext?</span>
+    
+    <span class="hljs-comment">//JS调用本地方法(无参数)</span>
+    <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">method1</span><span class="hljs-params">()</span></span>  &#123;
+        
+        <span class="hljs-keyword">let</span> controller = <span class="hljs-type">UIAlertController</span>.<span class="hljs-keyword">init</span>(title: <span class="hljs-string">&quot;测试&quot;</span>, message: <span class="hljs-string">&quot;JS调用本地方法&quot;</span>, preferredStyle: .alert)
+        controller.addAction(<span class="hljs-type">UIAlertAction</span>(title: <span class="hljs-string">&quot;取消&quot;</span>, style: .cancel, handler: <span class="hljs-literal">nil</span>))
+        <span class="hljs-keyword">self</span>.controller?.present(controller, animated: <span class="hljs-literal">true</span>, completion: <span class="hljs-literal">nil</span>)
+    &#125;
+    
+    <span class="hljs-comment">//JS调用本地方法(传参数)</span>
+    <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">method2</span><span class="hljs-params">(<span class="hljs-number">_</span> title: String, <span class="hljs-number">_</span> message: String)</span></span> &#123;
+        
+        <span class="hljs-keyword">let</span> controller = <span class="hljs-type">UIAlertController</span>.<span class="hljs-keyword">init</span>(title: title, message: message, preferredStyle: .alert)
+        controller.addAction(<span class="hljs-type">UIAlertAction</span>(title: <span class="hljs-string">&quot;取消&quot;</span>, style: .cancel, handler: <span class="hljs-literal">nil</span>))
+        <span class="hljs-keyword">self</span>.controller?.present(controller, animated: <span class="hljs-literal">true</span>, completion: <span class="hljs-literal">nil</span>)
+    &#125;
+    
+    <span class="hljs-comment">//JS调用本地方法  本地方法回调JS方法</span>
+    <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">method3</span><span class="hljs-params">(<span class="hljs-number">_</span> handlerName: String)</span></span>&#123;
+        
+        <span class="hljs-comment">//回调参数</span>
+        <span class="hljs-keyword">let</span> paraDic = [<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;小明&quot;</span>, <span class="hljs-string">&quot;age&quot;</span>: <span class="hljs-number">18</span>, <span class="hljs-string">&quot;job&quot;</span>:<span class="hljs-string">&quot;学生&quot;</span>] <span class="hljs-keyword">as</span> [<span class="hljs-type">String</span> : <span class="hljs-type">Any</span>]
+        
+        <span class="hljs-comment">//获取JS回调函数</span>
+        <span class="hljs-keyword">let</span> handleFunc = <span class="hljs-keyword">self</span>.context?.objectForKeyedSubscript(<span class="hljs-string">&quot;\(handlerName)&quot;</span>)
+        
+        <span class="hljs-comment">//调用该函数</span>
+        <span class="hljs-keyword">let</span> <span class="hljs-number">_</span> = handleFunc?.call(withArguments: [paraDic])
+    &#125;
+&#125;</code></pre>
+<p><a target="_blank" rel="noopener" href="https://github.com/913868456/SwiftDemo">项目代码Swift</a><br><a target="_blank" rel="noopener" href="https://github.com/913868456/OCDemo">项目代码OC</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/categories/iOS/">iOS</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/JavaScriptCore/">JavaScriptCore</a>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/WebView/">WebView</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/2017/11/20/iOS/-Objective-C-Runtime/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Objective-C Runtime</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/2017/10/30/iOS/CoreNFC/">
+                        <span class="hidden-mobile">CoreNFC</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/debouncer.js" ></script>
+<script  src="/blog/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/blog/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/blog/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "JavaScriptCore与WebView&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/blog/js/local-search.js" ></script>
+  <script>
+    var path = "/blog/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,852 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/favicon.png">
+  <link rel="icon" type="image/png" href="/blog/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="吃面多放葱">
+  <meta name="keywords" content="">
+  <title>吃面多放葱的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/blog/">&nbsp;<strong>吃面多放葱</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/blog/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-md">
+        <div class="py-5" id="board"
+          style=margin-top:0>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/blog/2018/03/29/iOS/Aspects-%E7%AE%80%E4%BB%8B%E4%B8%8E%E5%8E%9F%E7%90%86%E7%AE%80%E6%9E%90/">AOP简介及Aspects介绍</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/2018/03/29/iOS/Aspects-%E7%AE%80%E4%BB%8B%E4%B8%8E%E5%8E%9F%E7%90%86%E7%AE%80%E6%9E%90/">
+          
+          
+            
+          
+          AOP简介
+在软件业，AOP为Aspect Oriented Programming的缩写，意为：面向切面编程，通过预编译方式和运行期动态代理实现程序功能的统一维护的一种技术。AOP是OOP的延续，是软件开发中的一个热点，也是Spring框架中的一个重要内容，是函数式编程的一种衍生范型。利用AOP可以对业务逻辑的各个部分进行隔离，从而使得业务逻辑各部分之间的耦合度降低，提高程序的可重用性，同时提高
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2018-03-29 00:01" pubdate>
+              2018-03-29
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/iOS/">iOS</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/%E5%88%87%E9%9D%A2%E7%BC%96%E7%A8%8B/">切面编程</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/blog/2018/03/15/iOS/KVC-%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/">KVC 编程指南</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/2018/03/15/iOS/KVC-%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/">
+          
+          
+            
+          
+          
+关于Key-Value Coding键值编码是一种由NSKeyValueCoding非正式协议启用的机制，协议对象采用该协议来间接访问其属性。当一个对象兼容键值编码时，它的属性通过一个简洁的、统一的消息接口来使用字符串参数寻址。这种间接访问机制补充了实例变量及其相关访问方法所提供的直接访问。
+您通常使用访问器方法来获得对对象属性的访问。获取访问器(或getter)返回一个属性的值。设置访问器(或
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2018-03-15 17:57" pubdate>
+              2018-03-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/iOS/">iOS</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/KVC/">KVC</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/blog/2018/03/12/%E5%B7%A5%E5%85%B7/Git%E4%BD%BF%E7%94%A8SSH-%E5%85%AC%E9%92%A5%E8%AE%A4%E8%AF%81/">Git SSH认证</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/2018/03/12/%E5%B7%A5%E5%85%B7/Git%E4%BD%BF%E7%94%A8SSH-%E5%85%AC%E9%92%A5%E8%AE%A4%E8%AF%81/">
+          
+          
+            
+          
+          许多 Git 服务器都使用 SSH 公钥进行认证。 为了向 Git 服务器提供 SSH 公钥，如果某系统用户尚未拥有密钥，必须事先为其生成一份。 这个过程在所有操作系统上都是相似的。
+首先，你需要确认自己是否已经拥有密钥。 默认情况下，用户的 SSH 密钥存储在其  ~/.ssh 目录下。 
+
+
+进入该目录并列出其中内容，你便可以快速确认自己是否已拥有密钥,进去以后是这个样子,说明已经拥护密钥,将
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2018-03-12 11:08" pubdate>
+              2018-03-12
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/%E5%B7%A5%E5%85%B7/">工具</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/Git/">Git</a>
+            
+              <a href="/blog/tags/SSH/">SSH</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/blog/2018/03/09/Linux/Shell-Script/">ShellScript</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/2018/03/09/Linux/Shell-Script/">
+          
+          
+            
+          
+          #str    #输出字符串长度
+#array[@]     #输出数组长度
+echo $array[@]    #打印数组
+
+source ./test1.sh  #导入外部文件,可以引用外部文件的变量
+
+# shell script 追踪与debug
+sh [-nvx] xxx.sh
+Options:
+-n: 不需要执行script,仅检查语法问题
+-v: 在执行script前,先将scrip
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2018-03-09 18:22" pubdate>
+              2018-03-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/Linux/">Linux</a>
+            
+              <a href="/blog/categories/Linux/Shell/">Shell</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/Linux/">Linux</a>
+            
+              <a href="/blog/tags/Shell/">Shell</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/blog/2018/02/11/%E9%9A%8F%E7%AC%94/%E5%A4%A9%E8%B7%AF%E6%97%85%E9%80%94%EF%BC%88%E4%B8%89%EF%BC%89/">天路旅途（三）</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/2018/02/11/%E9%9A%8F%E7%AC%94/%E5%A4%A9%E8%B7%AF%E6%97%85%E9%80%94%EF%BC%88%E4%B8%89%EF%BC%89/">
+          
+          
+            
+          
+          旅行路上睡觉质量一般都不太好，晚上醒来好几次，感觉有点喘不过气，但是困意毕竟挡不住，还是昏昏沉沉睡到了天亮。6点多的时候，我起床,简单洗漱了一下，便开始欣赏晨曦中的高原。
+6点钟的时刻,车厢里大部分人还停留在睡梦中,偶尔传过来几声鼾响。望向窗外,阳光穿过云层,将沉睡了一晚的大地唤醒。拉货的卡车也三三两两地留迹于视野。崭新美好的一天,开始了!旅途上,你要问我什么最美? 我会毫不犹豫地回答:”高原上的
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2018-02-11 17:50" pubdate>
+              2018-02-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/%E9%9A%8F%E7%AC%94/">随笔</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/%E6%97%85%E6%B8%B8/">旅游</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/blog/2018/02/09/iOS/YYCategories-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">YYCategories介绍</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/2018/02/09/iOS/YYCategories-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">
+          
+          
+            
+          
+          介绍功能丰富的 Category 类型工具库
+分析Code#if __has_include(&lt;YYCategories/YYCategories.h&gt;)
+#import &lt;YYCategories/YYCategoriesMacro.h&gt;
+#import &lt;YYCategories/NSObject+YYAdd.h&gt;
+...
+#else
+#import &qu
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2018-02-09 18:44" pubdate>
+              2018-02-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/iOS/">iOS</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/YYCategories/">YYCategories</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/blog/2018/02/06/iOS/JavaScriptCore/">JavaScriptCore</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/2018/02/06/iOS/JavaScriptCore/">
+          
+          
+            
+          
+          运行应用程序中的JavaScript程序，并支持在应用程序编写JavaScript。
+通览JavaScriptCore框架能够在Swift, Objective-C和C等环境中运行JS脚本.也可以使用JavaScriptCore框架插入自定义的对象到JS脚本中.
+TopicsClassesClass JSContext一个JSContext对象表示一个JavaScript执行环境.你创建和使用Ja
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2018-02-06 20:26" pubdate>
+              2018-02-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/iOS/">iOS</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/JavaScriptCore/">JavaScriptCore</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/blog/2018/01/16/iOS/Runtime-%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/">Runtime编程指南</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/2018/01/16/iOS/Runtime-%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/">
+          
+          
+            
+          
+          介绍Objective-C语言从编译、链接、到运行都有很多决策。只要有可能，它都是动态的。这意味着该语言不仅需要编译器，还需要运行时系统来执行编译后的代码。运行时系统作为Objective-C语言的一种操作系统;这就是语言的作用。本文档关注NSObject类，以及Objective-C程序如何与运行时系统交互。特别是，它检查了在运行时动态加载新类的范例，并将消息转发给其他对象。它还提供关于在程序运
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2018-01-16 20:54" pubdate>
+              2018-01-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/iOS/">iOS</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/Runtime/">Runtime</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/blog/2018/01/05/iOS/%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95/">算法</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/2018/01/05/iOS/%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95/">
+          
+          
+            
+          
+          算法常用算法
+
+
+
+
+对称加密算法
+非对称加密算法
+散列算法
+
+
+
+常用算法
+DES、 3DES、 AES
+RSA 、DSA、 ECC
+MD5 、  SHA   、 HMAC
+
+
+优点
+算法公开、计算量小、加密速度快、加密效率高
+与对称加密比较,安全性更好,秘钥管理方便
+常用于验证消息完整性
+
+
+缺点
+秘钥容易泄露,秘钥管理负担过重
+加密和解密花费时间长、速度慢，只适合对少量数据进行加密
+
+
+
+应
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2018-01-05 22:12" pubdate>
+              2018-01-05
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/iOS/">iOS</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/%E7%AE%97%E6%B3%95/">算法</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/blog/2018/01/03/iOS/Core-Bluetooth-%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/">CoreBluetooth 编程指南</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/2018/01/03/iOS/Core-Bluetooth-%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/">
+          
+          
+            
+          
+          介绍Core Bluetooth 框架给iOS和Mac apps 提供与外部蓝牙设备交互的能力.例如,您的app能够发现,扫描,并且跟外部设备交互.比如心率计和数码恒温计.同样 Mac 和 iOS 设备也可以作为低功耗外部设备,给其他设备提供数据.
+在Core Bluetooth 中,中心设备和外部设备作为主要参与者.通常情况下我们通过一个app来实现中心设备角色,Core Bluetooth 也
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2018-01-03 19:02" pubdate>
+              2018-01-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/iOS/">iOS</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/CoreBluetooth/">CoreBluetooth</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/blog/page/2/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/blog/">1</a><a class="page-number" href="/blog/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/blog/page/4/">4</a><a class="page-number" href="/blog/page/5/">5</a><a class="extend next" rel="next" href="/blog/page/4/"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
+      ele.href += '#board';
+    }
+  </script>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/debouncer.js" ></script>
+<script  src="/blog/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/blog/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/blog/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "像蚂蚁一样工作，像蝴蝶一样生活&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+
+
+  <script  src="/blog/js/local-search.js" ></script>
+  <script>
+    var path = "/blog/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
