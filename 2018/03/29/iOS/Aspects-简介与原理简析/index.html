@@ -1,0 +1,599 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/favicon.png">
+  <link rel="icon" type="image/png" href="/blog/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="吃面多放葱">
+  <meta name="keywords" content="">
+  <title>AOP简介及Aspects介绍 - 吃面多放葱的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/blog/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/blog/">&nbsp;<strong>吃面多放葱</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/blog/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2018-03-29 00:01" pubdate>
+        2018年3月29日 凌晨
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      999 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      14
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">AOP简介及Aspects介绍</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <h2 id="AOP简介"><a href="#AOP简介" class="headerlink" title="AOP简介"></a>AOP简介</h2><p><img src="https://upload-images.jianshu.io/upload_images/3340896-1096322e544ec637.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" srcset="/blog/img/loading.gif" alt="aop"></p>
+<p>在软件业，AOP为Aspect Oriented Programming的缩写，意为：面向切面编程，通过预编译方式和运行期动态代理实现程序功能的统一维护的一种技术。AOP是OOP的延续，是软件开发中的一个热点，也是Spring框架中的一个重要内容，是函数式编程的一种衍生范型。利用AOP可以对业务逻辑的各个部分进行隔离，从而使得业务逻辑各部分之间的耦合度降低，提高程序的可重用性，同时提高了开发的效率。</p>
+<h2 id="Aspects-简介"><a href="#Aspects-简介" class="headerlink" title="Aspects 简介"></a>Aspects 简介</h2><p><img src="https://upload-images.jianshu.io/upload_images/3340896-cf3f479419055275.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" srcset="/blog/img/loading.gif" alt="aspects"><br>一个轻量的单一的AOP库, 它让我们能够使用 method swizzling 技术 为每个类或者实例对象的方法添加执行代码.</p>
+<h3 id="Aspects-在-iOS-开发常用使用场景"><a href="#Aspects-在-iOS-开发常用使用场景" class="headerlink" title="Aspects 在 iOS 开发常用使用场景"></a>Aspects 在 iOS 开发常用使用场景</h3><ul>
+<li>监测用户点击事件</li>
+<li>记录用户某一页面的留存</li>
+<li>用户使用频率<br>…</li>
+</ul>
+<h3 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h3><p>Aspects 能够在调试的时候被用来动态添加日志</p>
+<pre><code class="hljs scheme">[<span class="hljs-name">UIViewController</span> aspect_hookSelector:@selector(<span class="hljs-name">viewWillAppear:</span>) withOptions:AspectPositionAfter usingBlock:^(<span class="hljs-name">id&lt;AspectInfo&gt;</span> aspectInfo, BOOL animated) &#123;
+    NSLog(<span class="hljs-name">@</span><span class="hljs-string">&quot;View Controller %@ will appear animated: %tu&quot;</span>, aspectInfo.instance, animated)<span class="hljs-comment">;</span>
+&#125; error:NULL]<span class="hljs-comment">;</span></code></pre>
+
+<h2 id="原理简析"><a href="#原理简析" class="headerlink" title="原理简析"></a>原理简析</h2><p>讲解原理前我们先熟悉一下<code>Objective-C</code>的消息转发流程</p>
+<h3 id="消息转发流程"><a href="#消息转发流程" class="headerlink" title="消息转发流程:"></a>消息转发流程:</h3><ul>
+<li><code>resolveInstanceMethod:</code><br>当实例对象无法找到 sel 实现时，首先调用此方法，对sel做处理</li>
+<li><code>resolveClassMethod:</code><br>当类对象无法找到 sel 实现时，首先调用此方法，对sel做处理</li>
+<li><code>forwardTargetForSelector:</code><br>sel 仍未处理，接着调用此方法，在这里可以对sel做处理</li>
+<li><code>methodSignatureForSelector:</code><br>sel 仍未处理，runtime会通过<code>methodSigntureForSelector</code>方法尝试获取本次消息调用的具体环境信息，包括消息的参数与返回值类型。并封装成NSInvocation对象。我们可以在<code>forwardInvocation</code>方法内部对该对象作进一步的处理，并使之能够成功的完成消息处理。如果未能成功获取<code>NSInvocation</code>对象，那么程序就会发送<code>doesNotRecognizeSelector</code>消息抛出<code>unrecognized Selector send to xxx</code>的异常</li>
+</ul>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><blockquote>
+<p><strong>重要</strong><br>Aspects 利用 <code>Objective-C</code> 的消息转发机制,在对象或类调用<code>selector</code>的时候,直接将其<code>IMP</code>替换为<code>objc_msgForward</code>,从而走消息转发流程,通过hook <code>forwardInvocation:</code>方法,将其<code>IMP</code>替换为自定义的<code>IMP</code>从而实现执行代码的添加和方法的替换.</p>
+</blockquote>
+<h3 id="核心代码"><a href="#核心代码" class="headerlink" title="核心代码"></a>核心代码</h3><ul>
+<li><p>替换selector的IMP,执行 objc_msgForward 函数,直接走消息转发</p>
+<pre><code class="hljs reasonml"><span class="hljs-keyword">if</span> (!aspect<span class="hljs-constructor">_isMsgForwardIMP(<span class="hljs-params">targetMethodIMP</span>)</span>) &#123;
+       ...
+       ...
+       <span class="hljs-keyword">class</span><span class="hljs-constructor">_replaceMethod(<span class="hljs-params">klass</span>, <span class="hljs-params">selector</span>, <span class="hljs-params">aspect_getMsgForwardIMP</span>(<span class="hljs-params">self</span>, <span class="hljs-params">selector</span>)</span>, typeEncoding);
+       <span class="hljs-constructor">AspectLog(@<span class="hljs-string">&quot;Aspects: Installed hook for -[%@ %@].&quot;</span>, <span class="hljs-params">klass</span>, NSStringFromSelector(<span class="hljs-params">selector</span>)</span>);
+   &#125;</code></pre>
+</li>
+<li><p>hook <code>forwardInvocation:</code>方法,将其IMP替换为<code>__ASPECTS_ARE_BEING_CALLED__</code></p>
+</li>
+</ul>
+<pre><code class="hljs reasonml">static NSString *const AspectsForwardInvocationSelectorName = @<span class="hljs-string">&quot;__aspects_forwardInvocation:&quot;</span>;
+static void aspect<span class="hljs-constructor">_swizzleForwardInvocation(Class <span class="hljs-params">klass</span>)</span> &#123;
+    <span class="hljs-constructor">NSCParameterAssert(<span class="hljs-params">klass</span>)</span>;
+    <span class="hljs-comment">// If there is no method, replace will act like class_addMethod.</span>
+    IMP originalImplementation = <span class="hljs-keyword">class</span><span class="hljs-constructor">_replaceMethod(<span class="hljs-params">klass</span>, @<span class="hljs-params">selector</span>(<span class="hljs-params">forwardInvocation</span>:)</span>, (IMP)__ASPECTS_ARE_BEING_CALLED__, <span class="hljs-string">&quot;v@:@&quot;</span>);
+    <span class="hljs-keyword">if</span> (originalImplementation) &#123;
+        <span class="hljs-keyword">class</span><span class="hljs-constructor">_addMethod(<span class="hljs-params">klass</span>, NSSelectorFromString(AspectsForwardInvocationSelectorName)</span>, originalImplementation, <span class="hljs-string">&quot;v@:@&quot;</span>);
+    &#125;
+    <span class="hljs-constructor">AspectLog(@<span class="hljs-string">&quot;Aspects: %@ is now aspect aware.&quot;</span>, NSStringFromClass(<span class="hljs-params">klass</span>)</span>);
+&#125;
+</code></pre>
+<ul>
+<li><code>forwardInvocation:</code>方法执行IMP<code>__ASPECTS_ARE_BEING_CALLED__</code></li>
+</ul>
+<pre><code class="hljs reasonml"><span class="hljs-comment">// This is the swizzled forwardInvocation: method.</span>
+static void <span class="hljs-constructor">__ASPECTS_ARE_BEING_CALLED__(<span class="hljs-params">__unsafe_unretained</span> NSObject <span class="hljs-operator">*</span><span class="hljs-params">self</span>, SEL <span class="hljs-params">selector</span>, NSInvocation <span class="hljs-operator">*</span><span class="hljs-params">invocation</span>)</span> &#123;
+    
+    ...
+    ...
+
+    <span class="hljs-comment">// Before hooks.</span>
+    aspect<span class="hljs-constructor">_invoke(<span class="hljs-params">classContainer</span>.<span class="hljs-params">beforeAspects</span>, <span class="hljs-params">info</span>)</span>;
+    aspect<span class="hljs-constructor">_invoke(<span class="hljs-params">objectContainer</span>.<span class="hljs-params">beforeAspects</span>, <span class="hljs-params">info</span>)</span>;
+
+    <span class="hljs-comment">// Instead hooks.</span>
+    BOOL respondsToAlias = YES;
+    <span class="hljs-keyword">if</span> (objectContainer.insteadAspects.count<span class="hljs-operator"> || </span>classContainer.insteadAspects.count) &#123;
+        aspect<span class="hljs-constructor">_invoke(<span class="hljs-params">classContainer</span>.<span class="hljs-params">insteadAspects</span>, <span class="hljs-params">info</span>)</span>;
+        aspect<span class="hljs-constructor">_invoke(<span class="hljs-params">objectContainer</span>.<span class="hljs-params">insteadAspects</span>, <span class="hljs-params">info</span>)</span>;
+    &#125;<span class="hljs-keyword">else</span> &#123;
+        Class klass = <span class="hljs-keyword">object</span><span class="hljs-constructor">_getClass(<span class="hljs-params">invocation</span>.<span class="hljs-params">target</span>)</span>;
+        <span class="hljs-keyword">do</span> &#123;
+            <span class="hljs-keyword">if</span> ((respondsToAlias = <span class="hljs-literal">[<span class="hljs-identifier">klass</span> <span class="hljs-identifier">instancesRespondToSelector</span>:<span class="hljs-identifier">aliasSelector</span>]</span>)) &#123;
+                <span class="hljs-literal">[<span class="hljs-identifier">invocation</span> <span class="hljs-identifier">invoke</span>]</span>;
+                break;
+            &#125;
+        &#125;<span class="hljs-keyword">while</span> (!respondsToAlias<span class="hljs-operator"> &amp;&amp; </span>(klass = <span class="hljs-keyword">class</span><span class="hljs-constructor">_getSuperclass(<span class="hljs-params">klass</span>)</span>));
+    &#125;
+
+    <span class="hljs-comment">// After hooks.</span>
+    aspect<span class="hljs-constructor">_invoke(<span class="hljs-params">classContainer</span>.<span class="hljs-params">afterAspects</span>, <span class="hljs-params">info</span>)</span>;
+    aspect<span class="hljs-constructor">_invoke(<span class="hljs-params">objectContainer</span>.<span class="hljs-params">afterAspects</span>, <span class="hljs-params">info</span>)</span>;
+
+    ...
+    ...
+&#125;</code></pre>
+
+<ul>
+<li>在上一步中会根据<code>AspectOptions</code>按顺序执行block内代码，内部<code>forwardInvocation</code>方法调用时获取<code>NSInvocation</code>信息，然后用该信息生成一个参数相同的<code>blockInvocation</code>，再调用<code>invokeWithTarget</code>方法，来执行block内代码</li>
+</ul>
+<pre><code class="hljs objectivec">- (<span class="hljs-built_in">BOOL</span>)invokeWithInfo:(<span class="hljs-keyword">id</span>&lt;AspectInfo&gt;)info &#123;
+    <span class="hljs-built_in">NSInvocation</span> *blockInvocation = [<span class="hljs-built_in">NSInvocation</span> invocationWithMethodSignature:<span class="hljs-keyword">self</span>.blockSignature];
+    <span class="hljs-built_in">NSInvocation</span> *originalInvocation = info.originalInvocation;
+    <span class="hljs-built_in">NSUInteger</span> numberOfArguments = <span class="hljs-keyword">self</span>.blockSignature.numberOfArguments;
+
+    <span class="hljs-comment">// Be extra paranoid. We already check that on hook registration.</span>
+    <span class="hljs-keyword">if</span> (numberOfArguments &gt; originalInvocation.methodSignature.numberOfArguments) &#123;
+        AspectLogError(<span class="hljs-string">@&quot;Block has too many arguments. Not calling %@&quot;</span>, info);
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">NO</span>;
+    &#125;
+
+    <span class="hljs-comment">// The `self` of the block will be the AspectInfo. Optional.</span>
+    <span class="hljs-keyword">if</span> (numberOfArguments &gt; <span class="hljs-number">1</span>) &#123;
+        [blockInvocation setArgument:&amp;info atIndex:<span class="hljs-number">1</span>];
+    &#125;
+    
+	<span class="hljs-keyword">void</span> *argBuf = <span class="hljs-literal">NULL</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">NSUInteger</span> idx = <span class="hljs-number">2</span>; idx &lt; numberOfArguments; idx++) &#123;
+        <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *type = [originalInvocation.methodSignature getArgumentTypeAtIndex:idx];
+		<span class="hljs-built_in">NSUInteger</span> argSize;
+		<span class="hljs-built_in">NSGetSizeAndAlignment</span>(type, &amp;argSize, <span class="hljs-literal">NULL</span>);
+        
+		<span class="hljs-keyword">if</span> (!(argBuf = reallocf(argBuf, argSize))) &#123;
+            AspectLogError(<span class="hljs-string">@&quot;Failed to allocate memory for block invocation.&quot;</span>);
+			<span class="hljs-keyword">return</span> <span class="hljs-literal">NO</span>;
+		&#125;
+        
+		[originalInvocation getArgument:argBuf atIndex:idx];
+		[blockInvocation setArgument:argBuf atIndex:idx];
+    &#125;
+    
+    [blockInvocation invokeWithTarget:<span class="hljs-keyword">self</span>.block];
+    
+    <span class="hljs-keyword">if</span> (argBuf != <span class="hljs-literal">NULL</span>) &#123;
+        free(argBuf);
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">YES</span>;
+&#125;
+</code></pre>
+
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a target="_blank" rel="noopener" href="https://github.com/steipete/Aspects">Aspects</a><br><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/88ce7c4c2b2a">Runtime编程指南</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/categories/iOS/">iOS</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/%E5%88%87%E9%9D%A2%E7%BC%96%E7%A8%8B/">切面编程</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/2018/04/27/iOS/CALayer-%E5%92%8C-CAAnimation/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">CALayer及CAAnimation</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/2018/03/15/iOS/KVC-%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/">
+                        <span class="hidden-mobile">KVC 编程指南</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/debouncer.js" ></script>
+<script  src="/blog/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/blog/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/blog/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "AOP简介及Aspects介绍&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/blog/js/local-search.js" ></script>
+  <script>
+    var path = "/blog/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

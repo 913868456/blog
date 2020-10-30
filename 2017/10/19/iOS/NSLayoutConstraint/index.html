@@ -1,0 +1,539 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/favicon.png">
+  <link rel="icon" type="image/png" href="/blog/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="吃面多放葱">
+  <meta name="keywords" content="">
+  <title>NSLayoutConstraint - 吃面多放葱的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/blog/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/blog/">&nbsp;<strong>吃面多放葱</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/blog/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2017-10-19 16:02" pubdate>
+        2017年10月19日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      667 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      10
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">NSLayoutConstraint</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <h4 id="创建约束的两个方法"><a href="#创建约束的两个方法" class="headerlink" title="创建约束的两个方法"></a>创建约束的两个方法</h4><pre><code class="hljs less">
+方法一:
+<span class="hljs-comment">/* Create an array of constraints using an ASCII art-like visual format string.</span>
+<span class="hljs-comment">*/</span>
+<span class="hljs-selector-tag">open</span> <span class="hljs-selector-tag">class</span> <span class="hljs-selector-tag">func</span> <span class="hljs-selector-tag">constraints</span>(withVisualFormat <span class="hljs-attribute">format</span>: String, options <span class="hljs-attribute">opts</span>: NSLayoutFormatOptions = [], <span class="hljs-attribute">metrics</span>: [<span class="hljs-attribute">String </span>: Any]?, <span class="hljs-attribute">views</span>: [<span class="hljs-attribute">String </span>: Any]) <span class="hljs-selector-tag">-</span>&gt; <span class="hljs-selector-attr">[NSLayoutConstraint]</span>
+
+方法二:
+<span class="hljs-comment">/* Create constraints explicitly. Constraints are of the form &quot;view1.attr1 = view2.attr2 * multiplier + constant&quot;</span>
+<span class="hljs-comment">If your equation does not have a second view and attribute, use nil and NSLayoutAttributeNotAnAttribute.</span>
+<span class="hljs-comment">*/</span>
+<span class="hljs-selector-tag">public</span> <span class="hljs-selector-tag">convenience</span> <span class="hljs-selector-tag">init</span>(item <span class="hljs-attribute">view1</span>: Any, attribute <span class="hljs-attribute">attr1</span>: NSLayoutAttribute, relatedBy <span class="hljs-attribute">relation</span>: NSLayoutRelation, toItem <span class="hljs-attribute">view2</span>: Any?, attribute <span class="hljs-attribute">attr2</span>: NSLayoutAttribute, <span class="hljs-attribute">multiplier</span>: CGFloat, constant <span class="hljs-attribute">c</span>: CGFloat)
+</code></pre>
+
+<h4 id="参数介绍"><a href="#参数介绍" class="headerlink" title="参数介绍"></a>参数介绍</h4><p>方法一:</p>
+<p>format: VFL字符串<br>options: NSLayoutformatOptins (如果有一个则只需填写一个,若有多个则需要数组包含所有选项)<br>metrics 以字典的形式设置距离变量<br>比如 “H:|-[dis1]-[view1]-[dis2]-[view2(==view1)]-20-|”这句中的[dis1] [dis2]为视图变量,将字典的view1 view2即为key 对应相应的视图<br>views 以字典的形式设置视图变量<br>比如 “H:|-20-[view1]-20-[view2(==view1)]-20-|”这句中的[view1] [view2]为视图变量,将字典的view1 view2即为key 对应相应的视图</p>
+<p>方法二:</p>
+<p>view1:将要设置约束的控件<br>view2:参考控件<br>attr1:  将要设置控件的属性<br>attr2:  参考控件的属性<br>multiplier: 相乘系数<br>constant： 约束常量</p>
+<p>view1.attr1 = view2.attr2 * multiplier + constant</p>
+<h4 id="Visual-Format-Laguage-VFL-介绍"><a href="#Visual-Format-Laguage-VFL-介绍" class="headerlink" title="Visual Format Laguage(VFL)介绍"></a>Visual Format Laguage(VFL)介绍</h4><p>H:表示水平约束<br>V:表示垂直方向约束<br>| 表示父视图<br>-30- 表示间距30Point<br>[View] 表示UI控件View</p>
+<h4 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h4><p>“H:|-20-[aView]-15-[bView(==aView)]-20-|”<br>翻译:  水平方向约束:距离父视图左右间距为20,aView 和 bView水平间距为15,aView和bView的宽度相等.</p>
+<h4 id="布局视图"><a href="#布局视图" class="headerlink" title="布局视图"></a>布局视图</h4><p><img src="http://upload-images.jianshu.io/upload_images/3340896-d4ba05585a04da9f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" srcset="/blog/img/loading.gif" alt="1508392677456.jpg"></p>
+<h4 id="布局代码"><a href="#布局代码" class="headerlink" title="布局代码"></a>布局代码</h4><pre><code class="hljs groovy"><span class="hljs-comment">/**</span>
+<span class="hljs-comment">创建两个视图,两个视图距离顶部50,距离左右边界20,两个视图间距15,等宽,等高,视图高度为150</span>
+<span class="hljs-comment">*/</span>
+let aView = UIView()
+aView.backgroundColor = .red
+view.addSubview(aView)
+
+let bView = UIView()
+bView.backgroundColor = .brown
+view.addSubview(bView)
+
+<span class="hljs-comment">//关闭Autoresize,防止与AutoLayout冲突,参与布局的视图都需要关闭</span>
+view.translatesAutoresizingMaskIntoConstraints = <span class="hljs-literal">false</span>
+aView.translatesAutoresizingMaskIntoConstraints = <span class="hljs-literal">false</span>
+bView.translatesAutoresizingMaskIntoConstraints = <span class="hljs-literal">false</span>
+
+<span class="hljs-comment">//添加两个视图的水平约束</span>
+let contraintsH = NSLayoutConstraint.constraints(<span class="hljs-attr">withVisualFormat:</span> <span class="hljs-string">&quot;H:|-20-[aView]-15-[bView(==aView)]-20-|&quot;</span>, <span class="hljs-attr">options:</span> [.alignAllTop, .alignAllBottom], <span class="hljs-attr">metrics:</span> nil, <span class="hljs-attr">views:</span> [<span class="hljs-string">&quot;aView&quot;</span>: aView, <span class="hljs-string">&quot;bView&quot;</span>: bView])
+view.addConstraints(contraintsH)
+
+<span class="hljs-comment">//添加两个视图的垂直约束</span>
+let contraintsV = NSLayoutConstraint.constraints(<span class="hljs-attr">withVisualFormat:</span> <span class="hljs-string">&quot;V:|-50-[aView(150)]&quot;</span>, <span class="hljs-attr">options:</span> .init(<span class="hljs-attr">rawValue:</span> <span class="hljs-number">0</span>), <span class="hljs-attr">metrics:</span> nil, <span class="hljs-attr">views:</span> [<span class="hljs-string">&quot;aView&quot;</span>: aView])
+view.addConstraints(contraintsV)
+
+<span class="hljs-comment">/**</span>
+<span class="hljs-comment">aView内添加一个子视图cView,cView与aView的中心对齐,宽高是aView的一半</span>
+<span class="hljs-comment">*/</span>
+let cView = UIView()
+cView.backgroundColor = .yellow
+aView.addSubview(cView)
+
+<span class="hljs-comment">//关闭autoresize</span>
+cView.translatesAutoresizingMaskIntoConstraints = <span class="hljs-literal">false</span>
+
+<span class="hljs-comment">//cView添加约束</span>
+let constraintX = NSLayoutConstraint.init(<span class="hljs-attr">item:</span> cView, <span class="hljs-attr">attribute:</span> .centerX, <span class="hljs-attr">relatedBy:</span> .equal, <span class="hljs-attr">toItem:</span> aView, <span class="hljs-attr">attribute:</span> .centerX, <span class="hljs-attr">multiplier:</span> <span class="hljs-number">1.0</span>, <span class="hljs-attr">constant:</span> <span class="hljs-number">0</span>)
+let constraintY = NSLayoutConstraint.init(<span class="hljs-attr">item:</span> cView, <span class="hljs-attr">attribute:</span> .centerY, <span class="hljs-attr">relatedBy:</span> .equal, <span class="hljs-attr">toItem:</span> aView, <span class="hljs-attr">attribute:</span> .centerY, <span class="hljs-attr">multiplier:</span> <span class="hljs-number">1.0</span>, <span class="hljs-attr">constant:</span> <span class="hljs-number">0</span>)
+let constraintsWidth = NSLayoutConstraint.init(<span class="hljs-attr">item:</span> cView, <span class="hljs-attr">attribute:</span> .width, <span class="hljs-attr">relatedBy:</span> .equal, <span class="hljs-attr">toItem:</span> aView, <span class="hljs-attr">attribute:</span> .width, <span class="hljs-attr">multiplier:</span> <span class="hljs-number">0.5</span>, <span class="hljs-attr">constant:</span> <span class="hljs-number">0</span>)
+let constraintsHeight = NSLayoutConstraint.init(<span class="hljs-attr">item:</span> cView, <span class="hljs-attr">attribute:</span> .height, <span class="hljs-attr">relatedBy:</span> .equal, <span class="hljs-attr">toItem:</span> aView, <span class="hljs-attr">attribute:</span> .height, <span class="hljs-attr">multiplier:</span> <span class="hljs-number">0.5</span>, <span class="hljs-attr">constant:</span> <span class="hljs-number">0</span>)
+aView.addConstraints([constraintX,constraintY,constraintsWidth,constraintsHeight])
+</code></pre>
+
+
+
+
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/categories/iOS/">iOS</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/Layout/">Layout</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/2017/10/27/iOS/Dispatch/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Dispatch</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/2017/10/15/%E9%9A%8F%E7%AC%94/%E5%A4%A9%E8%B7%AF%E6%97%85%E9%80%94%EF%BC%88%E4%BA%8C%EF%BC%89/">
+                        <span class="hidden-mobile">天路旅途（二）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/debouncer.js" ></script>
+<script  src="/blog/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/blog/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/blog/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "NSLayoutConstraint&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/blog/js/local-search.js" ></script>
+  <script>
+    var path = "/blog/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

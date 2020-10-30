@@ -1,0 +1,550 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/favicon.png">
+  <link rel="icon" type="image/png" href="/blog/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="吃面多放葱">
+  <meta name="keywords" content="">
+  <title>Git 常用命令 - 吃面多放葱的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/blog/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/blog/">&nbsp;<strong>吃面多放葱</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/blog/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2018-08-28 12:35" pubdate>
+        2018年8月28日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      766 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      9
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">Git 常用命令</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <h4 id="Git-常用命令"><a href="#Git-常用命令" class="headerlink" title="Git 常用命令"></a>Git 常用命令</h4><p>配置</p>
+<pre><code class="hljs routeros">git<span class="hljs-built_in"> config </span>--global user.name <span class="hljs-string">&quot;你的名字&quot;</span>
+git<span class="hljs-built_in"> config </span>--global user.email <span class="hljs-string">&quot;邮箱&quot;</span>
+</code></pre>
+<p>远程仓库操作</p>
+<pre><code class="hljs awk">git remote add origin <span class="hljs-string">&quot;仓库地址&quot;</span> <span class="hljs-regexp">//</span>链接远程仓库
+
+git push -u origin master        <span class="hljs-regexp">//</span>第一次将本地仓库推送到远程仓库
+
+git branch -r                    <span class="hljs-regexp">//</span>查看远程分支列表
+
+git clone 仓库地址               <span class="hljs-regexp">//</span>将远程仓库克隆到本地
+
+git push origin master           <span class="hljs-regexp">//</span>将本地库改动提交远程
+
+git pull                         <span class="hljs-regexp">//</span>更新本地库至远程库的最新改动
+
+git push origin --<span class="hljs-keyword">delete</span> 远程分支名  <span class="hljs-regexp">//</span>删除远程分支</code></pre>
+<p>SSH Key 操作</p>
+<pre><code class="hljs awk">$ ls -al ~/.ssh
+<span class="hljs-comment"># Lists the files in your .ssh directory, if they exist</span>
+
+ssh -keygen -t rsa -C <span class="hljs-string">&quot;你的邮箱&quot;</span>   <span class="hljs-regexp">//</span>生成SSH key,保存路径为<span class="hljs-regexp">/root/</span>.ssh</code></pre>
+<p>创建忽略文件</p>
+<pre><code class="hljs awk">touch .gitignore  <span class="hljs-regexp">//</span>不需要服务端提交的内容可以写到忽略文件里</code></pre>
+<p>添加</p>
+<pre><code class="hljs csharp">git <span class="hljs-keyword">init</span> 将当前目录初始化为git仓库
+git <span class="hljs-keyword">add</span> 文件名 将文件添加到暂存区
+git <span class="hljs-keyword">add</span> -A   <span class="hljs-comment">//将所有修改文件全部添加到缓存区</span>
+git commit -m <span class="hljs-string">&quot;描述&quot;</span>  将暂存区提交到仓库</code></pre>
+<p>查询</p>
+<pre><code class="hljs awk">git status                <span class="hljs-regexp">//</span>查询仓库状态
+git diff 文件名           <span class="hljs-regexp">//</span>比较文件差异
+git log                   <span class="hljs-regexp">//</span>查看仓库历史记录(详细)
+git log --oneline         <span class="hljs-regexp">//</span>查看仓库历史记录(单行)
+git reflog                <span class="hljs-regexp">//</span>查看所有版本的commitID  (本地分支Git记录不小心删除时,可以用此查看删除的Git记录)</code></pre>
+<p>撤销(回滚)</p>
+<pre><code class="hljs awk">git  checkout -- 文件名     <span class="hljs-regexp">//</span>撤销工作区修改
+git reset HEAD 文件名       <span class="hljs-regexp">//</span>撤销暂存区的修改
+git reset --hard 该版本ID   <span class="hljs-regexp">//</span>回退到历史版本
+git reset --hard HEAD^      <span class="hljs-regexp">//</span>回退到上个版本
+git reflog                  <span class="hljs-regexp">//</span>回滚到未来</code></pre>
+<p>删除</p>
+<pre><code class="hljs awk">rm filename                 <span class="hljs-regexp">//</span>删除本地文件
+git rm index.html --cached  <span class="hljs-regexp">//</span>保证当前工作区中没有index.html,使用--cached表示只删除换缓存区中的内容</code></pre>
+<p>标签</p>
+<pre><code class="hljs crmsh">git <span class="hljs-keyword">tag</span> <span class="hljs-title">标签名           //为当前版本打标签</span>
+<span class="hljs-title">git</span> <span class="hljs-keyword">tag</span> <span class="hljs-title">标签名 该版本ID</span>  //为历史版本打标签
+git <span class="hljs-keyword">tag</span>                  <span class="hljs-title">//查看所有标签</span>
+<span class="hljs-title">git</span> show  标签名         //查看某一标签
+git <span class="hljs-keyword">tag</span> <span class="hljs-title">-d</span> 标签名        //删除某一标签</code></pre>
+<p>分支管理</p>
+<pre><code class="hljs awk">git branch dev           <span class="hljs-regexp">//</span>创建分支
+git checkout dev         <span class="hljs-regexp">//</span>切换分支
+git checkout -b dev      <span class="hljs-regexp">//</span>创建并切换分支
+git branch -d dev        <span class="hljs-regexp">//</span>删除分支
+git commit -a -m <span class="hljs-string">&#x27;dev1&#x27;</span>  <span class="hljs-regexp">//</span>在分支上提交新的版本
+git merge dev            <span class="hljs-regexp">//</span>合并分支
+git stash            <span class="hljs-regexp">//</span>在分支开发过程中遇到问题,需要切换到其他分支,保留写好的内容再切换到主干
+git stash apply          <span class="hljs-regexp">//</span>再次切换分支后需要应用一下保留的内容
+git stash drop           <span class="hljs-regexp">//</span>丢弃保存的内容
+git stash pop            <span class="hljs-regexp">//</span>使用并丢掉</code></pre>
+<p><img src="https://upload-images.jianshu.io/upload_images/3340896-9aefe571129ba75d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" srcset="/blog/img/loading.gif" alt="git flow"></p>
+<h4 id="Git-Submodule-管理项目子模块"><a href="#Git-Submodule-管理项目子模块" class="headerlink" title="Git Submodule 管理项目子模块"></a>Git Submodule 管理项目子模块</h4><pre><code class="hljs awk">git clone &lt;repository&gt; --recursive                   <span class="hljs-regexp">//</span>递归的方式克隆整个项目
+
+git submodule add &lt;repository&gt; &lt;path&gt;                <span class="hljs-regexp">//</span>添加子模块
+
+git submodule init                                   <span class="hljs-regexp">//</span>初始化子模块(远程仓库子模块添加或删除后,需要进行此操作)
+
+git submodule update                                 <span class="hljs-regexp">//</span>更新子模块
+
+git submodule foreach git pull                      <span class="hljs-regexp">//</span>拉取所有子模块
+
+git rm moduleA                                      <span class="hljs-regexp">//</span>删除子模块
+</code></pre>
+<h4 id="git-flow-命令"><a href="#git-flow-命令" class="headerlink" title="git flow 命令"></a>git flow 命令</h4><pre><code class="hljs awk">brew install git-flow    <span class="hljs-regexp">//</span>安装git-flow</code></pre>
+<p><img src="https://upload-images.jianshu.io/upload_images/3340896-c6377d2d53ee3e4d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" srcset="/blog/img/loading.gif" alt="gitFlow命令.png"></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/categories/%E5%B7%A5%E5%85%B7/">工具</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/Git/">Git</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/2018/11/22/iOS/XIB--%E6%88%96%E8%80%85-AutoLayout-%E5%AE%9E%E7%8E%B0Cell%E9%AB%98%E5%BA%A6%E8%87%AA%E9%80%82%E5%BA%94/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">AutoLayout Cell高度自适应</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/2018/08/25/%E9%9A%8F%E7%AC%94/%E5%A4%A9%E8%B7%AF%E6%97%85%E9%80%94-(%E5%9B%9B)/">
+                        <span class="hidden-mobile">天路旅途（四）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/debouncer.js" ></script>
+<script  src="/blog/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/blog/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/blog/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "Git 常用命令&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/blog/js/local-search.js" ></script>
+  <script>
+    var path = "/blog/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,845 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/favicon.png">
+  <link rel="icon" type="image/png" href="/blog/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="吃面多放葱">
+  <meta name="keywords" content="">
+  <title>吃面多放葱的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/blog/">&nbsp;<strong>吃面多放葱</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/blog/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-md">
+        <div class="py-5" id="board"
+          style=margin-top:0>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/blog/2020/10/30/iOS/AutoLayout%E4%B8%8EAutoresizing%E7%BA%A6%E6%9D%9F%E5%86%B2%E7%AA%81/">AutoLayout与Autoresizing约束冲突</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/2020/10/30/iOS/AutoLayout%E4%B8%8EAutoresizing%E7%BA%A6%E6%9D%9F%E5%86%B2%E7%AA%81/">
+          
+          
+            
+          
+          问题：  经常看到使用SnapKit进行布局的时候，明明各个约束都写好了，但是进入页面的时候，日志打印显示约束冲突，如下：
+&quot;&lt;NSAutoresizingMaskLayoutConstraint:0x283cf6620 h=--&amp; v=--&amp; ShiHuiGroup.PerformanceHeaderView:0x10c128b60.width == 0   (a
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-10-30 15:54" pubdate>
+              2020-10-30
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/AutoLayout/">AutoLayout</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/blog/2020/10/26/%E5%B7%A5%E5%85%B7/%E5%A6%82%E4%BD%95%E9%80%80%E5%87%BA-macOS-beta-%E8%AE%A1%E5%88%92/">MacOSBeta版本计划退出命令</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/2020/10/26/%E5%B7%A5%E5%85%B7/%E5%A6%82%E4%BD%95%E9%80%80%E5%87%BA-macOS-beta-%E8%AE%A1%E5%88%92/">
+          
+          
+            
+          
+          sudo softwareupdate --clear-catalog 
+​​​
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-10-26 17:31" pubdate>
+              2020-10-26
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/%E5%B7%A5%E5%85%B7/">工具</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/MacOS/">MacOS</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/blog/2020/10/26/%E5%B7%A5%E5%85%B7/MacOS-%E7%B3%BB%E7%BB%9F%E6%9B%B4%E6%96%B0%E5%90%8E-Cocoapods%E5%A4%B1%E6%95%88%E9%97%AE%E9%A2%98/">MacOS系统更新CocoaPods失效问题</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/2020/10/26/%E5%B7%A5%E5%85%B7/MacOS-%E7%B3%BB%E7%BB%9F%E6%9B%B4%E6%96%B0%E5%90%8E-Cocoapods%E5%A4%B1%E6%95%88%E9%97%AE%E9%A2%98/">
+          
+          
+            
+          
+           //重装cocoapods
+sudo gem uninstall cocoapods  
+sudo gem install -n /usr/local/bin cocoapods
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-10-26 17:31" pubdate>
+              2020-10-26
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/%E5%B7%A5%E5%85%B7/">工具</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/CocoaPods/">CocoaPods</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/blog/2020/10/26/iOS/iOS-%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97-(%E9%83%A8%E5%88%86%E5%AE%98%E7%BF%BB)/">iOS编程指南</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/2020/10/26/iOS/iOS-%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97-(%E9%83%A8%E5%88%86%E5%AE%98%E7%BF%BB)/">
+          
+          
+            
+          
+          之前感觉网站上关于iOS编程知识内容不够权威和完整,所以一直从苹果官方文档上一点一点翻译,效率慢,占用时间多.所以就开始找官网翻译,目前已收集部分文档.前人栽树,后人乘凉.在此感谢所有优秀翻译者的分享.
+ (链接:https://pan.baidu.com/s/1dCG8r0  密码:3dpn)里面包含
+
+核心动画编程指南 
+多线程编程指南 
+本地和远程推送编程指南
+ARC官方文档
+iOS并发编程
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-10-26 17:31" pubdate>
+              2020-10-26
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/iOS/">iOS</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/">编程指南</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/blog/2020/10/26/iOS/iOS-App%E5%8C%85%E7%98%A6%E8%BA%AB%E6%96%B9%E6%A1%88/">iOS包瘦身</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/2020/10/26/iOS/iOS-App%E5%8C%85%E7%98%A6%E8%BA%AB%E6%96%B9%E6%A1%88/">
+          
+          
+            
+          
+          
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-10-26 17:31" pubdate>
+              2020-10-26
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/iOS/">iOS</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/%E5%BA%94%E7%94%A8%E7%98%A6%E8%BA%AB/">应用瘦身</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/blog/2020/10/26/iOS/Notification-Programming-Topics/">通知编程</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/2020/10/26/iOS/Notification-Programming-Topics/">
+          
+          
+            
+          
+          介绍Foundation 为传递事件发生的信息提供了一个编程架构,这篇文档描述这个架构的元素并解释如何使用他们.阅读这篇文档去学习notifications,通知中心,和通知队列.
+本文档组织构成该文档包含下面文章:
+
+通知  描述封装事件信息的对象.
+通知中心 描述负责管理发送和接受通知的对象.
+通知队列 面搜狐
+注册通知
+发送通知
+投递通知给指定线程
+
+通知通知中心 描述通知队列注册通知发送通
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-10-26 17:31" pubdate>
+              2020-10-26
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/iOS/">iOS</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/Notification/">Notification</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/blog/2020/03/30/iOS/Apple%E7%99%BB%E5%BD%95%E9%9B%86%E6%88%90/">Apple登录集成</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/2020/03/30/iOS/Apple%E7%99%BB%E5%BD%95%E9%9B%86%E6%88%90/">
+          
+          
+            
+          
+          配置1.target -&gt; Signing &amp; Capabilities, 点击加号, 搜索 Sign In with Apple
+2.General -&gt; Frameworks, Libraries, and Embedded Content,点击加号， 搜索 AuthenticationServices 并导入进去， Embed 选择  Embed &amp; Sign
+登
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-03-30 14:00" pubdate>
+              2020-03-30
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/iOS/">iOS</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/iOS/">iOS</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/blog/2019/05/22/%E5%B7%A5%E5%85%B7/Carthage-%E5%AE%89%E8%A3%85/">Carthage安装</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/2019/05/22/%E5%B7%A5%E5%85%B7/Carthage-%E5%AE%89%E8%A3%85/">
+          
+          
+            
+          
+          Homebrew 更新brew update
+
+# brew 有时候更新会没有反应,以下是解决方案
+# 进入 brew 的仓库根目录
+cd &quot;$(brew --repo)&quot;
+# 修改为中科大的源
+git remote set-url origin https://mirrors.ustc.edu.cn/brew.git
+cd &quot;$(brew --repo)/Libra
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-05-22 22:39" pubdate>
+              2019-05-22
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/%E5%B7%A5%E5%85%B7/">工具</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86/">依赖管理</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/blog/2019/05/08/%E5%B7%A5%E5%85%B7/fastlane--%E8%87%AA%E5%8A%A8%E6%89%93%E5%8C%85%E4%B8%8A%E4%BC%A0/">fastlane自动打包上传</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/2019/05/08/%E5%B7%A5%E5%85%B7/fastlane--%E8%87%AA%E5%8A%A8%E6%89%93%E5%8C%85%E4%B8%8A%E4%BC%A0/">
+          
+          
+            
+          
+          Step 1#安装fastlane
+sudo gem install -n /usr/local/bin fastlane
+Step 2cd 项目目录
+fastlane init
+Step 3根据自己的需要配置不同的选择项
+
+使用目的
+
+输入appleID 和 密码
+
+输入6位验证码
+
+选择y
+
+
+Step 4项目目录下生成fastlane文件目录 cd fastlane
+vi Fastfile将
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-05-08 10:56" pubdate>
+              2019-05-08
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/%E5%B7%A5%E5%85%B7/">工具</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/fastlane/">fastlane</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/blog/2019/03/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/2019/03/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+          
+          
+            
+          
+          什么是数据结构?数据结构是相互之间存在一种或多种特定关系的数据元素的集合.
+通常有以下四类基本结构:
+
+集合
+线性结构
+树形结构
+图状结构或网状结构
+
+数据的存储结构:
+
+顺序存储结构
+链式存储结构
+
+高级程序语言中的数据类型可以分为两类:一类是非结构的原子类型.  原子类型的值是不可分解的,例如C语言中的基本类型(整型,实型,字符型,枚举类型)指针类型和空类型.另一类是结构类型.结构类型的值是由
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-03-14 16:52" pubdate>
+              2019-03-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">计算机基础</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <span class="page-number current">1</span><a class="page-number" href="/blog/page/2/">2</a><a class="page-number" href="/blog/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/6/">6</a><a class="extend next" rel="next" href="/blog/page/2/"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
+      ele.href += '#board';
+    }
+  </script>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/debouncer.js" ></script>
+<script  src="/blog/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/blog/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/blog/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "像蚂蚁一样工作，像蝴蝶一样生活&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+
+
+  <script  src="/blog/js/local-search.js" ></script>
+  <script>
+    var path = "/blog/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

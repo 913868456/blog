@@ -1,0 +1,873 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/favicon.png">
+  <link rel="icon" type="image/png" href="/blog/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="吃面多放葱">
+  <meta name="keywords" content="">
+  <title>吃面多放葱的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/blog/">&nbsp;<strong>吃面多放葱</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/blog/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-md">
+        <div class="py-5" id="board"
+          style=margin-top:0>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/blog/2019/03/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">编译原理</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/2019/03/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">
+          
+          
+            
+          
+          什么是编译程序?从功能上看,一个编译程序就是一个语言翻译程序.语言翻译程序是把一种语言(称作源语言)书写的程序翻译成另外一种语言(称作目标语言)的等价程序.
+
+
+编译的各个阶段
+编译程序的结构
+*编译程序** 按照执行顺序包含 词法分析程序  语法分析程序  语义分析程序 中间代码生成程序 代码优化程序 目标代码生成程序   另外 表格管理程序 及 出错处理程序 伴随整个编译过程.   表格管理程
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-03-14 16:52" pubdate>
+              2019-03-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">计算机基础</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/%E7%BC%96%E8%AF%91/">编译</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/blog/2019/03/14/iOS/Core-Graphics/">CoreGraphics</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/2019/03/14/iOS/Core-Graphics/">
+          
+          
+            
+          
+          采用 Quartz 高级绘画引擎提供基于路径的绘制,形变,颜色管理,离屏渲染,渐变与阴影,图片数据管理,图片创建,图片蒙版,同样的PDF创建,显示和解析.
+###几何数据类型CGFloat
+CGPoint
+CGSize
+CGRect
+CGVector
+CGAffineTransform
+2D 绘制CGContext
+常用API说明
+/*构建绘制路径*/
+//在图形环境中创建一个新的空路径
+func
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-03-14 15:48" pubdate>
+              2019-03-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/iOS/">iOS</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/CoreGraphics/">CoreGraphics</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/blog/2019/03/13/iOS/PhotoKit/">PhotoKit</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/2019/03/13/iOS/PhotoKit/">
+          
+          
+            
+          
+          
+介绍苹果的PhotoKit,是提供给开发者的对本地相册库的和iCloud 相册的资源进行操作的API,所有资源以PHAsset的形式来提供给PhotoKit使用,同时本地的图片库和iCloud图片的变动通知,会发送给PhotoKit;同时,PhotoKit也可以通过 变更请求 (编辑请求,改变请求,删除请求…)来对资源进行变更.
+资源的操作PHPhotoLibrary.shared().regi
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-03-13 11:13" pubdate>
+              2019-03-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/iOS/">iOS</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/PhotoKit/">PhotoKit</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/blog/2019/01/11/iOS/TextView-%E9%AB%98%E5%BA%A6%E8%87%AA%E9%80%82%E5%BA%94/">TextView自适应高度</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/2019/01/11/iOS/TextView-%E9%AB%98%E5%BA%A6%E8%87%AA%E9%80%82%E5%BA%94/">
+          
+          
+            
+          
+          应用场景 TableView 的Cell内的textView根据文本输入内容,cell的高度自适应
+实现方式
+TableView Cell高度自适应 editList.estimatedRowHeight = 52;  //设置预估行高
+editList.rowHeight = UITableViewAutomaticDimension;  //设置Cell高度自适应
+Cell内部设置  var 
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-01-11 18:23" pubdate>
+              2019-01-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/iOS/">iOS</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/UITextView/">UITextView</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/blog/2018/12/12/Linux/Vim%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">Vim常用命令</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/2018/12/12/Linux/Vim%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+          
+          
+            
+          
+          //进入文件
+vi xxx.txt
+
+//退出文件
+:q
+//强制脱出文件
+:q!
+//保存文件
+:w
+//保存并退出文件
+:wq
+
+/*****命令模式*******/
+//向下翻页
+control + f
+//向上翻页
+control + b
+//撤销
+u
+//向下查找
+/word
+//查找下一个
+n
+//重复上个动作
+.
+//复制一行
+yy
+//粘贴一行
+p
+//删除一行
+dd
+//删除光标
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2018-12-12 17:22" pubdate>
+              2018-12-12
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/Linux/">Linux</a>
+            
+              <a href="/blog/categories/Linux/Vim/">Vim</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/Linux/">Linux</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/blog/2018/12/11/Linux/Linux-%E6%96%87%E4%BB%B6%E5%91%BD%E4%BB%A4/">Linux文件命令</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/2018/12/11/Linux/Linux-%E6%96%87%E4%BB%B6%E5%91%BD%E4%BB%A4/">
+          
+          
+            
+          
+          权限-rwxr--r--
+
+//总共9个字符
+//-表示类型,`d`为目录,`-`为文件
+//rwx 表示所有者权限,读写执行
+//r-- 表示所述用户组的权限,只读
+//r--表示其他权限,只读
+
+ls -al //查阅文件详细信息
+-rw-r--r-- 1 root   root   239 5 6 13:22 test.txt 
+ // [文件类型与权限] [文件连接数][所有者账号] [用
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2018-12-11 19:10" pubdate>
+              2018-12-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/Linux/">Linux</a>
+            
+              <a href="/blog/categories/Linux/%E6%96%87%E4%BB%B6%E5%8F%8A%E6%9D%83%E9%99%90%E5%91%BD%E4%BB%A4/">文件及权限命令</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/Linux/">Linux</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/blog/2018/11/22/iOS/XIB--%E6%88%96%E8%80%85-AutoLayout-%E5%AE%9E%E7%8E%B0Cell%E9%AB%98%E5%BA%A6%E8%87%AA%E9%80%82%E5%BA%94/">AutoLayout Cell高度自适应</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/2018/11/22/iOS/XIB--%E6%88%96%E8%80%85-AutoLayout-%E5%AE%9E%E7%8E%B0Cell%E9%AB%98%E5%BA%A6%E8%87%AA%E9%80%82%E5%BA%94/">
+          
+          
+            
+          
+          
+不要设置TableView返回Cell高度的代理方法
+设置底部控件约束与cell的contentView距离
+设置预估行高,并且设置cell高度自动计算 
+
+注意: 如果不设置预估行高的话,Cell会设置固定行高为44,如果使用SnapKit设置的Cell自适应高度可能在某些机型上无效
+taskList.estimatedRowHeight = 77;
+taskList.rowHeight = 
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2018-11-22 16:27" pubdate>
+              2018-11-22
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/iOS/">iOS</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/AutoLayout/">AutoLayout</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/blog/2018/08/28/%E5%B7%A5%E5%85%B7/Git-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">Git 常用命令</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/2018/08/28/%E5%B7%A5%E5%85%B7/Git-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+          
+          
+            
+          
+          Git 常用命令配置
+git config --global user.name &quot;你的名字&quot;
+git config --global user.email &quot;邮箱&quot;
+
+远程仓库操作
+git remote add origin &quot;仓库地址&quot; //链接远程仓库
+
+git push -u origin master        //第一次将
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2018-08-28 12:35" pubdate>
+              2018-08-28
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/%E5%B7%A5%E5%85%B7/">工具</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/Git/">Git</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/blog/2018/08/25/%E9%9A%8F%E7%AC%94/%E5%A4%A9%E8%B7%AF%E6%97%85%E9%80%94-(%E5%9B%9B)/">天路旅途（四）</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/2018/08/25/%E9%9A%8F%E7%AC%94/%E5%A4%A9%E8%B7%AF%E6%97%85%E9%80%94-(%E5%9B%9B)/">
+          
+          
+            
+          
+          接下来的就是看图说话环节了,码字太累,何况自己文学素养不高,对付着看吧,O(∩_∩)O哈哈~这张照片呢,是我从拉萨站走出来的时候拍的,当时很纳闷,为什么不让走正门广场而从边上一个简陋的小门出去呢?后来了解到好像是由于安保问题,具体什么的就不深究了.拉萨站是在堆龙德庆区,到拉萨市里面还得打车,大约四十来分钟吧,咳咳…写这篇文章的时候,时间已经过了将近一年了,我就记得我当时是直接滴滴过去的.司机是东北
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2018-08-25 17:43" pubdate>
+              2018-08-25
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/%E9%9A%8F%E7%AC%94/">随笔</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/%E6%97%85%E6%B8%B8/">旅游</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/blog/2018/08/17/Swift/Swift---4-Codable/">Codable</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/2018/08/17/Swift/Swift---4-Codable/">
+          
+          
+            
+          
+          
+前言Objective-C  中我们有好多 JSON 转 Model 第三方,比如 JSONModel, MJExtension,YYModel等好用的第三方库,在 Swift 4 推出了 Codable 协议,只要遵循 Codable 协议的模型就可以用JSONEncoder 和 JSONDecoder 两个类来实现 JSON 和 Model 的相互转换.
+Codable 协议分为两部分,En
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2018-08-17 17:06" pubdate>
+              2018-08-17
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/Swift/">Swift</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/Swift/">Swift</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/blog/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/blog/">1</a><span class="page-number current">2</span><a class="page-number" href="/blog/page/3/">3</a><a class="page-number" href="/blog/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/6/">6</a><a class="extend next" rel="next" href="/blog/page/3/"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
+      ele.href += '#board';
+    }
+  </script>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/debouncer.js" ></script>
+<script  src="/blog/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/blog/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/blog/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "像蚂蚁一样工作，像蝴蝶一样生活&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+
+
+  <script  src="/blog/js/local-search.js" ></script>
+  <script>
+    var path = "/blog/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

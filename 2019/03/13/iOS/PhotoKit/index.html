@@ -1,0 +1,917 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/favicon.png">
+  <link rel="icon" type="image/png" href="/blog/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="吃面多放葱">
+  <meta name="keywords" content="">
+  <title>PhotoKit - 吃面多放葱的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/blog/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/blog/">&nbsp;<strong>吃面多放葱</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/blog/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2019-03-13 11:13" pubdate>
+        2019年3月13日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      41
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">PhotoKit</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <p><img src="https://upload-images.jianshu.io/upload_images/3340896-b7a0956c45c82900.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" srcset="/blog/img/loading.gif" alt="Photos.png"></p>
+<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>苹果的PhotoKit,是提供给开发者的对本地相册库的和iCloud 相册的资源进行操作的API,所有资源以PHAsset的形式来提供给PhotoKit使用,同时本地的图片库和iCloud图片的变动通知,会发送给PhotoKit;同时,PhotoKit也可以通过 <strong>变更请求</strong> (编辑请求,改变请求,删除请求…)来对资源进行变更.</p>
+<h3 id="资源的操作"><a href="#资源的操作" class="headerlink" title="资源的操作"></a>资源的操作</h3><pre><code class="hljs reasonml"><span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">PHPhotoLibrary</span>.</span></span>shared<span class="hljs-literal">()</span>.register(self); <span class="hljs-comment">// viewDidLoad 执行</span>
+<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">PHPhotoLibrary</span>.</span></span>shared<span class="hljs-literal">()</span>.unregister<span class="hljs-constructor">ChangeObserver(<span class="hljs-params">self</span>)</span>;<span class="hljs-comment">//deinit 方法中执行</span>
+
+extension MasterViewController: PHPhotoLibraryChangeObserver &#123;<span class="hljs-comment">//资源变动后的通知</span>
+    <span class="hljs-comment">/// - Tag: RespondToChanges</span>
+    func photo<span class="hljs-constructor">LibraryDidChange(<span class="hljs-params">_</span> <span class="hljs-params">changeInstance</span>: PHChange)</span> &#123;
+        
+        <span class="hljs-comment">// Change notifications may originate from a background queue.</span>
+        <span class="hljs-comment">// Re-dispatch to the main queue before acting on the change,</span>
+        <span class="hljs-comment">// so you can update the UI.</span>
+        <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">DispatchQueue</span>.</span></span>main.sync &#123;
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+
+<h3 id="资源的查找"><a href="#资源的查找" class="headerlink" title="资源的查找"></a>资源的查找</h3><p>排序和筛选条件我们可以根据 <a target="_blank" rel="noopener" href="https://developer.apple.com/documentation/photokit/phfetchoptions">PHFetchOptions</a>里面的 <code>predicate</code> 和 <code>sortDescriptors</code> 属性来设置, 里面也包含支持 <strong>predicate</strong> 和 <strong>sort</strong> 的 keys, 可以参考 <a target="_blank" rel="noopener" href="https://nshipster.cn/nspredicate/">NSPredicate</a> 和  <a target="_blank" rel="noopener" href="https://nshipster.cn/nssortdescriptor/">NSSortDescriptor</a> 来了解更多筛选和排序条件的设置.</p>
+<pre><code class="hljs reasonml"><span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">PHAssetCollection</span>.</span></span>fetch<span class="hljs-constructor">AssetCollections(<span class="hljs-params">with</span>: .<span class="hljs-params">smartAlbum</span>, <span class="hljs-params">subtype</span>: .<span class="hljs-params">albumRegular</span>, <span class="hljs-params">options</span>: <span class="hljs-params">nil</span>)</span><span class="hljs-comment">//智能相册</span>
+<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">PHCollectionList</span>.</span></span>fetch<span class="hljs-constructor">TopLevelUserCollections(<span class="hljs-params">with</span>: <span class="hljs-params">nil</span>)</span><span class="hljs-comment">//用户相册</span>
+<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">PHAsset</span>.</span></span>fetch<span class="hljs-constructor">Assets(<span class="hljs-params">with</span>: <span class="hljs-params">phtotfectchOptions</span>)</span><span class="hljs-comment">//图片资源</span>
+</code></pre>
+
+<h3 id="资源的变更请求"><a href="#资源的变更请求" class="headerlink" title="资源的变更请求"></a>资源的变更请求</h3><pre><code class="hljs less"><span class="hljs-comment">//Asynchronously runs a block that requests changes to be performed in the photo library.  异步请求</span>
+<span class="hljs-selector-tag">func</span>  <span class="hljs-selector-tag">performChanges</span>(<span class="hljs-attribute">_</span>:<span class="hljs-attribute">completionHandler</span>:)
+<span class="hljs-comment">//Synchronously runs a block that requests changes to be performed in the photo library.  同步请求</span>
+<span class="hljs-selector-tag">func</span> <span class="hljs-selector-tag">performChangesAndWait</span>(_ <span class="hljs-attribute">changeBlock</span>: <span class="hljs-variable">@escaping</span> () -&gt; Void) <span class="hljs-selector-tag">throws</span></code></pre>
+
+<h3 id="Album的操作-增加-修改-删除"><a href="#Album的操作-增加-修改-删除" class="headerlink" title="Album的操作(增加,修改,删除)"></a>Album的操作(增加,修改,删除)</h3><pre><code class="hljs swift"><span class="hljs-comment">//增加相册</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">addAlbum</span><span class="hljs-params">()</span></span> &#123;
+        <span class="hljs-type">PHPhotoLibrary</span>.shared().performChanges(&#123;
+            <span class="hljs-keyword">let</span> assetCollectionRequest = <span class="hljs-type">PHCollectionListChangeRequest</span>.creationRequestForCollectionList(withTitle: <span class="hljs-string">&quot;title&quot;</span>);
+            <span class="hljs-keyword">self</span>.identifier =  assetCollectionRequest.placeholderForCreatedCollectionList.localIdentifier;
+        &#125;) &#123; (ret, error) <span class="hljs-keyword">in</span>
+            <span class="hljs-keyword">if</span> ret &#123;
+                <span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> id = <span class="hljs-keyword">self</span>.identifier &#123;
+                    <span class="hljs-keyword">let</span> collections = <span class="hljs-type">PHCollectionList</span>.fetchCollectionLists(withLocalIdentifiers: [id], options: <span class="hljs-literal">nil</span>)
+                    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;\(collections)&quot;</span>);
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+    
+<span class="hljs-comment">//删除相册</span>
+ <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">deleteAlbum</span><span class="hljs-params">()</span></span> &#123;
+        <span class="hljs-keyword">let</span> fecthOptions = <span class="hljs-type">PHFetchOptions</span>();
+        <span class="hljs-keyword">let</span> predicate = <span class="hljs-type">NSPredicate</span>.<span class="hljs-keyword">init</span>(format: <span class="hljs-string">&quot;localizedTitle == &#x27;title&#x27;&quot;</span>);
+        fecthOptions.predicate = predicate;
+        <span class="hljs-keyword">let</span> titleList = <span class="hljs-type">PHCollectionList</span>.fetchCollectionLists(with: .folder, subtype: .regularFolder, options: fecthOptions);
+        
+        <span class="hljs-type">PHPhotoLibrary</span>.shared().performChanges(&#123;
+            <span class="hljs-type">PHCollectionListChangeRequest</span>.deleteCollectionLists(titleList);
+        &#125;) &#123; (ret, error) <span class="hljs-keyword">in</span>
+            <span class="hljs-keyword">if</span> ret &#123;
+                <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;删除成功&quot;</span>);
+            &#125;
+        &#125;
+    &#125;
+<span class="hljs-comment">//修改相册</span>
+  <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">modifyAlbum</span><span class="hljs-params">()</span></span> &#123;
+        <span class="hljs-keyword">let</span> fecthOptions = <span class="hljs-type">PHFetchOptions</span>();
+        <span class="hljs-keyword">let</span> predicate = <span class="hljs-type">NSPredicate</span>.<span class="hljs-keyword">init</span>(format: <span class="hljs-string">&quot;localizedTitle == &#x27;title&#x27;&quot;</span>);
+        fecthOptions.predicate = predicate;
+        <span class="hljs-keyword">let</span> titleList = <span class="hljs-type">PHCollectionList</span>.fetchCollectionLists(with: .folder, subtype: .regularFolder, options: fecthOptions);
+        <span class="hljs-type">PHPhotoLibrary</span>.shared().performChanges(&#123;
+            
+            <span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> collection = titleList.firstObject &#123;
+                <span class="hljs-keyword">let</span> modifyRequest = <span class="hljs-type">PHCollectionListChangeRequest</span>(<span class="hljs-keyword">for</span>: collection);
+                modifyRequest?.title = <span class="hljs-string">&quot;modify album&quot;</span>;
+            &#125;
+        &#125;) &#123; (ret, error) <span class="hljs-keyword">in</span>
+            <span class="hljs-keyword">if</span> ret &#123;
+                <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;修改成功&quot;</span>);
+            &#125;
+        &#125;
+   &#125;</code></pre>
+<h3 id="Asset的操作"><a href="#Asset的操作" class="headerlink" title="Asset的操作"></a>Asset的操作</h3><pre><code class="hljs swift">   <span class="hljs-comment">//增加</span>
+   <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">creationRequestForAsset</span><span class="hljs-params">(from image: UIImage)</span></span> -&gt; <span class="hljs-type">Self</span> 
+   <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">creationRequestForAssetFromImage</span><span class="hljs-params">(atFileURL fileURL: URL)</span></span> -&gt; <span class="hljs-type">Self?</span>
+   <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">creationRequestForAssetFromVideo</span><span class="hljs-params">(atFileURL fileURL: URL)</span></span> -&gt; <span class="hljs-type">Self?</span>
+   <span class="hljs-comment">//删除</span>
+   <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">deleteAssets</span><span class="hljs-params">(<span class="hljs-number">_</span> assets: NSFastEnumeration)</span></span>
+   <span class="hljs-comment">//修改</span>
+  <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">requestContentEditingInput</span><span class="hljs-params">(with options: PHContentEditingInputRequestOptions?, completionHandler: @escaping <span class="hljs-params">(PHContentEditingInput?, [AnyHashable : <span class="hljs-keyword">Any</span>])</span></span></span> -&gt; <span class="hljs-type">Void</span>) -&gt; <span class="hljs-type">PHContentEditingInputRequestID</span>
+  <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">cancelContentEditingInputRequest</span><span class="hljs-params">(<span class="hljs-number">_</span> requestID: PHContentEditingInputRequestID)</span></span>
+
+   <span class="hljs-comment">// MARK: UI Actions</span>
+    <span class="hljs-comment">/// - Tag: EditAlert</span>
+    <span class="hljs-meta">@IBAction</span> <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">editAsset</span><span class="hljs-params">(<span class="hljs-number">_</span> sender: UIBarButtonItem)</span></span> &#123;
+        <span class="hljs-comment">// Use a UIAlertController to display editing options to the user.</span>
+        <span class="hljs-keyword">let</span> alertController = <span class="hljs-type">UIAlertController</span>(title: <span class="hljs-literal">nil</span>, message: <span class="hljs-literal">nil</span>, preferredStyle: .actionSheet)
+        #<span class="hljs-keyword">if</span> os(iOS)
+        alertController.modalPresentationStyle = .popover
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> popoverController = alertController.popoverPresentationController &#123;
+            popoverController.barButtonItem = sender
+            popoverController.permittedArrowDirections = .up
+        &#125;
+        #endif
+        
+        <span class="hljs-comment">// Add a Cancel action to dismiss the alert without doing anything.</span>
+        alertController.addAction(<span class="hljs-type">UIAlertAction</span>(title: <span class="hljs-type">NSLocalizedString</span>(<span class="hljs-string">&quot;Cancel&quot;</span>, comment: <span class="hljs-string">&quot;&quot;</span>),
+                                                style: .cancel, handler: <span class="hljs-literal">nil</span>))
+        <span class="hljs-comment">// Allow editing only if the PHAsset supports edit operations.</span>
+        <span class="hljs-keyword">if</span> asset.canPerform(.content) &#123;
+            <span class="hljs-comment">// Add actions for some canned filters.</span>
+            alertController.addAction(<span class="hljs-type">UIAlertAction</span>(title: <span class="hljs-type">NSLocalizedString</span>(<span class="hljs-string">&quot;Sepia Tone&quot;</span>, comment: <span class="hljs-string">&quot;&quot;</span>),
+                                                    style: .<span class="hljs-keyword">default</span>, handler: getFilter(<span class="hljs-string">&quot;CISepiaTone&quot;</span>)))
+            alertController.addAction(<span class="hljs-type">UIAlertAction</span>(title: <span class="hljs-type">NSLocalizedString</span>(<span class="hljs-string">&quot;Chrome&quot;</span>, comment: <span class="hljs-string">&quot;&quot;</span>),
+                                                    style: .<span class="hljs-keyword">default</span>, handler: getFilter(<span class="hljs-string">&quot;CIPhotoEffectChrome&quot;</span>)))
+            
+            <span class="hljs-comment">// Add actions to revert any edits that have been made to the PHAsset.</span>
+            alertController.addAction(<span class="hljs-type">UIAlertAction</span>(title: <span class="hljs-type">NSLocalizedString</span>(<span class="hljs-string">&quot;Revert&quot;</span>, comment: <span class="hljs-string">&quot;&quot;</span>),
+                                                    style: .<span class="hljs-keyword">default</span>, handler: revertAsset))
+        &#125;
+        <span class="hljs-comment">// Present the UIAlertController.</span>
+        present(alertController, animated: <span class="hljs-literal">true</span>)
+    &#125;
+    #<span class="hljs-keyword">if</span> os(tvOS)
+    <span class="hljs-meta">@IBAction</span> <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">playLivePhoto</span><span class="hljs-params">(<span class="hljs-number">_</span> sender: <span class="hljs-keyword">Any</span>)</span></span> &#123;
+        livePhotoView.startPlayback(with: .full)
+    &#125;
+    #endif
+    <span class="hljs-comment">/// - Tag: PlayVideo</span>
+    <span class="hljs-meta">@IBAction</span> <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">play</span><span class="hljs-params">(<span class="hljs-number">_</span> sender: AnyObject)</span></span> &#123;
+        <span class="hljs-keyword">if</span> playerLayer != <span class="hljs-literal">nil</span> &#123;
+            <span class="hljs-comment">// The app already created an AVPlayerLayer, so tell it to play.</span>
+            playerLayer.player!.play()
+        &#125; <span class="hljs-keyword">else</span> &#123;
+            <span class="hljs-keyword">let</span> options = <span class="hljs-type">PHVideoRequestOptions</span>()
+            options.isNetworkAccessAllowed = <span class="hljs-literal">true</span>
+            options.deliveryMode = .automatic
+            options.progressHandler = &#123; progress, <span class="hljs-number">_</span>, <span class="hljs-number">_</span>, <span class="hljs-number">_</span> <span class="hljs-keyword">in</span>
+                <span class="hljs-comment">// The handler may originate on a background queue, so</span>
+                <span class="hljs-comment">// re-dispatch to the main queue for UI work.</span>
+                <span class="hljs-type">DispatchQueue</span>.main.sync &#123;
+                    <span class="hljs-keyword">self</span>.progressView.progress = <span class="hljs-type">Float</span>(progress)
+                &#125;
+            &#125;
+            <span class="hljs-comment">// Request an AVPlayerItem for the displayed PHAsset.</span>
+            <span class="hljs-comment">// Then configure a layer for playing it.</span>
+            <span class="hljs-type">PHImageManager</span>.<span class="hljs-keyword">default</span>().requestPlayerItem(forVideo: asset, options: options, resultHandler: &#123; playerItem, info <span class="hljs-keyword">in</span>
+                <span class="hljs-type">DispatchQueue</span>.main.sync &#123;
+                    <span class="hljs-keyword">guard</span> <span class="hljs-keyword">self</span>.playerLayer == <span class="hljs-literal">nil</span> <span class="hljs-keyword">else</span> &#123; <span class="hljs-keyword">return</span> &#125;
+                    
+                    <span class="hljs-comment">// Create an AVPlayer and AVPlayerLayer with the AVPlayerItem.</span>
+                    <span class="hljs-keyword">let</span> player = <span class="hljs-type">AVPlayer</span>(playerItem: playerItem)
+                    <span class="hljs-keyword">let</span> playerLayer = <span class="hljs-type">AVPlayerLayer</span>(player: player)
+                    
+                    <span class="hljs-comment">// Configure the AVPlayerLayer and add it to the view.</span>
+                    playerLayer.videoGravity = <span class="hljs-type">AVLayerVideoGravity</span>.resizeAspect
+                    playerLayer.frame = <span class="hljs-keyword">self</span>.view.layer.bounds
+                    <span class="hljs-keyword">self</span>.view.layer.addSublayer(playerLayer)
+                    
+                    player.play()
+                    
+                    <span class="hljs-comment">// Cache the player layer by reference, so you can remove it later.</span>
+                    <span class="hljs-keyword">self</span>.playerLayer = playerLayer
+                &#125;
+            &#125;)
+        &#125;
+    &#125;
+    <span class="hljs-comment">/// - Tag: RemoveAsset</span>
+    <span class="hljs-meta">@IBAction</span> <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">removeAsset</span><span class="hljs-params">(<span class="hljs-number">_</span> sender: AnyObject)</span></span> &#123;
+        <span class="hljs-keyword">let</span> completion = &#123; (success: <span class="hljs-type">Bool</span>, error: <span class="hljs-type">Error?</span>) -&gt; <span class="hljs-type">Void</span> <span class="hljs-keyword">in</span>
+            <span class="hljs-keyword">if</span> success &#123;
+                <span class="hljs-type">PHPhotoLibrary</span>.shared().unregisterChangeObserver(<span class="hljs-keyword">self</span>)
+                <span class="hljs-type">DispatchQueue</span>.main.sync &#123;
+                    <span class="hljs-number">_</span> = <span class="hljs-keyword">self</span>.navigationController!.popViewController(animated: <span class="hljs-literal">true</span>)
+                &#125;
+            &#125; <span class="hljs-keyword">else</span> &#123;
+                <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Can&#x27;t remove the asset: \(String(describing: error))&quot;</span>)
+            &#125;
+        &#125;
+        <span class="hljs-keyword">if</span> assetCollection != <span class="hljs-literal">nil</span> &#123;
+            <span class="hljs-comment">// Remove the asset from the selected album.</span>
+            <span class="hljs-type">PHPhotoLibrary</span>.shared().performChanges(&#123;
+                <span class="hljs-keyword">let</span> request = <span class="hljs-type">PHAssetCollectionChangeRequest</span>(<span class="hljs-keyword">for</span>: <span class="hljs-keyword">self</span>.assetCollection)!
+                request.removeAssets([<span class="hljs-keyword">self</span>.asset] <span class="hljs-keyword">as</span> <span class="hljs-type">NSArray</span>)
+            &#125;, completionHandler: completion)
+        &#125; <span class="hljs-keyword">else</span> &#123;
+            <span class="hljs-comment">// Delete the asset from the photo library.</span>
+            <span class="hljs-type">PHPhotoLibrary</span>.shared().performChanges(&#123;
+                <span class="hljs-type">PHAssetChangeRequest</span>.deleteAssets([<span class="hljs-keyword">self</span>.asset] <span class="hljs-keyword">as</span> <span class="hljs-type">NSArray</span>)
+            &#125;, completionHandler: completion)
+        &#125;
+    &#125;
+    <span class="hljs-comment">/// - Tag: MarkFavorite</span>
+    <span class="hljs-meta">@IBAction</span> <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">toggleFavorite</span><span class="hljs-params">(<span class="hljs-number">_</span> sender: UIBarButtonItem)</span></span> &#123;
+        <span class="hljs-type">PHPhotoLibrary</span>.shared().performChanges(&#123;
+            <span class="hljs-keyword">let</span> request = <span class="hljs-type">PHAssetChangeRequest</span>(<span class="hljs-keyword">for</span>: <span class="hljs-keyword">self</span>.asset)
+            request.isFavorite = !<span class="hljs-keyword">self</span>.asset.isFavorite
+        &#125;, completionHandler: &#123; success, error <span class="hljs-keyword">in</span>
+            <span class="hljs-keyword">if</span> success &#123;
+                <span class="hljs-type">DispatchQueue</span>.main.sync &#123;
+                    sender.title = <span class="hljs-keyword">self</span>.asset.isFavorite ? <span class="hljs-string">&quot;♥︎&quot;</span> : <span class="hljs-string">&quot;♡&quot;</span>
+                &#125;
+            &#125; <span class="hljs-keyword">else</span> &#123;
+                <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Can&#x27;t mark the asset as a Favorite: \(String(describing: error))&quot;</span>)
+            &#125;
+        &#125;)
+    &#125;
+    
+    <span class="hljs-comment">// MARK: Image display</span>
+    
+    <span class="hljs-keyword">var</span> targetSize: <span class="hljs-type">CGSize</span> &#123;
+        <span class="hljs-keyword">let</span> scale = <span class="hljs-type">UIScreen</span>.main.scale
+        <span class="hljs-keyword">return</span> <span class="hljs-type">CGSize</span>(width: imageView.bounds.width * scale, height: imageView.bounds.height * scale)
+    &#125;
+    
+    <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">updateImage</span><span class="hljs-params">()</span></span> &#123;
+        <span class="hljs-keyword">if</span> asset.mediaSubtypes.<span class="hljs-built_in">contains</span>(.photoLive) &#123;
+            updateLivePhoto()
+        &#125; <span class="hljs-keyword">else</span> &#123;
+            updateStaticImage()
+        &#125;
+    &#125;
+    
+    <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">updateLivePhoto</span><span class="hljs-params">()</span></span> &#123;
+        <span class="hljs-comment">// Prepare the options to pass when fetching the live photo.</span>
+        <span class="hljs-keyword">let</span> options = <span class="hljs-type">PHLivePhotoRequestOptions</span>()
+        options.deliveryMode = .highQualityFormat
+        options.isNetworkAccessAllowed = <span class="hljs-literal">true</span>
+        options.progressHandler = &#123; progress, <span class="hljs-number">_</span>, <span class="hljs-number">_</span>, <span class="hljs-number">_</span> <span class="hljs-keyword">in</span>
+            <span class="hljs-comment">// The handler may originate on a background queue, so</span>
+            <span class="hljs-comment">// re-dispatch to the main queue for UI work.</span>
+            <span class="hljs-type">DispatchQueue</span>.main.sync &#123;
+                <span class="hljs-keyword">self</span>.progressView.progress = <span class="hljs-type">Float</span>(progress)
+            &#125;
+        &#125;
+        
+        <span class="hljs-comment">// Request the live photo for the asset from the default PHImageManager.</span>
+        <span class="hljs-type">PHImageManager</span>.<span class="hljs-keyword">default</span>().requestLivePhoto(<span class="hljs-keyword">for</span>: asset, targetSize: targetSize, contentMode: .aspectFit, options: options,
+                                                  resultHandler: &#123; livePhoto, info <span class="hljs-keyword">in</span>
+                                                    <span class="hljs-comment">// PhotoKit finishes the request, so hide the progress view.</span>
+                                                    <span class="hljs-keyword">self</span>.progressView.isHidden = <span class="hljs-literal">true</span>
+                                                    
+                                                    <span class="hljs-comment">// Show the Live Photo view.</span>
+                                                    <span class="hljs-keyword">guard</span> <span class="hljs-keyword">let</span> livePhoto = livePhoto <span class="hljs-keyword">else</span> &#123; <span class="hljs-keyword">return</span> &#125;
+                                                    
+                                                    <span class="hljs-comment">// Show the Live Photo.</span>
+                                                    <span class="hljs-keyword">self</span>.imageView.isHidden = <span class="hljs-literal">true</span>
+                                                    <span class="hljs-keyword">self</span>.livePhotoView.isHidden = <span class="hljs-literal">false</span>
+                                                    <span class="hljs-keyword">self</span>.livePhotoView.livePhoto = livePhoto
+                                                    
+                                                    <span class="hljs-keyword">if</span> !<span class="hljs-keyword">self</span>.isPlayingHint &#123;
+                                                        <span class="hljs-comment">// Play back a short section of the Live Photo, similar to the Photos share sheet.</span>
+                                                        <span class="hljs-keyword">self</span>.isPlayingHint = <span class="hljs-literal">true</span>
+                                                        <span class="hljs-keyword">self</span>.livePhotoView.startPlayback(with: .hint)
+                                                    &#125;
+        &#125;)
+    &#125;
+    
+    <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">updateStaticImage</span><span class="hljs-params">()</span></span> &#123;
+        <span class="hljs-comment">// Prepare the options to pass when fetching the (photo, or video preview) image.</span>
+        <span class="hljs-keyword">let</span> options = <span class="hljs-type">PHImageRequestOptions</span>()
+        options.deliveryMode = .highQualityFormat
+        options.isNetworkAccessAllowed = <span class="hljs-literal">true</span>
+        options.progressHandler = &#123; progress, <span class="hljs-number">_</span>, <span class="hljs-number">_</span>, <span class="hljs-number">_</span> <span class="hljs-keyword">in</span>
+            <span class="hljs-comment">// The handler may originate on a background queue, so</span>
+            <span class="hljs-comment">// re-dispatch to the main queue for UI work.</span>
+            <span class="hljs-type">DispatchQueue</span>.main.sync &#123;
+                <span class="hljs-keyword">self</span>.progressView.progress = <span class="hljs-type">Float</span>(progress)
+            &#125;
+        &#125;
+        
+        <span class="hljs-type">PHImageManager</span>.<span class="hljs-keyword">default</span>().requestImage(<span class="hljs-keyword">for</span>: asset, targetSize: targetSize, contentMode: .aspectFit, options: options,
+                                              resultHandler: &#123; image, <span class="hljs-number">_</span> <span class="hljs-keyword">in</span>
+                                                <span class="hljs-comment">// PhotoKit finished the request, so hide the progress view.</span>
+                                                <span class="hljs-keyword">self</span>.progressView.isHidden = <span class="hljs-literal">true</span>
+                                                
+                                                <span class="hljs-comment">// If the request succeeded, show the image view.</span>
+                                                <span class="hljs-keyword">guard</span> <span class="hljs-keyword">let</span> image = image <span class="hljs-keyword">else</span> &#123; <span class="hljs-keyword">return</span> &#125;
+                                                
+                                                <span class="hljs-comment">// Show the image.</span>
+                                                <span class="hljs-keyword">self</span>.livePhotoView.isHidden = <span class="hljs-literal">true</span>
+                                                <span class="hljs-keyword">self</span>.imageView.isHidden = <span class="hljs-literal">false</span>
+                                                <span class="hljs-keyword">self</span>.imageView.image = image
+        &#125;)
+    &#125;
+    
+    <span class="hljs-comment">// MARK: Asset editing</span>
+    
+    <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">revertAsset</span><span class="hljs-params">(sender: UIAlertAction)</span></span> &#123;
+        <span class="hljs-type">PHPhotoLibrary</span>.shared().performChanges(&#123;
+            <span class="hljs-keyword">let</span> request = <span class="hljs-type">PHAssetChangeRequest</span>(<span class="hljs-keyword">for</span>: <span class="hljs-keyword">self</span>.asset)
+            request.revertAssetContentToOriginal()
+        &#125;, completionHandler: &#123; success, error <span class="hljs-keyword">in</span>
+            <span class="hljs-keyword">if</span> !success &#123; <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Can&#x27;t revert the asset: \(String(describing: error))&quot;</span>) &#125;
+        &#125;)
+    &#125;
+    
+    <span class="hljs-comment">// Returns a filter-applier function for the named filter.</span>
+    <span class="hljs-comment">// Use the function as a handler for a UIAlertAction object.</span>
+    <span class="hljs-comment">/// - Tag: ApplyFilter</span>
+    <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">getFilter</span><span class="hljs-params">(<span class="hljs-number">_</span> filterName: String)</span></span> -&gt; (<span class="hljs-type">UIAlertAction</span>) -&gt; <span class="hljs-type">Void</span> &#123;
+        <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">applyFilter</span><span class="hljs-params">(<span class="hljs-number">_</span>: UIAlertAction)</span></span> &#123;
+            <span class="hljs-comment">// Set up a handler to handle prior edits.</span>
+            <span class="hljs-keyword">let</span> options = <span class="hljs-type">PHContentEditingInputRequestOptions</span>()
+            options.canHandleAdjustmentData = &#123;
+                $<span class="hljs-number">0</span>.formatIdentifier == <span class="hljs-keyword">self</span>.formatIdentifier &amp;&amp; $<span class="hljs-number">0</span>.formatVersion == <span class="hljs-keyword">self</span>.formatVersion
+            &#125;
+            
+            <span class="hljs-comment">// Prepare for editing.</span>
+            asset.requestContentEditingInput(with: options, completionHandler: &#123; input, info <span class="hljs-keyword">in</span>
+                <span class="hljs-keyword">guard</span> <span class="hljs-keyword">let</span> input = input
+                    <span class="hljs-keyword">else</span> &#123; <span class="hljs-built_in">fatalError</span>(<span class="hljs-string">&quot;Can&#x27;t get the content-editing input: \(info)&quot;</span>) &#125;
+                
+                <span class="hljs-comment">// This handler executes on the main thread; dispatch to a background queue for processing.</span>
+                <span class="hljs-type">DispatchQueue</span>.global(qos: .userInitiated).async &#123;
+                    
+                    <span class="hljs-comment">// Create adjustment data describing the edit.</span>
+                    <span class="hljs-keyword">let</span> adjustmentData = <span class="hljs-type">PHAdjustmentData</span>(formatIdentifier: <span class="hljs-keyword">self</span>.formatIdentifier,
+                                                          formatVersion: <span class="hljs-keyword">self</span>.formatVersion,
+                                                          data: filterName.data(using: .utf8)!)
+                    
+                    <span class="hljs-comment">// Create content editing output, write the adjustment data.</span>
+                    <span class="hljs-keyword">let</span> output = <span class="hljs-type">PHContentEditingOutput</span>(contentEditingInput: input)
+                    output.adjustmentData = adjustmentData
+                    
+                    <span class="hljs-comment">// Select a filtering function for the asset&#x27;s media type.</span>
+                    <span class="hljs-keyword">let</span> applyFunc: (<span class="hljs-type">String</span>, <span class="hljs-type">PHContentEditingInput</span>, <span class="hljs-type">PHContentEditingOutput</span>, @escaping () -&gt; <span class="hljs-type">Void</span>) -&gt; <span class="hljs-type">Void</span>
+                    <span class="hljs-keyword">if</span> <span class="hljs-keyword">self</span>.asset.mediaSubtypes.<span class="hljs-built_in">contains</span>(.photoLive) &#123;
+                        applyFunc = <span class="hljs-keyword">self</span>.applyLivePhotoFilter
+                    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> <span class="hljs-keyword">self</span>.asset.mediaType == .image &#123;
+                        applyFunc = <span class="hljs-keyword">self</span>.applyPhotoFilter
+                    &#125; <span class="hljs-keyword">else</span> &#123;
+                        applyFunc = <span class="hljs-keyword">self</span>.applyVideoFilter
+                    &#125;
+                    
+                    <span class="hljs-comment">// Apply the filter.</span>
+                    applyFunc(filterName, input, output, &#123;
+                        <span class="hljs-comment">// When the app finishes rendering the filtered result, commit the edit to the photo library.</span>
+                        <span class="hljs-type">PHPhotoLibrary</span>.shared().performChanges(&#123;
+                            <span class="hljs-keyword">let</span> request = <span class="hljs-type">PHAssetChangeRequest</span>(<span class="hljs-keyword">for</span>: <span class="hljs-keyword">self</span>.asset)
+                            request.contentEditingOutput = output
+                        &#125;, completionHandler: &#123; success, error <span class="hljs-keyword">in</span>
+                            <span class="hljs-keyword">if</span> !success &#123; <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Can&#x27;t edit the asset: \(String(describing: error))&quot;</span>) &#125;
+                        &#125;)
+                    &#125;)
+                &#125;
+            &#125;)
+        &#125;
+        <span class="hljs-keyword">return</span> applyFilter
+    &#125;
+    
+    <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">applyPhotoFilter</span><span class="hljs-params">(<span class="hljs-number">_</span> filterName: String, input: PHContentEditingInput, output: PHContentEditingOutput, completion: <span class="hljs-params">()</span></span></span> -&gt; <span class="hljs-type">Void</span>) &#123;
+        
+        <span class="hljs-comment">// Load the full-size image.</span>
+        <span class="hljs-keyword">guard</span> <span class="hljs-keyword">let</span> inputImage = <span class="hljs-type">CIImage</span>(contentsOf: input.fullSizeImageURL!)
+            <span class="hljs-keyword">else</span> &#123; <span class="hljs-built_in">fatalError</span>(<span class="hljs-string">&quot;Can&#x27;t load the input image to edit.&quot;</span>) &#125;
+        
+        <span class="hljs-comment">// Apply the filter.</span>
+        <span class="hljs-keyword">let</span> outputImage = inputImage
+            .oriented(forExifOrientation: input.fullSizeImageOrientation)
+            .applyingFilter(filterName, parameters: [:])
+        
+        <span class="hljs-comment">// Write the edited image as a JPEG.</span>
+        <span class="hljs-keyword">do</span> &#123;
+            <span class="hljs-keyword">try</span> <span class="hljs-keyword">self</span>.ciContext.writeJPEGRepresentation(of: outputImage,
+                                                       to: output.renderedContentURL, colorSpace: inputImage.colorSpace!, options: [:])
+        &#125; <span class="hljs-keyword">catch</span> <span class="hljs-keyword">let</span> error &#123;
+            <span class="hljs-built_in">fatalError</span>(<span class="hljs-string">&quot;Can&#x27;t apply the filter to the image: \(error).&quot;</span>)
+        &#125;
+        completion()
+    &#125;
+    
+    <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">applyLivePhotoFilter</span><span class="hljs-params">(<span class="hljs-number">_</span> filterName: String, input: PHContentEditingInput, output: PHContentEditingOutput, completion: @escaping <span class="hljs-params">()</span></span></span> -&gt; <span class="hljs-type">Void</span>) &#123;
+        
+        <span class="hljs-comment">// This app filters assets only for output. In an app that previews</span>
+        <span class="hljs-comment">// filters while editing, create a livePhotoContext early and reuse it</span>
+        <span class="hljs-comment">// to render both for previewing and for final output.</span>
+        <span class="hljs-keyword">guard</span> <span class="hljs-keyword">let</span> livePhotoContext = <span class="hljs-type">PHLivePhotoEditingContext</span>(livePhotoEditingInput: input)
+            <span class="hljs-keyword">else</span> &#123; <span class="hljs-built_in">fatalError</span>(<span class="hljs-string">&quot;Can&#x27;t fetch the Live Photo to edit.&quot;</span>) &#125;
+        
+        livePhotoContext.frameProcessor = &#123; frame, <span class="hljs-number">_</span> <span class="hljs-keyword">in</span>
+            <span class="hljs-keyword">return</span> frame.image.applyingFilter(filterName, parameters: [:])
+        &#125;
+        livePhotoContext.saveLivePhoto(to: output) &#123; success, error <span class="hljs-keyword">in</span>
+            <span class="hljs-keyword">if</span> success &#123;
+                completion()
+            &#125; <span class="hljs-keyword">else</span> &#123;
+                <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Can&#x27;t output the Live Photo.&quot;</span>)
+            &#125;
+        &#125;
+    &#125;
+    
+    <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">applyVideoFilter</span><span class="hljs-params">(<span class="hljs-number">_</span> filterName: String, input: PHContentEditingInput, output: PHContentEditingOutput, completion: @escaping <span class="hljs-params">()</span></span></span> -&gt; <span class="hljs-type">Void</span>) &#123;
+        <span class="hljs-comment">// Load the AVAsset to process from input.</span>
+        <span class="hljs-keyword">guard</span> <span class="hljs-keyword">let</span> avAsset = input.audiovisualAsset
+            <span class="hljs-keyword">else</span> &#123; <span class="hljs-built_in">fatalError</span>(<span class="hljs-string">&quot;Can&#x27;t fetch the AVAsset to edit.&quot;</span>) &#125;
+        
+        <span class="hljs-comment">// Set up a video composition to apply the filter.</span>
+        <span class="hljs-keyword">let</span> composition = <span class="hljs-type">AVVideoComposition</span>(
+            asset: avAsset,
+            applyingCIFiltersWithHandler: &#123; request <span class="hljs-keyword">in</span>
+                <span class="hljs-keyword">let</span> filtered = request.sourceImage.applyingFilter(filterName, parameters: [:])
+                request.finish(with: filtered, context: <span class="hljs-literal">nil</span>)
+        &#125;)
+        
+        <span class="hljs-comment">// Export the video composition to the output URL.</span>
+        <span class="hljs-keyword">guard</span> <span class="hljs-keyword">let</span> export = <span class="hljs-type">AVAssetExportSession</span>(asset: avAsset, presetName: <span class="hljs-type">AVAssetExportPresetHighestQuality</span>)
+            <span class="hljs-keyword">else</span> &#123; <span class="hljs-built_in">fatalError</span>(<span class="hljs-string">&quot;Can&#x27;t configure the AVAssetExportSession.&quot;</span>) &#125;
+        export.outputFileType = <span class="hljs-type">AVFileType</span>.mov
+        export.outputURL = output.renderedContentURL
+        export.videoComposition = composition
+        export.exportAsynchronously(completionHandler: completion)
+    &#125;
+
+<span class="hljs-comment">// MARK: PHPhotoLibraryChangeObserver</span>
+<span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">AssetViewController</span>: <span class="hljs-title">PHPhotoLibraryChangeObserver</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">photoLibraryDidChange</span><span class="hljs-params">(<span class="hljs-number">_</span> changeInstance: PHChange)</span></span> &#123;
+        <span class="hljs-comment">// The call might come on any background queue. Re-dispatch to the main queue to handle it.</span>
+        <span class="hljs-type">DispatchQueue</span>.main.sync &#123;
+            <span class="hljs-comment">// Check if there are changes to the displayed asset.</span>
+            <span class="hljs-keyword">guard</span> <span class="hljs-keyword">let</span> details = changeInstance.changeDetails(<span class="hljs-keyword">for</span>: asset) <span class="hljs-keyword">else</span> &#123; <span class="hljs-keyword">return</span> &#125;
+            
+            <span class="hljs-comment">// Get the updated asset.</span>
+            asset = details.objectAfterChanges
+            
+            <span class="hljs-comment">// If the asset&#x27;s content changes, update the image and stop any video playback.</span>
+            <span class="hljs-keyword">if</span> details.assetContentChanged &#123;
+                updateImage()
+                
+                playerLayer?.removeFromSuperlayer()
+                playerLayer = <span class="hljs-literal">nil</span>
+            &#125;
+        &#125;
+    &#125;
+&#125;
+
+<span class="hljs-comment">// MARK: PHLivePhotoViewDelegate</span>
+<span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">AssetViewController</span>: <span class="hljs-title">PHLivePhotoViewDelegate</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">livePhotoView</span><span class="hljs-params">(<span class="hljs-number">_</span> livePhotoView: PHLivePhotoView, willBeginPlaybackWith playbackStyle: PHLivePhotoViewPlaybackStyle)</span></span> &#123;
+        isPlayingHint = (playbackStyle == .hint)
+    &#125;
+    
+    <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">livePhotoView</span><span class="hljs-params">(<span class="hljs-number">_</span> livePhotoView: PHLivePhotoView, didEndPlaybackWith playbackStyle: PHLivePhotoViewPlaybackStyle)</span></span> &#123;
+        isPlayingHint = (playbackStyle == .hint)
+    &#125;
+&#125;
+</code></pre>
+
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a target="_blank" rel="noopener" href="https://developer.apple.com/documentation/photokit/browsing_and_modifying_photo_albums">Browsing and Modifying Photo Albums</a><br><a target="_blank" rel="noopener" href="https://nshipster.cn/nspredicate/">NSPredicate</a><br><a target="_blank" rel="noopener" href="https://nshipster.cn/nssortdescriptor/">NSSortDescriptor</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/categories/iOS/">iOS</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/PhotoKit/">PhotoKit</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/2019/03/14/iOS/Core-Graphics/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">CoreGraphics</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/2019/01/11/iOS/TextView-%E9%AB%98%E5%BA%A6%E8%87%AA%E9%80%82%E5%BA%94/">
+                        <span class="hidden-mobile">TextView自适应高度</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/debouncer.js" ></script>
+<script  src="/blog/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/blog/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/blog/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "PhotoKit&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/blog/js/local-search.js" ></script>
+  <script>
+    var path = "/blog/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

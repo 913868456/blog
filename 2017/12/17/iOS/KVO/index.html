@@ -1,0 +1,770 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/favicon.png">
+  <link rel="icon" type="image/png" href="/blog/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="吃面多放葱">
+  <meta name="keywords" content="">
+  <title>KVO - 吃面多放葱的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/blog/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/blog/">&nbsp;<strong>吃面多放葱</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/blog/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2017-12-17 17:13" pubdate>
+        2017年12月17日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.5k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      51
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">KVO</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <h1 id="Key-Value-Observing-Programming-Guide"><a href="#Key-Value-Observing-Programming-Guide" class="headerlink" title="Key-Value Observing Programming Guide"></a>Key-Value Observing Programming Guide</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>键值观察是一种机制,该机制允许对象接收其他对象特定属性改变的通知.</p>
+<blockquote>
+<p>重要: 为了更好的了解键值观察,您必须理解<a target="_blank" rel="noopener" href="http://www.jianshu.com/p/7f7360ae8e7b">键值编码</a></p>
+</blockquote>
+<p>一个简单的例子概述了应用中KVO的作用.假设有一个Person对象与一个Account对象相关,表示这个人在银行的存款账户.一个Person实例可能需要知道何时Account实例属性改变对该账户造成影响.比如收支,或者利率.</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/3340896-51f7b5abd6205136.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" srcset="/blog/img/loading.gif" alt="示例"></p>
+<p>使用KVO,首先确保对象兼容KVO.只要继承自NSObject的对象都是KVO兼容的.然后,必须注册一个观察者Person,观察Account对象实例.Peson发送一个<code>addObserver:forKeyPath:options:context:</code>消息给Account.<br><img src="http://upload-images.jianshu.io/upload_images/3340896-2ec2849c4a768671.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" srcset="/blog/img/loading.gif" alt="注册观察者"></p>
+<p>为了接受来自于Account的改变通知,Peson需要实现<code>observeValueForKeyPath:ofObject:change:context</code>方法,所有的观察者都需要实现.一旦注册的KeyPath对应的属性值发生改变,Account将会发送该消息给Person.Person然后基于改变的通知做出相应的响应.</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/3340896-6518b22626ca9474.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" srcset="/blog/img/loading.gif" alt="发送改变通知"></p>
+<p>最后,当不在需要通知时,在对象销毁之前,使用<code>removeObser:forKeyPath:</code> 方法移除观察者.</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/3340896-3eddd2ec631247c1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" srcset="/blog/img/loading.gif" alt="移除观察者"></p>
+<p>不像使用NSNotificationCenter通知那样,KVO没有一个中心对象给所有的观察者提供改变通知.一旦被观察的对象发生改变通知将会直接发送. NSObject提供了KVO的基本实现.</p>
+<hr>
+<h2 id="KVO注册"><a href="#KVO注册" class="headerlink" title="KVO注册"></a>KVO注册</h2><p>必须执行以下步骤来使对象接收一个KVO兼容属性的键值观察通知:</p>
+<ul>
+<li>注册观察者使用<code>addObserver:forKeyPath:options:context:</code></li>
+<li>在观察者内部实现<code>observeValueForKeyPath:ofObject:change:context:</code>方法去接收改变通知消息.</li>
+<li>当不再需要接收消息时,使用<code>removeObserver:forKeyPath:</code>方法取消观察者.至少,在观察者从内存中释放前调用该方法.</li>
+</ul>
+<blockquote>
+<p>重要: 不是所有的类的所有属性都是KVO兼容的.</p>
+</blockquote>
+<h3 id="注册观察者"><a href="#注册观察者" class="headerlink" title="注册观察者"></a>注册观察者</h3><p>一个进行观察的对象首先通过发送一个 <code>addObserver:forKeyPath:options:context: </code>消息注册自己和被观察的对象.来传递作为观察者的自身和观察的属性键路径.观察者额外指定一个可选参数和上下文指针用来管理通知方面的内容.</p>
+<h4 id="Options"><a href="#Options" class="headerlink" title="Options"></a>Options</h4><p>可选项参数,使用<code>|</code>位操作符来指定多个可选项.影响提供给通知的字典内容,该字典包含观察到的变动信息.并且影响通知的生成方式.</p>
+<p>通过指定的<code>NSKeyValueObservingOptionOld</code>获取观察的属性改变前的值.通过<code>NSKeyValueObservingOptionNew</code>获取改变后新的属性值.</p>
+<p>通过<code>NSKeyValueObservingOptionPrior</code>可选项,命令观察对象在属性改变前发送一个通知(另外在改变后也发送一个通知).改变信息的字典通过Key为<code>NSKeyValueChangeNotificationIsPriorKey</code>, Value为<code>NSNumber</code>表示的Yes对象的键值对,标明是一个预改变通知.当需要观察一个属性将要改变时,可以使用该可选项来发送通知.</p>
+<h4 id="Context"><a href="#Context" class="headerlink" title="Context"></a>Context</h4><p>在 <code>addObserver:forKeyPath:options:context:</code>消息中的上下文指针包含在相应通知下,传递回的任意数据.可以指定一个NULL类型的数据并且完全依靠键路径字符串去判断改变通知的来源.但是这种方法可能会造成一些问题.如果一个对象的父类出于某种原因也在观察同样的键路径下的属性.</p>
+<p>一个更安全和更加可扩展的方法是使用上下文确保你接收的通知目的对象是观察者而不是其父类.<br>一个类中的特殊命名的静态变量指针可以组成一个好的上下文. <strong>Listing 1</strong> 展示一个为属性观察命名不同上下文的示例.</p>
+<p><strong>Listing 1</strong> 创建上下文指针</p>
+<pre><code class="hljs actionscript"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> *PersonAccountBalanceContext = &amp;PersonAccountBalanceContext;
+statci <span class="hljs-keyword">void</span> *PersonAccountInterestRateContext = &amp;PersonAccountInterestRateContext;
+</code></pre>
+<p>Listing 2中的实例论证了一个Person实例如何使用给定的上下文指针注册它自己作为Account实例banlance和interestRate属性的观察者</p>
+<p><strong>Listing 2</strong> 注册属性balance和interestRate的观察者</p>
+<pre><code class="hljs groovy">
+- (<span class="hljs-keyword">void</span>)<span class="hljs-attr">registerAsObserverForAccount:</span>(Account *)account&#123;
+    
+    [account <span class="hljs-attr">addObserver:</span> self <span class="hljs-attr">forKeyPath:</span>@<span class="hljs-string">&quot;balance&quot;</span> <span class="hljs-attr">options:</span>(NSKeyValueObseringOptionNew | NSKeyValueObservingOptionOld) <span class="hljs-attr">context:</span> PersonAccountBalanceContext];
+    
+    [account <span class="hljs-attr">addObserver:</span> self <span class="hljs-attr">forKeyPath:</span>@<span class="hljs-string">&quot;interestRate&quot;</span> <span class="hljs-attr">options:</span>(NSKeyValueObservingNew | NSKeyValueObservingOptionOld) <span class="hljs-attr">context:</span>PersonAccountINterestRateContext];
+    
+&#125;
+</code></pre>
+<blockquote>
+<p>注意:键值观察方法 <code>addObserver:forKeyPath:options;context:</code>对观察者,被观察对象,或者上下文,不持有强引用.如果需要的话,应该确保对观察者,被观察对象,和上下文的强引用.</p>
+</blockquote>
+<h3 id="接收一个改变的通知"><a href="#接收一个改变的通知" class="headerlink" title="接收一个改变的通知"></a>接收一个改变的通知</h3><p>当被观察的属性值发生变化时,观察者会接收到一个<code>observeValueForKeyPath:ofObject:change:context:</code> 消息.所有的观察者必须实现该方法.</p>
+<p>被观察对象提供触发通知的键路径,它本身作为关联对象,包含更改细节的字典,以及在该键路径下注册的观察者时,提供的上下文指针.</p>
+<p>更改内容字典入口<code>NSKeyValueChangeKindKey</code>提供发生的更改类型相关信息.如果观察的值已经发生改变,<code>NSKeyValueChangeKindKey</code>入口返回<code>NSKeyValueChangeSetting</code>.通过依赖注册的观察者指定的可选项.在更改内容字典中<code>NSKeyValueChangeOldKey</code>和<code>NSKeyValueChangeNewKey</code>包含观察属性改变前和改变后的值.如果属性是一个对象,则直接提供该值.如果属性是一个标量或者结构体,那么对应的值会包装在一个NSValue对象中.</p>
+<p>如果观察的属性是一个一对多关系.<code>NSKeyValueChangeKindKey</code>入口也会表示是否该集合内的对象被插入,移除,或者替换.分别用<code>NSKeyValueChangeInsertion</code>,<code>NSKeyValueChangeRemoval</code>,<code>NSKeyValueChangeReplacement</code>表示.</p>
+<p>更改内容字典入口<code>NSKeyValueChangeIndexesKey</code>是一个NSIndexSet对象.明确了在集合中更改的元素的所有下标.如果<code>NSKeyValueObservingOptionNew</code>或者<code>NSKeyValueObservingOptionOld</code>被指定作为观察者的可选项.那么<code>NSKeyValueChangeOldKey</code>和<code>NSKeyValueChageNewKey</code>在改变内容字典中用数组来包含关联对象改变前和改变后的值.</p>
+<p>在Listing 3中的例子展示了 <em>Person</em> 观察者 <code>observeValueForKeyPath:ofObject:change:context:</code>方法的实现,并且记录了balance和interestRate属性的改变前后的值.</p>
+<p><strong>Listing 3</strong> <code>observeValueForKeyPath:ofObject:change:context:</code>方法实现</p>
+<pre><code class="hljs groovy">
+- (<span class="hljs-keyword">void</span>)<span class="hljs-attr">observeValueForKeyPath:</span>(NSString *)keyPath <span class="hljs-attr">ofObject:</span>(id)object <span class="hljs-attr">change:</span>(NSDictionary *)change <span class="hljs-attr">context:</span>(<span class="hljs-keyword">void</span> *)context&#123;
+
+    <span class="hljs-keyword">if</span> (context == PersonAccountBalanceContext) &#123;
+        
+        <span class="hljs-comment">// Do something with the balance...</span>
+        
+    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (context == PersonAccountInterestRateContext)&#123;
+        
+        <span class="hljs-comment">// Do something with the interest rate...</span>
+        
+    &#125;<span class="hljs-keyword">else</span> &#123;
+        
+        <span class="hljs-comment">// Any unrecognized context must belong to super</span>
+        
+        [<span class="hljs-built_in">super</span> <span class="hljs-attr">observeValueForKeyPath:</span>keyPath <span class="hljs-attr">ofObject:</span>object <span class="hljs-attr">change:</span>change <span class="hljs-attr">context:</span>context];
+        
+    &#125;
+&#125;
+</code></pre>
+<p>如果在注册观察者的时候指定一个NULL上下文,通过比对键路径来判断观察的内容改变情况.如果使用一个单一的上下文给所有观察的键路径,首先测试那个通知的上下文,然后使用键路径来匹配从而判断具体改变的内容.如果给每一个观察的间路径提供一个不同的上下文,正如这里论证的,遗传单一的指针做比较来告诉你是否该通知是发送给这个观察者,并且哪个键路径改变了.</p>
+<p>在任何情况下,观察者如果没有识别上下文(或者在一个单一情况下,任何键路径)通常应该调用父类的<code>obserValueForKeyPath:ofObject:change:context:</code>实现.因为这意味着父类也注册为观察者去接受通知.</p>
+<blockquote>
+<p>注意: 如果一个通知传递到类层级的顶部.NSObject会抛出一个NSInternalInconsistencyException.因为这是一个编程错误: 一个子类没有使用它注册的通知.</p>
+</blockquote>
+<h3 id="移除观察者"><a href="#移除观察者" class="headerlink" title="移除观察者"></a>移除观察者</h3><p>发送给观察者 removeObserver:forKeyPath:context:消息来移除一个键值观察者.需要指定观察的对象.键路径,和上下文.Listing 4中的例子展示了Person移除自己,作为balance和interestRate的观察者.</p>
+<p><strong>Listing 4</strong> 移除balance和interestRate观察者</p>
+<pre><code class="hljs groovy">
+- (<span class="hljs-keyword">void</span>)<span class="hljs-attr">unregisteAsObserverForAccount:</span>(Account *)account&#123;
+    
+    [account <span class="hljs-attr">removeObserver:</span> self <span class="hljs-attr">forKeyPath:</span> @<span class="hljs-string">&quot;balance&quot;</span> <span class="hljs-attr">context:</span> PersonAccountBalanceContext];
+    
+    [account <span class="hljs-attr">removeObserver:</span> self <span class="hljs-attr">forKeyPath:</span> @<span class="hljs-string">&quot;interestRate&quot;</span> <span class="hljs-attr">context:</span> PersonAccountInterestRateContext];
+&#125;
+</code></pre>
+
+<p>接受到一个 removeObserver:forKeyPath:context: 消息后,观察的对象将不再接受指定的键路径和对象的任何 obserValueForKeyPath:ofObject:change:context:消息 </p>
+<p>当正在移除一个观察者时,记住以下几点:</p>
+<ul>
+<li><p>如果移除的观察者未注册,则会导致一个NSRangeExcepion异常.调用<code>removeObserver:forKeyPath:context:</code>方法一次,则有与之相对应的<code>addObserver:forKeyPath:options:context:</code>方法被调用.或者如果不适用的话,把remove方法添加到一个<code>try/catch</code> Block中处理潜在的异常.</p>
+</li>
+<li><p>一个观察者在销毁时不会自动移除自身.被观察的对象会持续发送通知,不会顾及到观察者状态的改变.然而,一个改变通知,或者其他消息发送给一个已经释放的对象,会触发一个内存访问异常.因此需要确保观察者释放前一定要移除观察者.</p>
+</li>
+<li><p>KVO协议没有提供观察者和被观察对象的访问方式.避免相关的错误发生.一个典型的格式是在观察者初始化的时候(比如在 init 或者 viewDidLoad 方法中),注册为观察者,在delloc方法中取消注册.来确保合适的添加和移除信息.并且确保观察者在内存中移除前已经取消注册.</p>
+</li>
+</ul>
+<hr>
+<h2 id="注册依赖键"><a href="#注册依赖键" class="headerlink" title="注册依赖键"></a>注册依赖键</h2><p>在许多情况下，一个属性的值取决于另一个对象中的一个或多个其他属性的值。如果一个属性的值发生改变,那么派生属性的值也被标记为更改.</p>
+<h3 id="一对一关系"><a href="#一对一关系" class="headerlink" title="一对一关系"></a>一对一关系</h3><p>为了自动触发一对一关系属性的通知,应该重写 <code>keyPathsForValuesAffectingValueForKey:</code>方法或者实现一个合适的方法,该方法遵循它定义注册为依赖键的格式.</p>
+<p>例如,一个人完整的姓名取决于firs和last names.返回完整姓名的方法可以向下面方法一样写:</p>
+<pre><code class="hljs objectivec">
+- (<span class="hljs-built_in">NSString</span> *)fullName &#123;
+    
+    <span class="hljs-keyword">return</span> [<span class="hljs-built_in">NSString</span> stringWithFormat:<span class="hljs-string">@&quot;%@ %@&quot;</span>,firstName, lastName];
+&#125;
+</code></pre>
+
+<p>当应用观察fullName属性的时候,只要firstName和lastName中任意一个属性发生改变,都必须通知该应用,因为他们影响fullName属性的值.</p>
+<p>一种解决办法是重写<code>keyPathsForValuesAffectingValueForKey:</code>方法 来指定fullName属性依赖于lastName和firstName属性. <strong>Listing 1</strong>展示了这种依赖的实现.</p>
+<p><strong>Listing 1</strong> <code>keyPathsForValuesAffectingValueForKey: </code>方法的实现示例</p>
+<pre><code class="hljs groovy">+ (NSSet *)<span class="hljs-attr">keyPathsForValuesAffectingValueForKey:</span>(NSString *)key &#123;
+    
+    NSSet *keyPaths = [<span class="hljs-built_in">super</span> <span class="hljs-attr">keyPathsForValuesAffectingValueForKey:</span>key];
+    
+    <span class="hljs-keyword">if</span> ([key <span class="hljs-attr">isEqualToString:</span>@<span class="hljs-string">&quot;fullName&quot;</span>]) &#123;
+        NSArray *affectingKey = @[@<span class="hljs-string">&quot;lastName&quot;</span>, @<span class="hljs-string">&quot;firstName&quot;</span>];
+        keyPaths = [keyPaths <span class="hljs-attr">setByAddingObjectsFromArray:</span>affectingKeys];
+    &#125;
+    <span class="hljs-keyword">return</span> keyPaths;
+&#125;
+</code></pre>
+<p>您的重写通常应该调用super，并返回一个集合，该集合包含了在该集合中产生的任何成员(以便在superclasses中不影响该方法的重写)</p>
+<p>通过实现一个类方法也可以实现相同的结果,该类方法遵循命名约定 keyPathsForValuesAffectiing<Key>,该<Key>是依赖属性的名称(首字母大写).按照<strong>Listing 1</strong>中的模式写一个类方法, 如 <strong>Listing 2</strong> 所展示.</p>
+<p><strong>Listing 2</strong> keyPathsForValuesAffecting<Key> 命名约定的实现示例</p>
+<pre><code class="hljs objectivec">+ (<span class="hljs-built_in">NSSet</span> *)keyPathsForValuesAffectingFullName &#123;
+    
+    <span class="hljs-keyword">return</span> [<span class="hljs-built_in">NSSet</span> setWithObjects:<span class="hljs-string">@&quot;lastName&quot;</span>, <span class="hljs-string">@&quot;firstName&quot;</span>, <span class="hljs-literal">nil</span>];
+&#125;
+</code></pre>
+<p>当使用分类给一个存在的类添加计算属性时,不能重写<code>keyPathsForValuesAffectingValueForKey:</code>方法.因为在分类中不得重写方法.在那种情况下,实现一个keyPathsForValuesAffecting<Key>类方法可以很好地利用该机制.</p>
+<blockquote>
+<p>注意: 一对多关系属性不能使用<code>keyPathsForValuesAffectingValueForKey:</code>方法设定依赖.必须观察一对多集合中每个对象的合适的属性并且通过更新依赖键自身来改变它的值.下面内容展示了处理这种情况的一种策略.</p>
+</blockquote>
+<h3 id="一对多关系"><a href="#一对多关系" class="headerlink" title="一对多关系"></a>一对多关系</h3><p><code>keyValuesForValuesAffectingValueForKey: </code>方法不支持一对多关系属性的键路径.例如,假设有一个department对象,该对象拥有一个一对多关系的属性(employees).employee有一个salary属性.可能该对象希望有一个totalSalary属性来表示employees中所有employee的salary总和.</p>
+<p>下面两种情况下的两种可能的解决方案.</p>
+<p>1.可以使用键值观察注册父类(本例中是Department)作为所有子类(在本例中是Employees)相关属性的观察者.必须添加和移除作为观察者的父类对象.在<code>observeValueForKeyPath:ofObject:change:context:</code>方法中通过更新依赖值来响应变化,就像下面的代码中阐述的一样:</p>
+<pre><code class="hljs objectivec">- (<span class="hljs-keyword">void</span>)observeValueForKeyPath:(<span class="hljs-built_in">NSString</span> *)keyPath ofObject:(<span class="hljs-keyword">id</span>)object change:(<span class="hljs-built_in">NSDictionary</span> *)change context:(<span class="hljs-keyword">void</span> *)context &#123;
+ 
+    <span class="hljs-keyword">if</span> (context == totalSalaryContext) &#123;
+        [<span class="hljs-keyword">self</span> updateTotalSalary];
+    &#125;
+    <span class="hljs-keyword">else</span>
+    <span class="hljs-comment">// deal with other observations and/or invoke super...</span>
+&#125;
+ 
+- (<span class="hljs-keyword">void</span>)updateTotalSalary &#123;
+    [<span class="hljs-keyword">self</span> setTotalSalary:[<span class="hljs-keyword">self</span> valueForKeyPath:<span class="hljs-string">@&quot;employees.@sum.salary&quot;</span>]];
+&#125;
+ 
+- (<span class="hljs-keyword">void</span>)setTotalSalary:(<span class="hljs-built_in">NSNumber</span> *)newTotalSalary &#123;
+ 
+    <span class="hljs-keyword">if</span> (totalSalary != newTotalSalary) &#123;
+        [<span class="hljs-keyword">self</span> willChangeValueForKey:<span class="hljs-string">@&quot;totalSalary&quot;</span>];
+        _totalSalary = newTotalSalary;
+        [<span class="hljs-keyword">self</span> didChangeValueForKey:<span class="hljs-string">@&quot;totalSalary&quot;</span>];
+    &#125;
+&#125;
+ 
+- (<span class="hljs-built_in">NSNumber</span> *)totalSalary &#123;
+    <span class="hljs-keyword">return</span> _totalSalary;
+&#125;</code></pre>
+<p>2.如果您使用的是Core Data，您可以将应用程序的通知中心注册为其托管对象上下文的观察者。托管对象应以类似于键值观察的方式，对子对象发布的相关更改通知作出响应。</p>
+<hr>
+<h2 id="键值观察实现细节"><a href="#键值观察实现细节" class="headerlink" title="键值观察实现细节"></a>键值观察实现细节</h2><p>自动键值观察使用一种叫做 isa-swizzling 的技术来实现.</p>
+<p>isa 指针,作为建议的名称,指向对象类.该类持有一个分配表.这个分配表包含了实例方法的指针,以及其他数据.</p>
+<p>当注册的观察者观察一个对象的某个属性时,被观察对象的isa指针被修改,指向一个媒介类,而不是对象类的真正isa指针.所以isa指针不必映射到实际的类实例.</p>
+<p>不应该依靠isa指针来判断类的成员关系.而应该使用类方法去判断一个对象实例的类.</p>
+<hr>
+<h1 id="NSKeyValueObserving"><a href="#NSKeyValueObserving" class="headerlink" title="NSKeyValueObserving"></a>NSKeyValueObserving</h1><p>一个非正式协议,该协议内容为对象接受其他对象指定属性改变的通知.</p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>您可以观察任何对象属性.包括单一属性,一对一关系属性,一对多关系属性.一对多关系属性的观察者被告知改变的属性类型—以及相关的对象.</p>
+<p>NSObject提供一个键值观察协议的实现.该实现提供对所有对象的自动观察能力.您可以通过禁用自动观察者通知和使用该协议中的方法实现手动通知来进一步优化通知。</p>
+<h2 id="Topics"><a href="#Topics" class="headerlink" title="Topics"></a>Topics</h2><h3 id="改变通知"><a href="#改变通知" class="headerlink" title="改变通知"></a>改变通知</h3><pre><code class="hljs swift"><span class="hljs-comment">/**</span>
+<span class="hljs-comment"> 当观察对象的指定键路径下的值发生变化时,通知观察者.</span>
+<span class="hljs-comment"> </span>
+<span class="hljs-comment"> keyPath: 观察对象值已经改变的对应键路径.</span>
+<span class="hljs-comment"> object : 观察对象.</span>
+<span class="hljs-comment"> change : 一个字典用来描述相关对象指定键路径下属性值已经形成的变化.</span>
+<span class="hljs-comment"> context: 提供给注册观察者的值.</span>
+<span class="hljs-comment"> </span>
+<span class="hljs-comment"> 讨论:</span>
+<span class="hljs-comment"> 对一个对象来说,当它开始发送键路径下值改变通知时,您发送给它一个 addObserver(_:forKeyPath:options:context:)消息,命名应该接受该消息的观察者.当您观察结束时,在观察对象销毁前,您发送给观察对象一个removeObserver(_:forKeyPath:)或者remmoverObserver(_:forKeyPath:context:)消息去取消观察者,并且停止发送改变通知的消息.</span>
+<span class="hljs-comment"></span>
+<span class="hljs-comment"> */</span> 
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">observeValue</span><span class="hljs-params">(forKeyPath: String?, of object: <span class="hljs-keyword">Any</span>?, change: [NSKeyValueChangeKey : <span class="hljs-keyword">Any</span>]?, context: UnsafeMutableRawPointer?)</span></span>
+</code></pre>
+
+<h3 id="注册观察"><a href="#注册观察" class="headerlink" title="注册观察"></a>注册观察</h3><pre><code class="hljs swift"><span class="hljs-comment">/**</span>
+<span class="hljs-comment"> 注册观察者接受键路径相关对象的KVO通知消息</span>
+<span class="hljs-comment">  </span>
+<span class="hljs-comment"> observer: 注册KVO通知的对象.观察者必须实现键值观察方法 observeValue(forKeyPath:of:change:context:)</span>
+<span class="hljs-comment"> keyPath: 被观察对象的键路径.该参数不能为nil</span>
+<span class="hljs-comment"> options: 一个在NSKeyValueObservingOptions 值的组合. </span>
+<span class="hljs-comment"> context: 在obserValue(forKeyPath:of:change:context:)方法中传递给观察者的任意数据</span>
+<span class="hljs-comment"> </span>
+<span class="hljs-comment"> 讨论:</span>
+<span class="hljs-comment"> 不管是观察者还是被观察对象,引用计数都不会加一.调用该方法的对象必须调用removerObserver(_:forKeyPath:)或者removeObserver(_:forKeyPathL:context:)方法去移除观察者.</span>
+<span class="hljs-comment"> </span>
+<span class="hljs-comment"> */</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">addObserver</span><span class="hljs-params">(<span class="hljs-number">_</span> observer: NSObject, forKeyPath keyPath: String, options: NSKeyValueObservingOptions = [], context: UnsafeMutableRawPointer?)</span></span>
+
+<span class="hljs-comment">/**</span>
+<span class="hljs-comment"> 对一个之前没有注册观察者的对象调用该方法是错误的.</span>
+<span class="hljs-comment"> </span>
+<span class="hljs-comment"> 确保注册的观察者在销毁之前调用该方法.</span>
+<span class="hljs-comment"></span>
+<span class="hljs-comment"> */</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">removeObserver</span><span class="hljs-params">(<span class="hljs-number">_</span> observer: NSObject, forKeyPath keyPath: String)</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">removeObserver</span><span class="hljs-params">(NSObject, forKeyPath: String, context: UnsafeMutableRawPointer?)</span></span>
+</code></pre>
+
+<h3 id="通知观察对象的变化"><a href="#通知观察对象的变化" class="headerlink" title="通知观察对象的变化"></a>通知观察对象的变化</h3><pre><code class="hljs swift">
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">willChangeValue</span><span class="hljs-params">(forKey: String)</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">didChangeValue</span><span class="hljs-params">(forKey: String)</span></span>
+
+<span class="hljs-comment">//观察对象数组类型时,调用该方法来通知观察对象的变化</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">willChange</span><span class="hljs-params">(NSKeyValueChange, valuesAt: IndexSet, forKey: String)</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">didChange</span><span class="hljs-params">(NSKeyValueChange, valuesAt: IndexSet, forKey: String)</span></span>
+
+<span class="hljs-comment">//观察对象Set类型时,调用该方法来通知观察对象的变化</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">willChangeValue</span><span class="hljs-params">(forKey: String, withSetMutation: NSKeyValueSetMutationKind, using: Set&lt;AnyHashable&gt;)</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">didChangeValue</span><span class="hljs-params">(forKey: String, withSetMutation: NSKeyValueSetMutationKind, using: Set&lt;AnyHashable&gt;)</span></span>
+</code></pre>
+
+<h3 id="自定义观察"><a href="#自定义观察" class="headerlink" title="自定义观察"></a>自定义观察</h3><pre><code class="hljs go"><span class="hljs-comment">//返回一个布尔值标明是否观察对象自动支持KVO.</span>
+class <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">automaticallyNotifiesObservers</span><span class="hljs-params">(forKey: String)</span></span>
+
+<span class="hljs-comment">//返回一个键路径集合,该集合内键路径对应的值影响指定key的值.比如计算属性</span>
+class <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">keyPathsForValuesAffectingValue</span><span class="hljs-params">(forKey: String)</span></span>
+
+<span class="hljs-comment">//返回一个指针，该指针标识所有在被观察对象注册的观察者的信息。</span>
+<span class="hljs-keyword">var</span> observationInfo: UnsafeMutableRawPointer?</code></pre>
+<pre><code class="hljs routeros">protocol NSKeyValueObservingCustomization
+
+Type methods 
+
+  required
+  static func automaticallyNotifiesObservers(<span class="hljs-keyword">for</span>: AnyKeyPath)
+
+  required
+  static func keyPathsAffectingValue(<span class="hljs-keyword">for</span>: AnyKeyPath)
+
+Relationships
+继承自  NSObjectProtocol</code></pre>
+
+<h3 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h3><pre><code class="hljs crystal">
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NSKeyValueObservation</span></span>
+
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">NSKeyValueObservedChange</span></span>
+
+<span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">NSKeyValueChange</span>&#123;</span>
+    
+    <span class="hljs-keyword">case</span> setting,
+    <span class="hljs-keyword">case</span> insertion,
+    <span class="hljs-keyword">case</span> removal,
+    <span class="hljs-keyword">case</span> replacement
+&#125;
+
+--------------------------------------------------------------
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">NSKeyValueObservingOptions</span> </span>
+
+<span class="hljs-comment">#### Constants</span>
+
+    static var <span class="hljs-symbol">new:</span> NSKeyValueObservingOptions
+
+    static var <span class="hljs-symbol">old:</span> NSKeyValueObservingOptions
+
+    static var <span class="hljs-symbol">initial:</span> NSKeyValueObservingOptions
+
+    static var <span class="hljs-symbol">prior:</span> NSkeyValueObservingOptions
+
+--------------------------------------------------------------
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">NSKeyValueChangeKey</span></span>
+
+<span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">NSKeyValueSetMutationKind</span></span></code></pre>
+
+<h2 id="KVO原理简析"><a href="#KVO原理简析" class="headerlink" title="KVO原理简析"></a>KVO原理简析</h2><ul>
+<li>当一个object有观察者时，动态创建这个object的类的子类</li>
+<li>对于每个被观察的property，重写其set方法</li>
+<li>在重写的set方法中调用<code> willChangeValueForKey:</code>和 <code>didChangeValueForKey:</code>通知观察者</li>
+<li>当一个property没有观察者时，删除重写的方法</li>
+<li>当没有observer观察任何一个property时，删除动态创建的子类</li>
+</ul>
+<p>详细的分析可以去看sunyxx的<a target="_blank" rel="noopener" href="http://blog.sunnyxx.com/2014/03/09/objc_kvo_secret/">objc kvo简单探索</a></p>
+<h2 id="GitHub优秀开源"><a href="#GitHub优秀开源" class="headerlink" title="GitHub优秀开源"></a>GitHub优秀开源</h2><p>在项目中使用KVO的时候要时刻谨记移除观察者,否则会抛出异常.这样不经容易出错,而且项目代码看起来也不够漂亮. <strong>facebook</strong>提供了一个很好的解决方案.在该第三方库中,不用再担心移除观察者的问题,代码整体上也比以前更叫干净漂亮.仅需要在项目 <strong>PCH</strong> 文件中 <code>#import &lt;KVOController/NSObject+FBKVOController.h&gt;</code>,这样会给每个<strong>NSObject</strong> 对象自动添加KVOController属性,然后直接使用就OK了</p>
+<pre><code class="hljs groovy">[self.KVOController <span class="hljs-attr">observe:</span>clock <span class="hljs-attr">keyPath:</span>@<span class="hljs-string">&quot;date&quot;</span> <span class="hljs-attr">options:</span>NSKeyValueObservingOptionInitial|NSKeyValueObservingOptionNew <span class="hljs-attr">action:</span><span class="hljs-meta">@selector</span>(<span class="hljs-attr">updateClockWithDateChange:</span>)];
+</code></pre>
+<p>具体使用请看 <a target="_blank" rel="noopener" href="https://github.com/facebook/KVOController">KVOController</a></p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a target="_blank" rel="noopener" href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/KeyValueObserving/KeyValueObserving.html#//apple_ref/doc/uid/10000177-BCICJDHA">Key-Value Observing Programming Guide</a></p>
+<p><a target="_blank" rel="noopener" href="https://developer.apple.com/documentation/foundation/notifications/nskeyvalueobserving">NSKeyValueObserving</a></p>
+<p><a target="_blank" rel="noopener" href="http://blog.sunnyxx.com/2014/03/09/objc_kvo_secret/">objec kvo简单探索</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/categories/iOS/">iOS</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/KVO/">KVO</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/2017/12/19/iOS/Block-%E7%BC%96%E7%A8%8B/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Block编程</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/2017/12/10/iOS/KVC/">
+                        <span class="hidden-mobile">KVC</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/debouncer.js" ></script>
+<script  src="/blog/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/blog/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/blog/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "KVO&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/blog/js/local-search.js" ></script>
+  <script>
+    var path = "/blog/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

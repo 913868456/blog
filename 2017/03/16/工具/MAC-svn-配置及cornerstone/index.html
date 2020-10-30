@@ -1,0 +1,499 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/favicon.png">
+  <link rel="icon" type="image/png" href="/blog/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="吃面多放葱">
+  <meta name="keywords" content="">
+  <title>SVN 配置 - 吃面多放葱的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/blog/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/blog/">&nbsp;<strong>吃面多放葱</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/blog/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2017-03-16 11:17" pubdate>
+        2017年3月16日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.5k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      17
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">SVN 配置</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <p>SVN 配置</p>
+<p>1、创建SVN Repositroy<br>打开终端 输入：svnadmin create /path/svn/pro<br>svn是目录，pros是版本库，输入完成即可看见生成文档<br>2、配置svn用户权限。<br>/path/svn/pro/conf/目录下存在3个文件：authz,passwd,svnserve.conf<br>（1) 配置svnserve.conf<br>将里面的<br>＃anon-access = read<br>＃auth-access = write<br>＃password-db = passwd<br>＃authz-db = authz<br>四行前的＃号去掉，再将anon-access = read改为anon-access = none，这样禁止匿名访问<br><strong>注意</strong>:</p>
+<ul>
+<li>这句话必须使用，这样子才能显示Log的信息</li>
+<li>在＃号后是有空格的，去掉空格，上文字顶格,否则也有错误<br>（2)  配置passwd<br>里面存的是用户与密码，有示例，直接按照它的格式添加用户和密码就可以了<br>test1=123<br>test2=456<br>（3)   配置authz<br>[groups] 后面跟的是用户组设置，可以将你在passwd里设置的用户添加到不同的用户组里，那么之后，可以对不同用户组设置不同的权限，以免多用户设置麻烦，多个用户用,号分隔。可按它的示例做<br>[groups]<br>testgroups=test1,test2</li>
+</ul>
+<p>之后，可以对不同的版本库进行权限设置，底下有一个示例，按它的写法写就可以了，如果需要对所有的版本库设置，利用[/]就可以了。如：<br>[/]<br>@testgroups=rw<br>个人配置只需在[/]下面添加<br>用户名=rw即可<br><strong>PS</strong>：用户组前要用@符号，如果是用户，直接写用户名就可以了。rw代表可读写，显然只读就是r了<br>3、启动SVN服务<br>svnserve -d -r /path/svn  特别注意，路径一定是SVN的目录，不是其中一个版本库的目录，不然，能正常启动，就是访问有问题<br>没有任何输出，则启动成功<br>4.配置conrnerStone<br>点击ConerStone左下角 如下图的“+”，添加SVN地址，<br>需要填写的方格<br>server： IP地址 不包括Svn后面的其他路径 例如：主机IP 192.168.。。。<br>Repisitory path:Ip后面的路径  例如：上文的Pro<br>Name：用户名<br>Password：密码<br>5.让SVN支持.a文件的上传<br>（1）打开终端：vi ~/.subversion/config 打开config文件<br>（2）找到：</p>
+<p>#global-ignores = *.o <em>.lo *.la *.al .libs *.so *.so.[0-9]</em> *.a *.pyc *.pyo </p>
+<h1 id="rej-swp-DS-Store"><a href="#rej-swp-DS-Store" class="headerlink" title=".rej ~ ## .# .*.swp .DS_Store"></a><em>.rej <em>~ #</em># .#</em> .*.swp .DS_Store</h1><p>这是svn默认的忽略列表，更改这个即可上传和下载被忽略的文件<br>去掉开头第一行的#和#前面的空格，第一行global前面不能有空格。<br>去掉第二行的#，空格不用管。<br>删除上问红色的*.a，这样即可上传.a文件。</p>
+<p>#<strong>Cornerstone Svn简单使用指南</strong></p>
+<p>一、安装并拷贝项目</p>
+<p>1.第一步：安装svn.<br>2.第二步：第一个使用svn，找到“Check Out Working Copy”选项，选择并点击。<br>目的：从服务器上拷贝一份全新的项目工程。<br>3.第三步：可以正常使用了。。。</p>
+<p>二、在项目中使用</p>
+<p>1.查看日志<br>找到“Log”选项，选择并点击。<br>查看自己当前的版本是否是最新的，如果不是最新的版本，从第2步开始执行；<br>如果自己当前的版本是最新的，从第3步开始执行；<br>2.更新到最新版本<br>当前程序员在打开工程项目之前，找到“Update to Latest Revision”选项，选择并点击。<br>目的：保持当前程序员客户端的项目版本是最新的。<br>3.编辑项目<br>4.提交之前，再次点击“Update to Latest Revision”，保持项目是最新版本。<br>5.更新最新版本后，如果有错误，冲突等情况，解决，直到没错误！<br>6.提交项目，找到“Commit Changes”选项，选择并点击。<br>目的：把当前编辑后的项目提交的服务器。<br>三、”lock”和“unlock”的使用<br>当我们正在编辑某个文件时，为了防止被其他人修改，可以在编辑之前，使该文件处于锁定状态，当我们编辑后，要提交的时候，再解锁。<br>四、每次提交项目，都要写详细备注并署名。<br>五、恢复到以前的版本，以前其他出错情况，请参考稍后的文档说明或上网搜索。<br>Cornerstone的逻辑很清晰，界面打开后，左边栏上下分开，上面是working copies的列表，下面是REPOSITORIES的列表。常见的功能基本上跟windows一样，在上下文中可以得到。</p>
+<p>1、连接到HTTP server</p>
+<p>RESPOSITORIES栏上，标题栏的右手边有+和-，点击+号（如果第一次打开这个软件，这一步会自动跳出来），出现的对话框中，选择HTTP Server</p>
+<p>Server：http server的地址<br>Port: 空着就可以</p>
+<p>Repository path: 填入http server的Repository地址。一般这个地址，开源项目host在你创建项目后都会给你地方拷贝。</p>
+<p>提示：在这个栏目下面，有一行最后形成的地址，你可以跟开源项目给你的路径看一下是否一致。</p>
+<p>NickName: 空着就可<br>Name: 填入登录的账户名称<br>Password: 填入登录的密码</p>
+<p>然后点击Add，就可以把这个Repository加入了。 </p>
+<p>2、Check out<br>按照1做好自己的REPOSITORIES，选中一个的时候，左上角的Check Out就会高亮，点击该图标，就会出现一个路径选择的对话框。填好相应的地方后，就开始check out了。<br>##<strong>注意</strong>：<br>**<em>第一次在check out没有完成之前，你选择的本地work space目录是不会出现在 working COPIES上的。**</em><br>3、Commit delete file<br>先把本地的文件删除，然后在cornerstone的working copies栏目中，找到相应的文件所在的位置，可以看到这个文件有个M标志，表示missing。在该文件上右键点击，上下文菜单中找到Delete，然后确认。刚才的M标识换成了D，表示Deleted。这个时候你就可以commit了。<br>4、Relocate<br>如果服务器上改了原始的某个目录的路径，那么在WORKING COPIES上，右键可以找到Relocate To，后面会跟上相应的目录，点击就可以重新定位。定位好后，相应的REPOSITORIES会自动更改。 </p>
+<p>##参考：</p>
+<p>  <a target="_blank" rel="noopener" href="http://www.tuicool.com/articles/n6fyq2">conerStone的配置及使用说明</a><br><a target="_blank" rel="noopener" href="http://www.cnblogs.com/onlyfu/archive/2012/05/08/2489814.html">MAC下配置SVN</a><br><a target="_blank" rel="noopener" href="http://blog.csdn.net/wisdom605768292/article/details/19068601">http://blog.csdn.net/wisdom605768292/article/details/19068601</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/categories/%E5%B7%A5%E5%85%B7/">工具</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/SVN/">SVN</a>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/Mac/">Mac</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/2017/03/16/%E5%B7%A5%E5%85%B7/%E5%B8%B8%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">常用正则表达式</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/2017/03/16/PHP/mac-XAMPP%E7%8E%AF%E5%A2%83%E4%B8%8B,-%E4%BD%BF%E7%94%A8php%E5%87%BD%E6%95%B0mkdir()%E6%B7%BB%E5%8A%A0%E6%96%B0%E7%9B%AE%E5%BD%95(%E6%96%87%E4%BB%B6)%E6%8A%A5%E9%94%99,%E6%8A%A5%E9%94%99%E4%BF%A1%E6%81%AF-permission-denied;/">
+                        <span class="hidden-mobile">XAMPP 权限问题</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/debouncer.js" ></script>
+<script  src="/blog/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/blog/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/blog/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "SVN 配置&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/blog/js/local-search.js" ></script>
+  <script>
+    var path = "/blog/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

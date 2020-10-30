@@ -1,0 +1,585 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/favicon.png">
+  <link rel="icon" type="image/png" href="/blog/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="吃面多放葱">
+  <meta name="keywords" content="">
+  <title>Apple登录集成 - 吃面多放葱的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/blog/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/blog/">&nbsp;<strong>吃面多放葱</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/blog/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-03-30 14:00" pubdate>
+        2020年3月30日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      539 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      7
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">Apple登录集成</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>1.target -&gt; Signing &amp; Capabilities, 点击加号, 搜索 Sign In with Apple</p>
+<p>2.General -&gt; Frameworks, Libraries, and Embedded Content,点击加号， 搜索 AuthenticationServices 并导入进去， Embed 选择  Embed &amp; Sign</p>
+<h2 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h2><ul>
+<li><p>应用启动登录校验</p>
+<pre><code class="hljs swift"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">application</span><span class="hljs-params">(<span class="hljs-number">_</span> application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: <span class="hljs-keyword">Any</span>]?)</span></span> -&gt; <span class="hljs-type">Bool</span> &#123;
+       <span class="hljs-keyword">let</span> appleIDProvider = <span class="hljs-type">ASAuthorizationAppleIDProvider</span>()
+       <span class="hljs-comment">//此处Userid可以为本地存储的token或其他登陆确认身份内容</span>
+       appleIDProvider.getCredentialState(forUserID: <span class="hljs-type">KeychainItem</span>.currentUserIdentifier) &#123; (credentialState, error) <span class="hljs-keyword">in</span>
+           <span class="hljs-keyword">switch</span> credentialState &#123;
+           <span class="hljs-keyword">case</span> .authorized:
+               <span class="hljs-comment">//授权有效，走登陆成功页面</span>
+               <span class="hljs-keyword">break</span>
+           <span class="hljs-keyword">case</span> .revoked, .notFound:
+               <span class="hljs-comment">// 走登陆页面</span>
+               <span class="hljs-type">DispatchQueue</span>.main.async &#123;
+                   
+               &#125;
+           <span class="hljs-keyword">default</span>:
+               <span class="hljs-keyword">break</span>
+           &#125;
+       &#125;
+       <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+   &#125;</code></pre>
+</li>
+<li><p>创建appid登录按钮并添加到登陆页面指定位置</p>
+</li>
+</ul>
+<pre><code class="hljs reasonml"><span class="hljs-keyword">let</span> authorizationButton = <span class="hljs-constructor">ASAuthorizationAppleIDButton()</span>
+ 
+@objc
+func handle<span class="hljs-constructor">AuthorizationAppleIDButtonPress()</span> &#123;
+    <span class="hljs-keyword">let</span> appleIDProvider = <span class="hljs-constructor">ASAuthorizationAppleIDProvider()</span>
+    <span class="hljs-keyword">let</span> request = appleIDProvider.create<span class="hljs-constructor">Request()</span>
+    request.requestedScopes = <span class="hljs-literal">[.<span class="hljs-identifier">fullName</span>, .<span class="hljs-identifier">email</span>]</span>
+    
+    <span class="hljs-keyword">let</span> authorizationController = <span class="hljs-constructor">ASAuthorizationController(<span class="hljs-params">authorizationRequests</span>: [<span class="hljs-params">request</span>])</span>
+    authorizationController.delegate = self
+    authorizationController.presentationContextProvider = self
+    authorizationController.perform<span class="hljs-constructor">Requests()</span>
+&#125;
+</code></pre>
+
+<ul>
+<li><p>处理登陆事件代理</p>
+<pre><code class="hljs swift"><span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">LoginViewController</span>: <span class="hljs-title">ASAuthorizationControllerDelegate</span> </span>&#123;
+    <span class="hljs-comment">/// - Tag: 认证状态回调信息</span>
+    <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">authorizationController</span><span class="hljs-params">(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization)</span></span> &#123;
+        <span class="hljs-keyword">switch</span> authorization.credential &#123;
+        <span class="hljs-keyword">case</span> <span class="hljs-keyword">let</span> appleIDCredential <span class="hljs-keyword">as</span> <span class="hljs-type">ASAuthorizationAppleIDCredential</span>: <span class="hljs-comment">//此处为appleID 认证</span>
+            
+            <span class="hljs-comment">// 根据以下信息在后端创建账户</span>
+            <span class="hljs-keyword">let</span> userIdentifier = appleIDCredential.user  <span class="hljs-comment">//用户唯一标志符</span>
+            <span class="hljs-keyword">let</span> fullName = appleIDCredential.fullName
+            <span class="hljs-keyword">let</span> email = appleIDCredential.email
+            
+            <span class="hljs-comment">// 后端请求注册账户及密码及登录成功后存储登录信息处理（这里根据业务情况来决定是否重新注册用户信息）</span>
+            
+            <span class="hljs-comment">// 成功后进入登陆后页面</span>
+    
+        <span class="hljs-keyword">case</span> <span class="hljs-keyword">let</span> passwordCredential <span class="hljs-keyword">as</span> <span class="hljs-type">ASPasswordCredential</span>: <span class="hljs-comment">//此处为账号密码认证</span>
+        
+            <span class="hljs-comment">// Sign in using an existing iCloud Keychain credential.</span>
+            <span class="hljs-keyword">let</span> username = passwordCredential.user
+            <span class="hljs-keyword">let</span> password = passwordCredential.password
+            
+            <span class="hljs-comment">// 做一些账号密码的登录处理</span>
+            
+            <span class="hljs-comment">// 成功后进入登陆后页面</span>
+        <span class="hljs-keyword">default</span>:
+            <span class="hljs-keyword">break</span>
+        &#125;
+    &#125;
+    
+    <span class="hljs-comment">/// - Tag: 获取认证状态失败后的错误信息</span>
+    <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">authorizationController</span><span class="hljs-params">(controller: ASAuthorizationController, didCompleteWithError error: Error)</span></span> &#123;
+        <span class="hljs-comment">// Handle error.</span>
+    &#125;
+&#125;</code></pre>
+</li>
+<li><p>处理视图代理</p>
+<pre><code class="hljs swift"><span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">LoginViewController</span>: <span class="hljs-title">ASAuthorizationControllerPresentationContextProviding</span> </span>&#123;
+    <span class="hljs-comment">/// - Tag: 提供presention视图</span>
+    <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">presentationAnchor</span><span class="hljs-params">(<span class="hljs-keyword">for</span> controller: ASAuthorizationController)</span></span> -&gt; <span class="hljs-type">ASPresentationAnchor</span> &#123;
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>.view.window!
+    &#125;
+&#125;
+</code></pre>
+</li>
+<li><p>进入登录视图进行登陆验证 （此处可根据业务情况来决定是否添加）</p>
+<pre><code class="hljs reasonml">override func view<span class="hljs-constructor">DidAppear(<span class="hljs-params">_</span> <span class="hljs-params">animated</span>: Bool)</span> &#123;
+    super.view<span class="hljs-constructor">DidAppear(<span class="hljs-params">animated</span>)</span>
+    perform<span class="hljs-constructor">ExistingAccountSetupFlows()</span>
+&#125;
+
+func perform<span class="hljs-constructor">ExistingAccountSetupFlows()</span> &#123;
+    <span class="hljs-comment">// Prepare requests for both Apple ID and password providers.</span>
+    <span class="hljs-keyword">let</span> requests = <span class="hljs-literal">[ASA<span class="hljs-identifier">uthorizationAppleIDProvider</span>().<span class="hljs-identifier">createRequest</span>(),</span>
+<span class="hljs-literal">                    ASA<span class="hljs-identifier">uthorizationPasswordProvider</span>().<span class="hljs-identifier">createRequest</span>()]</span>
+    
+    <span class="hljs-comment">// Create an authorization controller with the given requests.</span>
+    <span class="hljs-keyword">let</span> authorizationController = <span class="hljs-constructor">ASAuthorizationController(<span class="hljs-params">authorizationRequests</span>: <span class="hljs-params">requests</span>)</span>
+    authorizationController.delegate = self
+    authorizationController.presentationContextProvider = self
+    authorizationController.perform<span class="hljs-constructor">Requests()</span>
+&#125;</code></pre>
+
+</li>
+</ul>
+<h2 id="退出登录"><a href="#退出登录" class="headerlink" title="退出登录"></a>退出登录</h2><ul>
+<li>根据<code>userIdentifier</code>退出登陆流程</li>
+</ul>
+<p>##参考资料<br><a target="_blank" rel="noopener" href="https://developer.apple.com/documentation/authenticationservices/implementing_user_authentication_with_sign_in_with_apple">Implementing User Authentication with Sign in with Apple</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/categories/iOS/">iOS</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/iOS/">iOS</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/2020/10/26/iOS/Notification-Programming-Topics/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">通知编程</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/2019/05/22/%E5%B7%A5%E5%85%B7/Carthage-%E5%AE%89%E8%A3%85/">
+                        <span class="hidden-mobile">Carthage安装</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/debouncer.js" ></script>
+<script  src="/blog/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/blog/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/blog/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "Apple登录集成&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/blog/js/local-search.js" ></script>
+  <script>
+    var path = "/blog/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

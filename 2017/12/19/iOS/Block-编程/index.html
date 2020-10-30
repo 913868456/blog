@@ -1,0 +1,869 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/favicon.png">
+  <link rel="icon" type="image/png" href="/blog/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="吃面多放葱">
+  <meta name="keywords" content="">
+  <title>Block编程 - 吃面多放葱的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/blog/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/blog/">&nbsp;<strong>吃面多放葱</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/blog/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2017-12-19 16:39" pubdate>
+        2017年12月19日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.1k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      52
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">Block编程</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Block对象是一个C语言层面的语法和运行时特色.Block类似于标准的C函数,但是除了包含可执行代码之外，它们还可以包含变量绑定到自动(栈)或托管(堆)内存。因此，Block可以维护一组状态(数据)，以便在执行时影响行为。</p>
+<p>可以使用block组成函数表达式.这些表达式可以传递给API,可选地存储,并且通过多线程使用.Block作为一个回调非常有用.因为Block不仅可以包含在回调上执行的代码,还可以包含执行过程中需要用到的数据.</p>
+<p>在OS X v10.6 和 iOS 4.0 之后可以使用block. block runtime 是 开源的,并且在 <a target="_blank" rel="noopener" href="http://llvm.org/svn/llvm-project/compiler-rt/trunk/">LLVM’s compiler-rt subproject respository</a>中可以找到<br>Block同样被表示为标准的C语言工作组.由于Objective-C 和 C ++ 都是派生自C. Block在这三种语言中都能使用.</p>
+<p>通过阅读这个文档去学习什么是block对象,如何在C,C++,OC中使用.</p>
+<p>这篇文档的组成</p>
+<p>这个文档包含以下章节:</p>
+<ul>
+<li><a href="">开始使用Block</a> 提供关于Block的介绍一个快速.实用的使用.</li>
+<li><a href="">概念通览</a> 提供关于Block概念方面的介绍</li>
+<li><a href="">声明和创建Block</a> 展示如何声明block变量和如何实现block</li>
+<li><a href="">Block 和 变量</a> 描述了Block和变量之间的交互,还有定义__block存储类型的修改者.</li>
+<li><a href="">使用Block</a> 阐述了Block的多种使用方式</li>
+</ul>
+<h1 id="开始使用Block"><a href="#开始使用Block" class="headerlink" title="开始使用Block"></a>开始使用Block</h1><p>下面内容帮助您使用实用的例子开始使用Block.</p>
+<h2 id="声明和使用一个Block"><a href="#声明和使用一个Block" class="headerlink" title="声明和使用一个Block"></a>声明和使用一个Block</h2><p>使用^操作符去声明一个block变量并且去表示一个block字面量的开始.Block内容包含在{}中.正如这个例子中展示的(跟在C语言中一样, ;表示声明的结束):</p>
+<pre><code class="hljs dart"><span class="hljs-built_in">int</span> multiplier = <span class="hljs-number">7</span>;
+
+<span class="hljs-built_in">int</span> (^myBlock)(<span class="hljs-built_in">int</span>)  = ^(<span class="hljs-built_in">int</span> <span class="hljs-built_in">num</span>)&#123;
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">num</span> * multiplier;
+&#125;;
+</code></pre>
+
+<p>示例可以用下图来阐述:</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/3340896-2b3f81f0fddab136.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" srcset="/blog/img/loading.gif" alt="示例"></p>
+<p>注意block能够在它定义域内作为变量使用.如果你声明一个block变量,你可以像使用函数一样使用它.</p>
+<pre><code class="hljs dart"><span class="hljs-built_in">int</span> multiplier = <span class="hljs-number">7</span>;
+
+<span class="hljs-built_in">int</span> (^myBlock)(<span class="hljs-built_in">int</span>) = ^(<span class="hljs-built_in">int</span> <span class="hljs-built_in">num</span>) &#123;
+    
+  <span class="hljs-keyword">return</span> <span class="hljs-built_in">num</span> * multiplier;  
+&#125;;
+
+printf(<span class="hljs-string">&quot;%d&quot;</span>, myBlock(<span class="hljs-number">3</span>));
+
+<span class="hljs-comment">// prints &quot;21&quot;</span></code></pre>
+
+<h2 id="直接使用一个Block"><a href="#直接使用一个Block" class="headerlink" title="直接使用一个Block"></a>直接使用一个Block</h2><p>在许多情况下,您不需要声明block变量;只需要在需要作为参数的地方简单写一个block字面量即可.下面的例子使用 qsort_b 函数.qsort_b 函数类似于标准的 qsort_r 函数,但是携带一个block作为最后的参数.</p>
+<pre><code class="hljs nim"><span class="hljs-built_in">char</span> *myCharacters[<span class="hljs-number">3</span>] = &#123;<span class="hljs-string">&quot;TomJohn&quot;</span>, <span class="hljs-string">&quot;George&quot;</span>, <span class="hljs-string">&quot;Charles codomine&quot;</span>&#125;;
+
+qsort_b(myCharacters, <span class="hljs-number">3</span>, sizeof(<span class="hljs-built_in">char</span> *), ^(<span class="hljs-keyword">const</span> <span class="hljs-built_in">void</span> *l, <span class="hljs-keyword">const</span> <span class="hljs-built_in">void</span> *r)&#123;
+    
+   <span class="hljs-built_in">char</span> *left = * (<span class="hljs-built_in">char</span> **)l;
+   <span class="hljs-built_in">char</span> *right = *(cahr **)r;
+   
+   <span class="hljs-keyword">return</span> strncmp(left, right, l);
+    
+&#125;);
+
+// myCharacters <span class="hljs-keyword">is</span> now &#123;<span class="hljs-string">&quot;Charles Condomine&quot;</span>, <span class="hljs-string">&quot;George&quot;</span>, <span class="hljs-string">&quot;TomJohn&quot;</span>&#125;</code></pre>
+
+<h2 id="Blocks-with-Cocoa"><a href="#Blocks-with-Cocoa" class="headerlink" title="Blocks with Cocoa"></a>Blocks with Cocoa</h2><p>在Cocoa框架下的一些方法会携带一个block作为参数,通常用来在一个集合内对象执行操作,或者作为一个操作结束后的回调来使用.下面的例子展示了如何在NSArray的<code>sortedArrayUsingComparator:</code>方法中使用一个Block.该方法携带单个参数-Block.为了方面阐述.在这个例子中,block被定义为一个NSComparator类型的本地变量:</p>
+<pre><code class="hljs objectivec"><span class="hljs-built_in">NSArray</span> *stringsArray = @[<span class="hljs-string">@&quot;string 1&quot;</span>, <span class="hljs-string">@&quot;String 21&quot;</span>, <span class="hljs-string">@&quot;string 12&quot;</span>, <span class="hljs-string">@&quot;String 11&quot;</span>, <span class="hljs-string">@&quot;String 02&quot;</span>];
+
+<span class="hljs-keyword">static</span> <span class="hljs-built_in">NSStringCompareOptions</span> comparisonOptions = <span class="hljs-built_in">NSCaseInsensitiveSearch</span> | <span class="hljs-built_in">NSNumericSearch</span> | <span class="hljs-built_in">NSWidthInsensitiveSearch</span> | <span class="hljs-built_in">NSForceOrderingSearch</span>;
+
+<span class="hljs-built_in">NSLocale</span> *currentLocale = [<span class="hljs-built_in">NSLocale</span> currentLocale];
+
+<span class="hljs-built_in">NSComparator</span> finderSortBlock = ^(<span class="hljs-keyword">id</span> string1, <span class="hljs-keyword">id</span> stirng2) &#123;
+    
+    <span class="hljs-built_in">NSRange</span> string1Range = <span class="hljs-built_in">NSMakeRange</span>(<span class="hljs-number">0</span>, [string1 length]);
+    <span class="hljs-keyword">return</span> [stirng1 compare:string2 options:comparisonOptions range:string1Range locale:currentLocale];
+&#125;;
+
+<span class="hljs-built_in">NSArray</span> *finderSortArray = [stringsArray sortedArrayUsingComparator:finderSortBlock];
+
+<span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;finderSortArray:%@&quot;</span>, finderSortArray);
+
+<span class="hljs-comment">/*</span>
+<span class="hljs-comment"> </span>
+<span class="hljs-comment"> output:</span>
+<span class="hljs-comment"> </span>
+<span class="hljs-comment"> finderSortArray: (</span>
+<span class="hljs-comment"> </span>
+<span class="hljs-comment">    &quot;string 1&quot;,</span>
+<span class="hljs-comment">    &quot;String 02&quot;,</span>
+<span class="hljs-comment">    &quot;String 11&quot;,</span>
+<span class="hljs-comment">    &quot;string 12&quot;,</span>
+<span class="hljs-comment">    &quot;String 21&quot;</span>
+<span class="hljs-comment"> )</span>
+<span class="hljs-comment"> */</span>
+</code></pre>
+
+<h2 id="block-变量"><a href="#block-变量" class="headerlink" title="__block 变量"></a>__block 变量</h2><p>block的一个强大的特性是在同一作用域内,它们能够修改变量.使用__block存储类型修饰符标记一个在block中可以修改的外部变量. 改变 <strong>Blocks with Cocoa</strong>中的示例,可以使用一个block变量去计算多少个字符串被用来比较. 为了阐述方便,在这个例子中直接使用block,使用<strong>currentLocale</strong>作为block中的一个只读变量.</p>
+<pre><code class="hljs objectivec"><span class="hljs-built_in">NSArray</span> *stringsArray = @[ <span class="hljs-string">@&quot;string 1&quot;</span>,
+                          <span class="hljs-string">@&quot;String 21&quot;</span>, <span class="hljs-comment">// &lt;-</span>
+                          <span class="hljs-string">@&quot;string 12&quot;</span>,
+                          <span class="hljs-string">@&quot;String 11&quot;</span>,
+                          <span class="hljs-string">@&quot;Strîng 21&quot;</span>, <span class="hljs-comment">// &lt;-</span>
+                          <span class="hljs-string">@&quot;Striñg 21&quot;</span>, <span class="hljs-comment">// &lt;-</span>
+                          <span class="hljs-string">@&quot;String 02&quot;</span> ];
+ 
+<span class="hljs-built_in">NSLocale</span> *currentLocale = [<span class="hljs-built_in">NSLocale</span> currentLocale];
+__block <span class="hljs-built_in">NSUInteger</span> orderedSameCount = <span class="hljs-number">0</span>;
+ 
+<span class="hljs-built_in">NSArray</span> *diacriticInsensitiveSortArray = [stringsArray sortedArrayUsingComparator:^(<span class="hljs-keyword">id</span> string1, <span class="hljs-keyword">id</span> string2) &#123;
+ 
+    <span class="hljs-built_in">NSRange</span> string1Range = <span class="hljs-built_in">NSMakeRange</span>(<span class="hljs-number">0</span>, [string1 length]);
+    <span class="hljs-built_in">NSComparisonResult</span> comparisonResult = [string1 compare:string2 options:<span class="hljs-built_in">NSDiacriticInsensitiveSearch</span> range:string1Range locale:currentLocale];
+ 
+    <span class="hljs-keyword">if</span> (comparisonResult == <span class="hljs-built_in">NSOrderedSame</span>) &#123;
+        orderedSameCount++;
+    &#125;
+    <span class="hljs-keyword">return</span> comparisonResult;
+&#125;];
+ 
+<span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;diacriticInsensitiveSortArray: %@&quot;</span>, diacriticInsensitiveSortArray);
+<span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;orderedSameCount: %d&quot;</span>, orderedSameCount);
+ 
+<span class="hljs-comment">/*</span>
+<span class="hljs-comment">Output:</span>
+<span class="hljs-comment"> </span>
+<span class="hljs-comment">diacriticInsensitiveSortArray: (</span>
+<span class="hljs-comment">    &quot;String 02&quot;,</span>
+<span class="hljs-comment">    &quot;string 1&quot;,</span>
+<span class="hljs-comment">    &quot;String 11&quot;,</span>
+<span class="hljs-comment">    &quot;string 12&quot;,</span>
+<span class="hljs-comment">    &quot;String 21&quot;,</span>
+<span class="hljs-comment">    &quot;Str\U00eeng 21&quot;,</span>
+<span class="hljs-comment">    &quot;Stri\U00f1g 21&quot;</span>
+<span class="hljs-comment">)</span>
+<span class="hljs-comment">orderedSameCount: 2</span>
+<span class="hljs-comment">*/</span>
+</code></pre>
+<p>详细内容请看 <strong>Blocks 和 变量</strong> 这一章节</p>
+<h1 id="概念通览"><a href="#概念通览" class="headerlink" title="概念通览"></a>概念通览</h1><p>Block对象为您提供一种方式去创建一个ad hoc函数体作为在C,和C的衍生语言中的表达方式.在其他的语言和环境中.一个block对象有时也叫做闭包.</p>
+<h2 id="Block功能"><a href="#Block功能" class="headerlink" title="Block功能"></a>Block功能</h2><p>block是一个内联的匿名代码集合:</p>
+<ul>
+<li>像函数一样有一个类型参数列表</li>
+<li>拥有推导的或者声明的返回类型</li>
+<li>能够捕获定义作用域内的状态</li>
+<li>能够可选地修改作用域内的状态</li>
+<li>能够与在同一作用域内定义的其他Block共享修改的可能性</li>
+<li>能够在(栈结构)已经被销毁后,仍然可以继续分享和修改(栈结构)下定义的状态.</li>
+</ul>
+<p>您可以拷贝一个block甚至传递它到其他线程用来延迟执行.在生命周期内编译器和运行时将所有被引用的变量保存副本。</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>Block 表示一个小的,内部包含的代码片段.正因为这样,他们常被用来作为执行并行工作单元的一种方式.或者作为集合中的项目,或者作为一个操作结束后的回调.</p>
+<p>Blocks作为传统的回调函数主要有两个原因:</p>
+<ol>
+<li>它们允许您在方法实现的上下文中执行编写的代码.<br>Block通常作为框架方法的参数</li>
+<li>它们允许作为方法的局部变量.<br>与其使用需要一个包含所有需要执行操作的上下文信息的数据结构的回调函数，您只需直接使用该局部变量.</li>
+</ol>
+<h1 id="声明和创建-Blocks"><a href="#声明和创建-Blocks" class="headerlink" title="声明和创建 Blocks"></a>声明和创建 Blocks</h1><h2 id="声明一个Block-引用"><a href="#声明一个Block-引用" class="headerlink" title="声明一个Block 引用"></a>声明一个Block 引用</h2><p>Block变量持有Block的引用.使用声明一个函数指针类似的语法声明它们.除了使用^代替*.block类型和C类型系统兼容.下面的block变量声明都是有效的:</p>
+<pre><code class="hljs lisp">void (^blockReturningVoidWithVoidArgument)(<span class="hljs-name">void</span>)<span class="hljs-comment">;</span>
+int (^blockReturningIntWithIntAndCharArguments)(<span class="hljs-name">int</span>, char)<span class="hljs-comment">;</span>
+void (^arrayOfTenBlocksReturningVoidWithIntArgument[<span class="hljs-number">10</span>])(<span class="hljs-name">int</span>)<span class="hljs-comment">;</span>
+</code></pre>
+<p>Block同样支持可变参数.一个block如果不含参数必须在参数列表中指明void.</p>
+<p>在许多地方,使用一个类型别名声明一个Block类型能够更好地使用block.</p>
+<pre><code class="hljs protobuf">typedef <span class="hljs-built_in">float</span> (MyBlockType)(<span class="hljs-built_in">float</span>, <span class="hljs-built_in">float</span>);
+
+MyBlockType myFirstBlock = <span class="hljs-comment">// ...;</span>
+MyBlockType mySecondBlock = <span class="hljs-comment">// ...;</span>
+</code></pre>
+
+<h2 id="创建一个Block"><a href="#创建一个Block" class="headerlink" title="创建一个Block"></a>创建一个Block</h2><p>使用^操作符表示一个block字面量的开始.它后面通常使用()来包含一个参数列表.block体包含在{}中.下面的例子定义了一个简单的block,block末尾用;结尾.</p>
+<pre><code class="hljs nim"><span class="hljs-built_in">float</span> (^oneFrom)(<span class="hljs-built_in">float</span>);
+
+oneFrom = ^(<span class="hljs-built_in">float</span> aFloat) &#123;
+  
+  <span class="hljs-built_in">float</span> <span class="hljs-literal">result</span> = aFloat - <span class="hljs-number">1</span>.<span class="hljs-number">0</span>;
+  <span class="hljs-keyword">return</span> <span class="hljs-literal">result</span>;
+    
+&#125;;
+</code></pre>
+
+<p>如果没有明确声明一个Block表达式的返回值类型,它会自动推导其类型.如果返回值是被推导的并且参数列表是void,您也可以忽略void参数.当出现多个返回语句时，它们必须完全匹配(在必要时使用转换)。</p>
+<h2 id="全局Block"><a href="#全局Block" class="headerlink" title="全局Block"></a>全局Block</h2><p>在文件层面,您可以使用一个block作为全局字面量</p>
+<pre><code class="hljs angelscript">
+#<span class="hljs-keyword">import</span> &lt;stdio.h&gt;
+
+<span class="hljs-built_in">int</span> GlobalInt = <span class="hljs-number">0</span>;
+
+<span class="hljs-built_in">int</span> (^getGlobalInt)(<span class="hljs-built_in">void</span>) = ^(<span class="hljs-keyword">return</span> GlobalInt;);
+</code></pre>
+
+<h1 id="Blocks-和-变量"><a href="#Blocks-和-变量" class="headerlink" title="Blocks 和 变量"></a>Blocks 和 变量</h1><p>本节主要描述blocks和变量之间的交互,包括内存管理.</p>
+<h2 id="变量类型"><a href="#变量类型" class="headerlink" title="变量类型"></a>变量类型</h2><p>在block体的代码内,变量可以用5种不同方式处理.<br>您可以参考三种标准的变量类型,就像从函数中得到的那样.</p>
+<ul>
+<li>全局变量,包含静态局部变量</li>
+<li>全局函数(技术上来讲不是变量)</li>
+<li>来自作用域内的局部变量和参数</li>
+</ul>
+<p>Blocks同样支持两种其他类型的变量:</p>
+<p>1.在函数层面是__block 变量.__block变量在block内是可变的,如果正在引用的block被拷贝到堆上,__block变量会被保存起来.<br>2.<strong>const</strong> 导入的变量.</p>
+<p>最后,在一个方法实现内,block可能会引用OC实例变量—请看下面的 <a href="">对象和Block变量</a> 章节.</p>
+<p>下面的规则适用于block中使用的变量:</p>
+<ol>
+<li>全局变量是可访问的,包含作用域内存在的静态变量.</li>
+<li>传递到block中的参数是可访问的(就像函数的参数一样)</li>
+<li>作用域内的栈变量(非静态变量)被捕获作为常量.       (block内使用的外部栈存储的变量(非静态变量)在block内部会作为常量来使用)<br>变量的值在程序中block表达式的位置上捕获的.在嵌套block中,该值从最近的作用域内被捕获.</li>
+<li>__block修饰的局部变量是通过引用来提供访问的,并且这些变量在block内部是可修改的.<br>任何作用域内的改变都会被映射,包括在同一作用域内其他定义的block的改变同样也会被映射.这些内容在”__block 存储类型”中被详细讨论.</li>
+<li>block作用域内声明的局部变量,其行为跟函数内的局部变量几乎相同.<br>block的每次调用都会提供那个变量的新的副本. 这些变量依次作为在block内的常量或者引用变量来使用.</li>
+</ol>
+<p>下面的例子阐述了非静态局部变量的使用:</p>
+<pre><code class="hljs perl"><span class="hljs-keyword">int</span> <span class="hljs-keyword">x</span> = <span class="hljs-number">123</span>;
+
+vooid (^printXAndY)(<span class="hljs-keyword">int</span>) = ^(<span class="hljs-keyword">int</span> <span class="hljs-keyword">y</span>) &#123;
+
+  <span class="hljs-keyword">printf</span>(<span class="hljs-string">&quot;%d %d\n&quot;</span>, <span class="hljs-keyword">x</span>,<span class="hljs-keyword">y</span>);  
+&#125;;
+
+printXAndY(<span class="hljs-number">456</span>); <span class="hljs-regexp">//prints</span>: <span class="hljs-number">123</span> <span class="hljs-number">456</span></code></pre>
+<p>如上所述, 试着在blocke内给x赋值会造成错误:</p>
+<pre><code class="hljs gml">int <span class="hljs-symbol">x</span> = <span class="hljs-number">123</span>;
+
+void (^printXAndY)(int) = ^(int <span class="hljs-symbol">y</span>) &#123;
+    
+    <span class="hljs-symbol">x</span> = <span class="hljs-symbol">x</span> + <span class="hljs-symbol">y</span>; <span class="hljs-comment">// error</span>
+    printf(<span class="hljs-string">&quot;%d %d&quot;</span>, <span class="hljs-symbol">x</span>, <span class="hljs-symbol">y</span>);  
+&#125;;
+</code></pre>
+
+<p>想要在block内部对外部变量进行修改,您可以使用__block存储类型修饰符.</p>
+<h2 id="block-存储类型"><a href="#block-存储类型" class="headerlink" title="__block 存储类型"></a>__block 存储类型</h2><p>您可以使用__block 修饰符使block外部导入的变量在其内部可修改.__block存储类似于局部变量的寄存器,内部的自动,静态存储类型。<br>存储区域内的__block变量会与作用域内的变量、所有的block、block副本之间共享.因此,在末尾声明的block副本存在,那么在栈结构销毁时,这块内存将会幸存.同一作用域内的多个block可以同时使用一个共享变量.<br>作为优化.block存储从栈开始,就像block本身一样.如果使用Block_copy复制,则会将变量复制到堆中.因此,__block变量的地址可能随时变化.<br>对于__block变量有两个进一步的限制:它们不能是可变数组，也不能是包含C99可变长度数组的结构体。</p>
+<p>下面的例子阐述了一个__block变量的使用:</p>
+<pre><code class="hljs gml">__block int <span class="hljs-symbol">x</span> = <span class="hljs-number">123</span>; <span class="hljs-comment">// x lives in block storage</span>
+
+void (^printXAndY)(int) = ^(int <span class="hljs-symbol">y</span>) &#123;
+    
+    <span class="hljs-symbol">x</span> = <span class="hljs-symbol">x</span> + <span class="hljs-symbol">y</span>;
+    printf(<span class="hljs-string">&quot;%d %D\n&quot;</span>, <span class="hljs-symbol">x</span>, <span class="hljs-symbol">y</span>);
+&#125;;
+
+printXAndY(<span class="hljs-number">456</span>); <span class="hljs-comment">// prints: 579 456</span>
+
+<span class="hljs-comment">// x is now 579</span>
+</code></pre>
+
+<p>下面的例子展示了block和几种类型变量的交互:</p>
+<pre><code class="hljs objectivec">
+<span class="hljs-keyword">extern</span> <span class="hljs-built_in">NSInteger</span> CounterGlobal;
+<span class="hljs-keyword">static</span> <span class="hljs-built_in">NSInteger</span> CounterStatic;
+
+&#123;
+    <span class="hljs-built_in">NSInteger</span> localCounter = <span class="hljs-number">42</span>;
+    __block <span class="hljs-keyword">char</span> localCharacter;
+    
+    <span class="hljs-keyword">void</span> (^aBlock)(<span class="hljs-keyword">void</span>) = ^(<span class="hljs-keyword">void</span>) &#123;
+      ++CounterGlobal;  
+      ++CounterStatic;
+      CounterGlobal = localCounter; <span class="hljs-comment">// localCounter fixed at block creation</span>
+      localCharacter = <span class="hljs-string">&#x27;a&#x27;</span>; <span class="hljs-comment">// sets localCharacter in enclosing scope    </span>
+    &#125;;
+    
+    ++localCounter; <span class="hljs-comment">//unseen by the block</span>
+    localCharacter = <span class="hljs-string">&#x27;b&#x27;</span>;
+    
+    aBlock();  <span class="hljs-comment">// execute the block </span>
+    <span class="hljs-comment">// localCharacter now &#x27;a&#x27;</span>
+&#125;
+</code></pre>
+
+<h2 id="对象和Block变量"><a href="#对象和Block变量" class="headerlink" title="对象和Block变量"></a>对象和Block变量</h2><h3 id="Objective-C-对象"><a href="#Objective-C-对象" class="headerlink" title="Objective-C 对象"></a>Objective-C 对象</h3><p>当一个block被复制,它会对block内的对象变量创建强引用.如果在方法实现内使用一个block:</p>
+<ul>
+<li>如果您通过引用访问一个实例变量,会创建一个强引用指向self;</li>
+<li>如果您通过值访问一个对象变量,会创建一个强引用指向该变量.</li>
+</ul>
+<p>下面的例子阐述了两个不同的情况:</p>
+<pre><code class="hljs xquery">dispathch_async(queue, ^&#123;
+   
+   // instanceVariable <span class="hljs-literal">is</span> userd <span class="hljs-keyword">by</span> reference, a strong reference <span class="hljs-literal">is</span> made <span class="hljs-keyword">to</span> self 
+   
+   doSomethingWithObject(instanceVariable);
+    
+&#125;);
+
+id localVariable = instanceVariable;
+
+dispatch_async(queue, ^&#123;
+   /*
+   
+    localVariable <span class="hljs-literal">is</span> used <span class="hljs-keyword">by</span> <span class="hljs-keyword">value</span>, a strong reference <span class="hljs-literal">is</span> made <span class="hljs-keyword">to</span> localvariable (<span class="hljs-keyword">and</span><span class="hljs-built_in"> not</span> <span class="hljs-keyword">to</span> self)
+   
+   */ 
+   doSomethingWithObject(localVariable);
+    
+&#125;);
+</code></pre>
+<p>如果想要在block内修改外部的局部对象变量,您可以使用__block标记该变量.</p>
+<h3 id="C-对象"><a href="#C-对象" class="headerlink" title="C++对象"></a>C++对象</h3><p>一般来说，可以在一个block中使用c++对象。在成员函数中，对成员变量和函数的引用通过隐式导入该指针，因此看起来是可变的。如果一个block被复制，有两个考虑因素:</p>
+<p>如果您有一个__block存储类，它是一个基于堆栈的c++对象，那么通常使用的是copy构造函数。<br>如果您在一个block中使用任何其他c++基于堆栈的对象，那么它必须有一个const copy构造函数。然后使用该构造函数复制c++对象。</p>
+<h3 id="Blocks"><a href="#Blocks" class="headerlink" title="Blocks"></a>Blocks</h3><p>当您拷贝一个block时,在block内的其他block引用都会被拷贝如果必要的话.如果您在block内拥有一个block变量或者引用了一个block,那个block将会被拷贝.</p>
+<h1 id="使用Blocks"><a href="#使用Blocks" class="headerlink" title="使用Blocks"></a>使用Blocks</h1><h2 id="调用一个Block"><a href="#调用一个Block" class="headerlink" title="调用一个Block"></a>调用一个Block</h2><p>声明一个block变量,将其作为一个函数,如下所示:</p>
+<pre><code class="hljs angelscript">
+<span class="hljs-built_in">int</span> (^oneFrom)(<span class="hljs-built_in">int</span>) = ^(<span class="hljs-built_in">int</span> anInt)&#123;
+    
+    <span class="hljs-keyword">return</span> anInt - <span class="hljs-number">1</span>;
+&#125;;
+
+printf(<span class="hljs-string">&quot;1 from 10 is %d&quot;</span>, oneFrom(<span class="hljs-number">10</span>));
+
+<span class="hljs-comment">// Prints &quot;1 from 10 is 9&quot;</span>
+
+<span class="hljs-built_in">float</span> (^distanceTraveled)(<span class="hljs-built_in">float</span>, <span class="hljs-built_in">float</span>, <span class="hljs-built_in">float</span>) = ^(<span class="hljs-built_in">float</span> startingSpeed, <span class="hljs-built_in">float</span> acceleration, <span class="hljs-built_in">float</span> time) &#123;
+    
+    <span class="hljs-built_in">float</span> distance = (startingSpeed * time) + (<span class="hljs-number">0.5</span> * acceleration * time * time);
+    <span class="hljs-keyword">return</span> distance;
+&#125;;
+
+<span class="hljs-built_in">float</span> howFar = distanceTraveled(<span class="hljs-number">0.0</span>, <span class="hljs-number">9.8</span>, <span class="hljs-number">1.0</span>);
+<span class="hljs-comment">// howFar = 4.9</span></code></pre>
+<h2 id="使用Block作为函数参数"><a href="#使用Block作为函数参数" class="headerlink" title="使用Block作为函数参数"></a>使用Block作为函数参数</h2><pre><code class="hljs nim"><span class="hljs-built_in">char</span> *myCharacters[<span class="hljs-number">3</span>] = &#123; <span class="hljs-string">&quot;TomJohn&quot;</span>, <span class="hljs-string">&quot;George&quot;</span>, <span class="hljs-string">&quot;Charles Condomine&quot;</span> &#125;;
+ 
+qsort_b(myCharacters, <span class="hljs-number">3</span>, sizeof(<span class="hljs-built_in">char</span> *), ^(<span class="hljs-keyword">const</span> <span class="hljs-built_in">void</span> *l, <span class="hljs-keyword">const</span> <span class="hljs-built_in">void</span> *r) &#123;
+    <span class="hljs-built_in">char</span> *left = *(<span class="hljs-built_in">char</span> **)l;
+    <span class="hljs-built_in">char</span> *right = *(<span class="hljs-built_in">char</span> **)r;
+    <span class="hljs-keyword">return</span> strncmp(left, right, <span class="hljs-number">1</span>);
+&#125;);
+// <span class="hljs-type">Block</span> implementation ends at <span class="hljs-string">&quot;&#125;&quot;</span>
+ 
+// myCharacters <span class="hljs-keyword">is</span> now &#123; <span class="hljs-string">&quot;Charles Condomine&quot;</span>, <span class="hljs-string">&quot;George&quot;</span>, <span class="hljs-string">&quot;TomJohn&quot;</span> &#125;</code></pre>
+<p>注意block包含在函数的参数列表中.</p>
+<h2 id="使用Block作为方法参数"><a href="#使用Block作为方法参数" class="headerlink" title="使用Block作为方法参数"></a>使用Block作为方法参数</h2><p>Cocoa 提供了许多使用block的方法. 您将一个block作为方法参数使用就像使用其他参数一样. </p>
+<pre><code class="hljs objectivec"><span class="hljs-built_in">NSArray</span> *array = @[<span class="hljs-string">@&quot;A&quot;</span>, <span class="hljs-string">@&quot;B&quot;</span>, <span class="hljs-string">@&quot;C&quot;</span>, <span class="hljs-string">@&quot;A&quot;</span>, <span class="hljs-string">@&quot;B&quot;</span>, <span class="hljs-string">@&quot;Z&quot;</span>, <span class="hljs-string">@&quot;G&quot;</span>, <span class="hljs-string">@&quot;are&quot;</span>, <span class="hljs-string">@&quot;Q&quot;</span>];
+<span class="hljs-built_in">NSSet</span> *filterSet = [<span class="hljs-built_in">NSSet</span> setWithObjects: <span class="hljs-string">@&quot;A&quot;</span>, <span class="hljs-string">@&quot;Z&quot;</span>, <span class="hljs-string">@&quot;Q&quot;</span>, <span class="hljs-literal">nil</span>];
+ 
+<span class="hljs-built_in">BOOL</span> (^test)(<span class="hljs-keyword">id</span> obj, <span class="hljs-built_in">NSUInteger</span> idx, <span class="hljs-built_in">BOOL</span> *stop);
+ 
+test = ^(<span class="hljs-keyword">id</span> obj, <span class="hljs-built_in">NSUInteger</span> idx, <span class="hljs-built_in">BOOL</span> *stop) &#123;
+ 
+    <span class="hljs-keyword">if</span> (idx &lt; <span class="hljs-number">5</span>) &#123;
+        <span class="hljs-keyword">if</span> ([filterSet containsObject: obj]) &#123;
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">YES</span>;
+        &#125;
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">NO</span>;
+&#125;;
+ 
+<span class="hljs-built_in">NSIndexSet</span> *indexes = [array indexesOfObjectsPassingTest:test];
+ 
+<span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;indexes: %@&quot;</span>, indexes);
+ 
+<span class="hljs-comment">/*</span>
+<span class="hljs-comment">Output:</span>
+<span class="hljs-comment">indexes: &lt;NSIndexSet: 0x10236f0&gt;[number of indexes: 2 (in 2 ranges), indexes: (0 3)]</span>
+<span class="hljs-comment">*/</span>
+</code></pre>
+
+<pre><code class="hljs objectivec">__block <span class="hljs-built_in">BOOL</span> found = <span class="hljs-literal">NO</span>;
+<span class="hljs-built_in">NSSet</span> *aSet = [<span class="hljs-built_in">NSSet</span> setWithObjects: <span class="hljs-string">@&quot;Alpha&quot;</span>, <span class="hljs-string">@&quot;Beta&quot;</span>, <span class="hljs-string">@&quot;Gamma&quot;</span>, <span class="hljs-string">@&quot;X&quot;</span>, <span class="hljs-literal">nil</span>];
+<span class="hljs-built_in">NSString</span> *string = <span class="hljs-string">@&quot;gamma&quot;</span>;
+ 
+[aSet enumerateObjectsUsingBlock:^(<span class="hljs-keyword">id</span> obj, <span class="hljs-built_in">BOOL</span> *stop) &#123;
+    <span class="hljs-keyword">if</span> ([obj localizedCaseInsensitiveCompare:string] == <span class="hljs-built_in">NSOrderedSame</span>) &#123;
+        *stop = <span class="hljs-literal">YES</span>;
+        found = <span class="hljs-literal">YES</span>;
+    &#125;
+&#125;];
+ 
+<span class="hljs-comment">// At this point, found == YES</span>
+</code></pre>
+
+<h2 id="拷贝Blocks"><a href="#拷贝Blocks" class="headerlink" title="拷贝Blocks"></a>拷贝Blocks</h2><p>通常下,不需要copy或者retain一个block.当想要在block销毁后仍使用block时，才需要copy这个block.拷贝会将一个block移到堆中.</p>
+<p>可以使用c函数拷贝和释放block”</p>
+<pre><code class="hljs abnf">
+Block_copy()<span class="hljs-comment">;</span>
+Block_release()<span class="hljs-comment">;</span>
+</code></pre>
+<p>为避免内存泄露,Block_copy()和Block_release()必须成对出现.</p>
+<h2 id="格式注意"><a href="#格式注意" class="headerlink" title="格式注意"></a>格式注意</h2><p>block字面量是通过一个局部栈数据结构的地址来表示一个block,因此局部栈数据结构的作用域仅限于大括号内。所以应避免以下方式的使用：</p>
+<pre><code class="hljs arduino"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dontDoThis</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-keyword">void</span> (^blockArray[<span class="hljs-number">3</span>])(<span class="hljs-keyword">void</span>);  <span class="hljs-comment">// an array of 3 block references</span>
+ 
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">3</span>; ++i) &#123;
+        blockArray[i] = ^&#123; <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;hello, %d\n&quot;</span>, i); &#125;;
+        <span class="hljs-comment">// WRONG: The block literal scope is the &quot;for&quot; loop.</span>
+    &#125;
+&#125;
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dontDoThisEither</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-keyword">void</span> (^block)(<span class="hljs-keyword">void</span>);
+ 
+    <span class="hljs-keyword">int</span> i = <span class="hljs-built_in">random</span>():
+    <span class="hljs-keyword">if</span> (i &gt; <span class="hljs-number">1000</span>) &#123;
+        block = ^&#123; <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;got i at: %d\n&quot;</span>, i); &#125;;
+        <span class="hljs-comment">// WRONG: The block literal scope is the &quot;then&quot; clause.</span>
+    &#125;
+    <span class="hljs-comment">//...</span>
+&#125;</code></pre>
+
+<h2 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h2><p>您可以设置断点来执行block中的单步操作.也可以在一个GDB会话中使用invoke-block调用一个block.如下所述:</p>
+<pre><code class="hljs smali">
+$<span class="hljs-built_in"> invoke-block </span>myBlock 10 20
+</code></pre>
+<p>如果您想要传一个c字符串,必须引用它.举例来说,传递一个 this string 给 doSomethingWithString block,按下面方式去写:</p>
+<pre><code class="hljs smali">$<span class="hljs-built_in"> invoke-block </span>doSomethingWithString <span class="hljs-string">&quot;\&quot;</span>this string \<span class="hljs-string">&quot;&quot;</span></code></pre>
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>在Objective-C中,使用block,注意以下几点:</p>
+<ul>
+<li>使用类型别名来定义一个Block类型,使用起来更方便.</li>
+<li>__block修饰的外部变量,在block内部可以被修改.（修饰的变量不能是可变数组，也不能是包含C99可变长度数组的结构体）</li>
+<li>每次调用block,都会拷贝该block一次,如果嵌套block,那么内部的block也会被拷贝.</li>
+<li>block进行拷贝操作时,会给内部对象创建一个强引用.如果该对象是实例变量,则创建self的强引用,如果是对象变量,则创建该对象变量的强引用.</li>
+</ul>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a target="_blank" rel="noopener" href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/Blocks/Articles/00_Introduction.html#//apple_ref/doc/uid/TP40007502-CH1-SW1">Blocks Programming Topics</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/categories/iOS/">iOS</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/Block/">Block</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/2018/01/03/iOS/Core-Bluetooth-%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">CoreBluetooth 编程指南</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/2017/12/17/iOS/KVO/">
+                        <span class="hidden-mobile">KVO</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/debouncer.js" ></script>
+<script  src="/blog/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/blog/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/blog/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "Block编程&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/blog/js/local-search.js" ></script>
+  <script>
+    var path = "/blog/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

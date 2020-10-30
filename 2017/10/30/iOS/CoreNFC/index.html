@@ -1,0 +1,562 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/favicon.png">
+  <link rel="icon" type="image/png" href="/blog/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="吃面多放葱">
+  <meta name="keywords" content="">
+  <title>CoreNFC - 吃面多放葱的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/blog/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/blog/">&nbsp;<strong>吃面多放葱</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/blog/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2017-10-30 17:23" pubdate>
+        2017年10月30日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      673 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      8
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">CoreNFC</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <p>检测NFC 设备并读取里面包含的NDEF格式数据.</p>
+<h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><p>使用CoreNFC,你能够读取(目前只能读取) 1-5种NDEF格式的Near Field Communication(NFC)设备信息.为了读取NFC信息,你的app需要创建一个NDEF reader session 并且实现相关协议.一个运行的reader session 会查询NFC设备并且返回它包含的NDEF信息时,会调用相关协议方法.代理对象能够读取相关信息并决定reader session 是否失效.</p>
+<blockquote>
+<h4 id="注意"><a href="#注意" class="headerlink" title="注意:"></a>注意:</h4><p>读取NFC数据的设备仅支持iPhone 7 以上机型<br>当前的NFC芯片,大部分读取不到信息,必须是标准的NFCNDEF格式写入的芯片才能读取.(北京地铁卡,门禁卡,身份证等卡片测试的时候无法识别,反正我是什么都没有读到,就出现一个调取NFC的界面,然后就没有然后了…)</p>
+</blockquote>
+<h4 id="项目配置"><a href="#项目配置" class="headerlink" title="项目配置"></a>项目配置</h4><ul>
+<li>开启NFC功能(如果你的证书勾选自动管理的话, TARGETS -&gt; Capabilities -&gt; Near Field Communication Tag Reading 勾选ON),然后会自动创建一个 “项目名.entitlements” 文件.</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/3340896-88ca287b76f4f852.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" srcset="/blog/img/loading.gif" alt="开启NFC.jpeg"></p>
+<ul>
+<li><p>证书对工程进行授权<br><img src="http://upload-images.jianshu.io/upload_images/3340896-ab200d5472bdfcf5.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" srcset="/blog/img/loading.gif" alt="TestNFC.entitlements"></p>
+</li>
+<li><p>info.plist 文件中添加隐私访问权限申请.<br><img src="http://upload-images.jianshu.io/upload_images/3340896-e6375dba9089d513.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" srcset="/blog/img/loading.gif" alt="info.plist"></p>
+</li>
+</ul>
+<h4 id="核心代码"><a href="#核心代码" class="headerlink" title="核心代码"></a>核心代码</h4><pre><code class="hljs swift"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ViewController</span>: <span class="hljs-title">UIViewController</span>, <span class="hljs-title">NFCNDEFReaderSessionDelegate</span> </span>&#123;
+    
+    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">viewDidLoad</span><span class="hljs-params">()</span></span> &#123;
+        <span class="hljs-keyword">super</span>.viewDidLoad()
+        
+        <span class="hljs-comment">//判断设备是否支持NFC,支持创建NFC对话对象</span>
+        <span class="hljs-keyword">if</span> <span class="hljs-type">NFCNDEFReaderSession</span>.readingAvailable == <span class="hljs-literal">true</span> &#123;
+            
+            <span class="hljs-keyword">let</span> session = <span class="hljs-type">NFCNDEFReaderSession</span>.<span class="hljs-keyword">init</span>(delegate: <span class="hljs-keyword">self</span>, queue: <span class="hljs-literal">nil</span>, invalidateAfterFirstRead: <span class="hljs-literal">false</span>)
+            session.alertMessage = <span class="hljs-string">&quot;请将卡片靠近手机&quot;</span>
+            session.begin()
+        &#125;
+    &#125;
+    
+    <span class="hljs-comment">// MARK: - NFCNDEFReaderSessionDelegate</span>
+    <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">readerSession</span><span class="hljs-params">(<span class="hljs-number">_</span> session: NFCNDEFReaderSession, didInvalidateWithError error: Error)</span></span> &#123;
+        <span class="hljs-built_in">debugPrint</span>(<span class="hljs-string">&quot;\(session)\n\(error)&quot;</span>)
+    &#125;
+    
+    <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">readerSession</span><span class="hljs-params">(<span class="hljs-number">_</span> session: NFCNDEFReaderSession, didDetectNDEFs messages: [NFCNDEFMessage])</span></span> &#123;
+        <span class="hljs-built_in">debugPrint</span>(<span class="hljs-string">&quot;\(session)\n\(messages)&quot;</span>)
+    &#125;
+&#125;
+</code></pre>
+
+<h2 id="Topics"><a href="#Topics" class="headerlink" title="Topics"></a>Topics</h2><h4 id="Reader-Session"><a href="#Reader-Session" class="headerlink" title="Reader Session"></a>Reader Session</h4><pre><code class="hljs markdown">class [<span class="hljs-string">NFCNDEFReaderSession </span>](<span class="hljs-link"></span>)
+//reader session 类  用来探测NFC设备的NDEF数据.
+
+//实例创建
+
+init(delegate: NFCNDEFReaderSessionDelegate, queue: DispatchQueue?, invalidateAfterFirstRead: Bool)
+//参数介绍:
+//delegate: 代理对象
+//queue    : 代理对象回调被分派的队列.  可选值, 置为nil 后,会在内部为该会话创建一个串行队列
+//invalidateAfterFirRead: 设备第一次成功读取到信息后,reader session是否自动失效. 一般填false
+
+//设备可用性检查
+//类属性,返回设备是否支持NFC读取功能
+class var readingAvailable: Bool
+
+ protocol [<span class="hljs-string">NFCReaderSessionProtocol</span>](<span class="hljs-link"></span>)
+//通用交互接口协议  用来跟reader session进行交互
+
+// 会话检测到NDEF信息
+func readerSession(NFCNDEFReaderSession, didDetectNDEFs: [NFCNDEFMessage])
+
+// 会话失效,返回错误信息
+func readerSession(NFCNDEFReaderSession, didInvalidateWithError: Error)
+
+class [<span class="hljs-string">NFCReaderSession</span>](<span class="hljs-link"></span>)
+// NFCNDEFReaderSession 的基类.</code></pre>
+<hr>
+<h4 id="NDEF-Messages"><a href="#NDEF-Messages" class="headerlink" title="NDEF Messages"></a>NDEF Messages</h4><pre><code class="hljs markdown">class   [<span class="hljs-string">NFCNDEFMessage</span>](<span class="hljs-link"></span>)
+//  records 属性是[NFCNDEFPayload]数组
+
+class  [<span class="hljs-string">NFCNDEFPayload</span>](<span class="hljs-link"></span>)
+//  NFC NDEF信息的载体
+
+//载体的id
+var identifier : Data
+
+// 数据内容,这是我们需要读取的二进制信息
+var payload: Data
+
+// 载体类型
+var type      : Data 
+
+// 类型格式名  枚举值
+var typeNameFormat: NFCTypeNameFormat
+
+enum [<span class="hljs-string">NFCTypeNameFormat</span>](<span class="hljs-link"></span>)
+//枚举值 标明NFC NDEF信息的格式</code></pre>
+<h4 id="Errors"><a href="#Errors" class="headerlink" title="Errors"></a>Errors</h4><pre><code class="hljs markdown">struct [<span class="hljs-string">NFCReaderError</span>](<span class="hljs-link"></span>)
+//结构体 reader session的错误类型</code></pre>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/categories/iOS/">iOS</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/CoreNFC/">CoreNFC</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/2017/11/07/iOS/JavaScriptCore%E4%B8%8EWebView/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">JavaScriptCore与WebView</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/2017/10/27/iOS/Dispatch/">
+                        <span class="hidden-mobile">Dispatch</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/debouncer.js" ></script>
+<script  src="/blog/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/blog/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/blog/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "CoreNFC&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/blog/js/local-search.js" ></script>
+  <script>
+    var path = "/blog/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

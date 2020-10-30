@@ -1,0 +1,820 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/favicon.png">
+  <link rel="icon" type="image/png" href="/blog/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="吃面多放葱">
+  <meta name="keywords" content="">
+  <title>CoreBluetooth 编程指南 - 吃面多放葱的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/blog/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/blog/">&nbsp;<strong>吃面多放葱</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/blog/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2018-01-03 19:02" pubdate>
+        2018年1月3日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      5.8k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      66
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">CoreBluetooth 编程指南</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Core Bluetooth 框架给iOS和Mac apps 提供与外部蓝牙设备交互的能力.例如,您的app能够发现,扫描,并且跟外部设备交互.比如心率计和数码恒温计.同样 Mac 和 iOS 设备也可以作为低功耗外部设备,给其他设备提供数据.</p>
+<p>在Core Bluetooth 中,中心设备和外部设备作为主要参与者.通常情况下我们通过一个app来实现中心设备角色,Core Bluetooth 也可以将我们的本地设备作为外部设备角色来实现.</p>
+<h3 id="iOS-App-状态影响蓝牙行为"><a href="#iOS-App-状态影响蓝牙行为" class="headerlink" title="iOS App 状态影响蓝牙行为"></a>iOS App 状态影响蓝牙行为</h3><p>当app处于后台或者挂起状态时,这种情况会影响蓝牙相关功能.默认情况下,app在后台或者挂起状态时,不能执行蓝牙任务.如果想要app在后台执行蓝牙任务,可以声明该app支持Core Bluetooth后台执行模式中的一项或者两项都支持.当app处于后台状态时,同一蓝牙任务的操作是不同的.在设计app时,要考虑这些差异.</p>
+<p>即使app支持后台操作,当内存不足时系统会随时终止后台应用,来给前台运行的app提供内存空间.iOS 7后,Core Bluetooth支持保存中心设备和外部设备管理者对象的状态.可以使用该特性去支持长时间调用蓝牙设备的操作.</p>
+<h3 id="遵循最佳实践来提高用户体验"><a href="#遵循最佳实践来提高用户体验" class="headerlink" title="遵循最佳实践来提高用户体验"></a>遵循最佳实践来提高用户体验</h3><p>由于无线广播会给设备电池造成不利影响.因此,设计app的时候尽可能减少无线广播的使用.遵循最佳实践来减少该方面的不利影响同时提高用户的体验.</p>
+<h2 id="Core-Bluetooth-概述"><a href="#Core-Bluetooth-概述" class="headerlink" title="Core Bluetooth 概述"></a>Core Bluetooth 概述</h2><p>本章节主要介绍开始使用Core Bluetooth 开发时需要了解的专业词汇和概念.</p>
+<blockquote>
+<p>重要: 一个 iOS app 在 iOS 10.0 之后的版本,必须在info.plist 文件中描述需要访问的数据类型,否则会崩溃.访问外部设备的指定数据,在info.plist 文件中必须包含 NSBluetoothPeripheralUsageDescription.</p>
+</blockquote>
+<h3 id="中心设备和外部设备-以及他们在蓝牙通信中的角色"><a href="#中心设备和外部设备-以及他们在蓝牙通信中的角色" class="headerlink" title="中心设备和外部设备,以及他们在蓝牙通信中的角色"></a>中心设备和外部设备,以及他们在蓝牙通信中的角色</h3><p>中心设备和外部设备是低功耗蓝牙通信中的来个主要参与者.中心设备使用来自与外部设备的信息去完成某项特定任务.下面的例子中,表示一个mac 或者 iOS app 用一种对用户来讲更友好的方式来展示来自于心率检测器的信息.</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/3340896-c9641636941a7f71.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" srcset="/blog/img/loading.gif" alt="image.png"></p>
+<h4 id="中心设备发现并连接外围正在广播的设备"><a href="#中心设备发现并连接外围正在广播的设备" class="headerlink" title="中心设备发现并连接外围正在广播的设备"></a>中心设备发现并连接外围正在广播的设备</h4><p>外部设备以 advertising packet 的格式来发送广播.广播数据中包含外部设备的名称和主要功能.一个中心设备可用浏览和听取正在广播的外部设备内容.一个中心设备可以请求连接任何发现正在广播的外部设备.</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/3340896-5c28cac2a725ceed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" srcset="/blog/img/loading.gif" alt="image.png"></p>
+<h4 id="一个外部设备的数据如何构建"><a href="#一个外部设备的数据如何构建" class="headerlink" title="一个外部设备的数据如何构建"></a>一个外部设备的数据如何构建</h4><p>外部设备包含一项或者多项服务.一个服务是一个数据集合.举例子,一个心率计的服务可以用来显示来自于心率传感器的的心率数据.</p>
+<p>服务本身由特性或者其中包含的其他服务组成.一个特性提供外部设备服务的详细信息.举例子,心率服务包含两个特性,一个特性描述设备传感器的监听位置.另外一个特性传输测量的数据.</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/3340896-11772f3214f18ab9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" srcset="/blog/img/loading.gif" alt="image.png"></p>
+<h4 id="中心设备扫描并且跟一个外部设备数据交互"><a href="#中心设备扫描并且跟一个外部设备数据交互" class="headerlink" title="中心设备扫描并且跟一个外部设备数据交互"></a>中心设备扫描并且跟一个外部设备数据交互</h4><p>一个中心设备和外部设备成功建立连接后,可以发现外部设备提供的所有服务和特性.<br>中心设备可以通过读写服务特性的值来跟外部设备的服务进行交互.举例来说,app 请求当前房间的室温.或者提供给恒温计一个值来设定室温.</p>
+<h3 id="中心设备-外部设备-以及外部设备数据如何表示"><a href="#中心设备-外部设备-以及外部设备数据如何表示" class="headerlink" title="中心设备,外部设备,以及外部设备数据如何表示"></a>中心设备,外部设备,以及外部设备数据如何表示</h3><p>本地中心设备管理者通过 CBCentralManager 对象表示.这个对象用来管理远程外部设备的遍历,发现,连接正在发送广播的外部设备.</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/3340896-cc9e991217247c05.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" srcset="/blog/img/loading.gif" alt="Core Bluetooth objects on the central side"></p>
+<p>远程外部设备 用CBPeripheral对象来表示, 它的数据通过 CBService 和 CBCharacteristic 对象来表示.<br><img src="http://upload-images.jianshu.io/upload_images/3340896-0fd143eeaa33aada.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" srcset="/blog/img/loading.gif" alt="image.png"></p>
+<p>外部设备管理者 用CBPeripheralManager对象来表示. 这些对象用来管理发布的服务和相关特性.并且通过广播来给远程中心设备(CBCentral 对象)发送服务. Peripheral manager对象也用来响应远程中心设备的读写请求.<br><img src="http://upload-images.jianshu.io/upload_images/3340896-3b76d790666594fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" srcset="/blog/img/loading.gif" alt="image.png"></p>
+<p>外部设备管理者(CBPeripheralManger)的数据通过CBMutableService 和 CBMutableCharacteristic 对象来表示.<br><img src="http://upload-images.jianshu.io/upload_images/3340896-6bb597fc20300ec7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" srcset="/blog/img/loading.gif" alt="A local peripheral&#39;s tree of services and characteristics"></p>
+<h2 id="执行中心角色任务"><a href="#执行中心角色任务" class="headerlink" title="执行中心角色任务"></a>执行中心角色任务</h2><p>本节学习内容:</p>
+<ul>
+<li>启动一个中心设备管理者对象</li>
+<li>发现并链接正在广播的外部设备</li>
+<li>扫描链接的外部设备数据</li>
+<li>给一个外部设备服务特性值发送读写请求</li>
+<li>订阅一个特性值的变动通知</li>
+</ul>
+<h3 id="启动一个中心设备管理者"><a href="#启动一个中心设备管理者" class="headerlink" title="启动一个中心设备管理者"></a>启动一个中心设备管理者</h3><p>创建CBCentralManager</p>
+<pre><code class="hljs crystal">myCentralManager = [[CBCentralManager alloc] <span class="hljs-symbol">initWithDelegate:</span> <span class="hljs-keyword">self</span> <span class="hljs-symbol">queue:</span><span class="hljs-literal">nil</span> <span class="hljs-symbol">options:</span><span class="hljs-literal">nil</span>];</code></pre>
+<p>self 必须实现 centralMangerDidUpdateState: 代理方法.更多内容请看<a target="_blank" rel="noopener" href="https://developer.apple.com/documentation/corebluetooth/cbcentralmanagerdelegate">CBCentralManagerDelegate Protocol Reference</a></p>
+<h3 id="发现正在广播的外部设备"><a href="#发现正在广播的外部设备" class="headerlink" title="发现正在广播的外部设备"></a>发现正在广播的外部设备</h3><pre><code class="hljs crystal">[myCentralManager <span class="hljs-symbol">scanForPeripheralsWithServices:</span><span class="hljs-literal">nil</span> <span class="hljs-symbol">options:</span><span class="hljs-literal">nil</span>];</code></pre>
+
+<blockquote>
+<p>注意: 如果给第一个参数指定为nil,central manager返回所有发现的外部设备.在真实情况中,一般会指定一个CBUUID对象组成的数组,每个对象表示一个服务的唯一标识.当指定好UUID对象数组后,central manager 仅返回正在广播相关服务的外部设备.浏览最感兴趣的外部设备.<br>UUIDs,和CBUUID对象详细内容请看<a target="_blank" rel="noopener" href="https://developer.apple.com/library/content/documentation/NetworkingInternetWeb/Conceptual/CoreBluetooth_concepts/PerformingCommonPeripheralRoleTasks/PerformingCommonPeripheralRoleTasks.html#//apple_ref/doc/uid/TP40013257-CH4-SW8">Services and Characteristics Are Identified by UUIDs</a></p>
+</blockquote>
+<p>central manager 每次发现外部设备,就会调用代理对象的  cetralManager:didDiscoverPeripheral:advertisementData:RSSI: 方法.新发现的外部设备以 CBPeripheral 对象返回.如果打算链接发现的外部设备,给该对象一个强引用,系统就不会释放它.</p>
+<pre><code class="hljs erlang">- <span class="hljs-params">(void)</span>centralManager:<span class="hljs-params">(CBCentralManager *)</span>central didDiscoverPeripheral:<span class="hljs-params">(CBPeripheral *)</span>peripheral advertisementData:<span class="hljs-params">(NSDictionary *)</span>advertisementData RSSI:<span class="hljs-params">(NSNUmber *)</span>RSSI &#123;
+    NSLog<span class="hljs-params">(@<span class="hljs-string">&quot;Discovered %@&quot;</span>, peripheral.name)</span>;
+    self.discoverdPeripheral = peripheral;
+    ...</code></pre>
+
+<p>如果希望链接多个设备,需要用一个NSArray来存储发现的外部设备.一旦所有想连接的设备都被发现,停止浏览其他设备来节省电量:</p>
+<pre><code class="hljs ini"><span class="hljs-section">[myCentralManager stopScan]</span><span class="hljs-comment">;</span></code></pre>
+
+<h3 id="链接发现的外部设备"><a href="#链接发现的外部设备" class="headerlink" title="链接发现的外部设备"></a>链接发现的外部设备</h3><pre><code class="hljs groovy">[myCentralManager <span class="hljs-attr">connectPeripheral:</span>peripheral <span class="hljs-attr">options:</span>nil];</code></pre>
+
+<p>如果链接请求成功,central manager 调用代理对象的centralManager:didConnectPeripheral:方法.在跟外部设备交互前,设置它的代理来确保代理接受到了合适的回调:</p>
+<pre><code class="hljs erlang">- <span class="hljs-params">(void)</span>centralManager:<span class="hljs-params">(CBCentralManager *)</span>central didConnectPeripheral:<span class="hljs-params">(CBPeripheral *)</span>peripheral &#123;
+    
+    NSLog<span class="hljs-params">(@<span class="hljs-string">&quot;Peripheral connected&quot;</span>)</span>;
+    peripheral.delegate = self;
+    ...</code></pre>
+
+<h3 id="发现链接外部设备的服务"><a href="#发现链接外部设备的服务" class="headerlink" title="发现链接外部设备的服务"></a>发现链接外部设备的服务</h3><p>跟一个外部设备建立连接后,可以浏览它的数据.首先浏览外部设备提供的可用服务.由于外部设备发送广播的数据限制,会发现一个外部设备提供的服务比广播的更多.可以使用discoverServices: 方法来发现一个外部设备提供的所有服务.</p>
+<pre><code class="hljs ini"><span class="hljs-section">[peripheral discoverServices:nil]</span><span class="hljs-comment">;</span></code></pre>
+<blockquote>
+<p>注意: 在一个app中,一般不给参数传nil,因为这样会返回所有的可用服务.由于一个外部设备有许多不相关的服务,发现所有可用服务不仅浪费电量而且浪费时间.因此,指定服务的UUIDs来发现指定的服务.</p>
+</blockquote>
+<p>当指定的服务发现后,连接的外部设备(CBPeripheral对象)调用代理对象的 peripheral:didDiscoverServices: 方法.Core Bluetooth 创建一个CBService数组—</p>
+<pre><code class="hljs erlang">
+- <span class="hljs-params">(void)</span>peripheral:<span class="hljs-params">(CBPeripheral *)</span>peripheral didDiscoverServices:<span class="hljs-params">(NSerror *)</span>error&#123;
+    
+    for <span class="hljs-params">(CBService *service in peripheral.services)</span> &#123;
+        
+        NSLog<span class="hljs-params">(@<span class="hljs-string">&quot;Discovered service %@&quot;</span>, service)</span>;
+        ...
+    &#125;
+    ...</code></pre>
+
+<h3 id="发现一个服务的特性"><a href="#发现一个服务的特性" class="headerlink" title="发现一个服务的特性"></a>发现一个服务的特性</h3><pre><code class="hljs groovy">NSLog (@<span class="hljs-string">&quot;Discovering characteristics for service %@&quot;</span>, interestingService);
+[peripheral <span class="hljs-attr">discoverCharacteristics:</span>nil <span class="hljs-attr">forService:</span>interestingService];</code></pre>
+
+<blockquote>
+<p>注意: 真实环境中,第一个参数一般不传nil,通常指定想要找的特性UUIDs</p>
+</blockquote>
+<p>当指定服务的特性被发现后,外部设备调用代理对象的 peripheral:didDiscoverCharacteristicsForService:error: 方法.Core Bluetooth创建一个包含CBCharacteristic对象的数组来包含所有发现的特性.</p>
+<pre><code class="hljs erlang">- <span class="hljs-params">(void)</span>peripheral:<span class="hljs-params">(CBPeripheral *)</span>peripheral didDiscoverCharacteristicsForService:<span class="hljs-params">(CBService *)</span>service error:<span class="hljs-params">(NSError *)</span>error &#123;
+    
+    for <span class="hljs-params">(CBCharacteristic *characteristic in service.characteristics)</span> &#123;
+        
+        NSLog<span class="hljs-params">(@<span class="hljs-string">&quot;Discovered characteristic %@&quot;</span>, characteristic)</span>;
+        ...
+    &#125;
+    ...</code></pre>
+<h3 id="获取一个特性的值"><a href="#获取一个特性的值" class="headerlink" title="获取一个特性的值"></a>获取一个特性的值</h3><p>直接读取特性的value或者订阅它来获取特性的值.</p>
+<h4 id="读取特性值"><a href="#读取特性值" class="headerlink" title="读取特性值"></a>读取特性值</h4><pre><code class="hljs less"><span class="hljs-selector-tag">NSLog</span>(@<span class="hljs-string">&quot;Reading value for characteristic %@&quot;</span>, interestingCharacteristic);
+<span class="hljs-selector-attr">[peripheral readValueForCharacteristic:interestingCharacteristic]</span>;</code></pre>
+
+<p>当尝试读取特性值时,外部设备调用代理对象的 peripheral:didUpdateValueForCharacteristic:error:方法来获取特性值.</p>
+<pre><code class="hljs groovy">- (<span class="hljs-keyword">void</span>)<span class="hljs-attr">peripheral:</span> (CBPeripheral *)peripheral <span class="hljs-attr">didUpdateValueForCharacteristic:</span>(CBCharacteristic *)characteristic <span class="hljs-attr">error:</span>(NSError *)error &#123;
+    
+    NSData *data = characteristic.value;
+    <span class="hljs-comment">//parse the data as needed </span>
+    ...</code></pre>
+
+<blockquote>
+<p>注意:不是所有的特性都是可读的.通过CBCharacteristicPropertyRead属性常量来检测特性是否可读.如果不可读,会返回适当的错误.</p>
+</blockquote>
+<h4 id="订阅一个特性值"><a href="#订阅一个特性值" class="headerlink" title="订阅一个特性值"></a>订阅一个特性值</h4><pre><code class="hljs groovy">[peripheral <span class="hljs-attr">setNotifyValue:</span>YES <span class="hljs-attr">forCharacteristic:</span> interestingCharacteristic];</code></pre>
+
+<pre><code class="hljs erlang">当订阅失败时,可以实现下面方法来获取订阅失败原因.
+- <span class="hljs-params">(void)</span>peripheral:<span class="hljs-params">(CBPeripheral *)</span>peripheral didUpdateNotificationStateForCharacteristic:<span class="hljs-params">(CBCharacteristic *)</span>characteristic error:<span class="hljs-params">(NSError *)</span>error &#123;
+    
+    if <span class="hljs-params">(error)</span> &#123;
+        
+       NSLog<span class="hljs-params">(@<span class="hljs-string">&quot;Error changing notification state: %@&quot;</span>, [error localizedDescription])</span> ;
+    &#125;
+    ...</code></pre>
+
+<blockquote>
+<p>注意:不是所有的特性都可订阅.可以通过属性的CBCharacteristicPropertyNotify或者CBCharacteristicPropertyIndicate常量来检测属性是否可被订阅.</p>
+</blockquote>
+<h3 id="给一个特性写入值"><a href="#给一个特性写入值" class="headerlink" title="给一个特性写入值"></a>给一个特性写入值</h3><pre><code class="hljs groovy">
+NSLog(@<span class="hljs-string">&quot;Wrriting value for characteristic %@&quot;</span>, interestingCharacteristic);
+[peripheral <span class="hljs-attr">writeValue:</span>dataToWrite <span class="hljs-attr">forCharacteristic:</span>interestingCharacteristic <span class="hljs-attr">type:</span>CBCharacteristicWriteWithResponse];
+</code></pre>
+<p>代理对象调用下面方法,通过CBCharacteristicWriteWithResponse来告诉app写入是否成功.</p>
+<pre><code class="hljs erlang">- <span class="hljs-params">(void)</span>peripheral:<span class="hljs-params">(CBPeripheral *)</span>peripheral
+didWriteValueForCharacteristic:<span class="hljs-params">(CBCharacteristic *)</span>characteristic
+             error:<span class="hljs-params">(NSError *)</span>error &#123;
+ 
+    if <span class="hljs-params">(error)</span> &#123;
+        NSLog<span class="hljs-params">(@<span class="hljs-string">&quot;Error writing characteristic value: %@&quot;</span>,</span>
+<span class="hljs-params">            [error localizedDescription])</span>;
+    &#125;
+    ...</code></pre>
+
+<blockquote>
+<p>注意:特性仅支持特定的写入类型.可以通过一个特性的CBCharacteristicPropertyWriteWithoutResponse 或者 CBCharacteristicPropertyWrite 常量来检查支持的写入类型.</p>
+</blockquote>
+<h2 id="执行外部角色任务"><a href="#执行外部角色任务" class="headerlink" title="执行外部角色任务"></a>执行外部角色任务</h2><p>本节学习内容:</p>
+<ul>
+<li>启动一个外部设备管理对象</li>
+<li>设置本地外部设备的服务和特性</li>
+<li>给设备的本地数据库发布服务和特性</li>
+<li>广播服务</li>
+<li>响应一个连接的中心设备的读写请求</li>
+<li>给订阅的中心设备发送更新后的特性值</li>
+</ul>
+<h3 id="启动一个外部设备管理者"><a href="#启动一个外部设备管理者" class="headerlink" title="启动一个外部设备管理者"></a>启动一个外部设备管理者</h3><pre><code class="hljs crystal">myPeripheralManager = [[CBPeripheralManager alloc] <span class="hljs-symbol">initWithDelegate:</span><span class="hljs-keyword">self</span> <span class="hljs-symbol">queue:</span><span class="hljs-literal">nil</span> <span class="hljs-symbol">options:</span> <span class="hljs-literal">nil</span>];</code></pre>
+
+<p>创建CBPeripheralManager对象后 self 必须实现 peripheralMangagerDidUpdateState: 方法.  详细内容请看 <a href="">CBPeripheralManagerDelegate Protocol Reference</a> </p>
+<h3 id="设置外部设备管理者的服务和特性"><a href="#设置外部设备管理者的服务和特性" class="headerlink" title="设置外部设备管理者的服务和特性"></a>设置外部设备管理者的服务和特性</h3><p>一个本地外部设备服务和特性的数据库以类似于树状的方式组成.必须以这种方式去组织本地外部设备的服务和特性. 在执行这些任务中首先要理解如何识别这些服务和特性.</p>
+<h4 id="服务和特性通过UUIDs来识别"><a href="#服务和特性通过UUIDs来识别" class="headerlink" title="服务和特性通过UUIDs来识别"></a>服务和特性通过UUIDs来识别</h4><p>iOS中通过CBUUID对象来表示外部设备指定的服务和特性.比如,128位的UUID心率服务可以使用CBUUID 对象的 UUIDWithString 方法来表示预定义的16位UUID.</p>
+<pre><code class="hljs groovy">CBUUID *heartRateServiceUUID = [CBUUID <span class="hljs-attr">UUIDWithString:</span> @<span class="hljs-string">&quot;180D&quot;</span>];</code></pre>
+
+<p>当从一个预定义的16位UUID中创建一个CBUUID对象时,Core Bluetooth 会用Bluetooth base UUID 预填128位UUID的剩下的部分.</p>
+<h4 id="创建自有的UUIDs来自定义服务和特性"><a href="#创建自有的UUIDs来自定义服务和特性" class="headerlink" title="创建自有的UUIDs来自定义服务和特性"></a>创建自有的UUIDs来自定义服务和特性</h4><p>使用命令行实用工具 uuidgen 很容易生成一个128位的UUIDs.</p>
+<pre><code class="hljs angelscript">$ uuidgen 
+<span class="hljs-number">71</span>DA3FD1<span class="hljs-number">-7E10</span><span class="hljs-number">-41</span>C1-B16F<span class="hljs-number">-4430</span>B506CDE7</code></pre>
+<p>然后使用这个UUID去创建一个CBUUID对象</p>
+<pre><code class="hljs subunit">CBUID *myCustomServiceUUID = [CBUUID UUIDWithString:@&quot;71DA3FD1<span class="hljs-string">-7</span>E10<span class="hljs-string">-41</span>C1-B16F<span class="hljs-string">-4430</span>B506CDE7&quot;];</code></pre>
+
+<h4 id="创建服务和特性树"><a href="#创建服务和特性树" class="headerlink" title="创建服务和特性树"></a>创建服务和特性树</h4><pre><code class="hljs groovy">myCharacteristic = [[CBMutableCharacteristic alloc] <span class="hljs-attr">initWithType:</span>myCharacteristicUUID <span class="hljs-attr">properties:</span>CBCharacteristicPropertyRead <span class="hljs-attr">Value:</span> myValue <span class="hljs-attr">permissions:</span>CBAttributePermissionsReadable];</code></pre>
+<blockquote>
+<p>注意:如果指定一个特性值.该值会缓存并且它的属性和许可被设置为可读.因此,如果你需要一个特性值可写,或者期望发布的服务特性能够被改变.必须指定value为nil.</p>
+</blockquote>
+<p>现在已经创建了一个可变特性,可以创建一个可变服务跟其相关联.按照下面方法做</p>
+<pre><code class="hljs ini"><span class="hljs-attr">myService</span> = [[CBMutableService alloc] initWithType:myServiceUUID primary:<span class="hljs-literal">YES</span>]<span class="hljs-comment">;</span>
+<span class="hljs-attr">myService.characteristics</span> = @[myCharacteristic]<span class="hljs-comment">;</span></code></pre>
+<h3 id="发布服务和特性"><a href="#发布服务和特性" class="headerlink" title="发布服务和特性"></a>发布服务和特性</h3><pre><code class="hljs ini"><span class="hljs-section">[myPeripheralManager addService:myService]</span><span class="hljs-comment">;</span></code></pre>
+
+<p>当调用这个方法去发布服务时,外部设备管理者会通过他的代理对象调用 peripheralManager:didAddService:error: 方法.如果过发生错误或者无法发布服务,则实现该代理方法来获取错误原因.</p>
+<pre><code class="hljs erlang">- <span class="hljs-params">(void)</span>peripheralManager:<span class="hljs-params">(CBPeripheralManager *)</span>peripheral
+            didAddService:<span class="hljs-params">(CBService *)</span>service
+                    error:<span class="hljs-params">(NSError *)</span>error &#123;
+ 
+    if <span class="hljs-params">(error)</span> &#123;
+        NSLog<span class="hljs-params">(@<span class="hljs-string">&quot;Error publishing service: %@&quot;</span>, [error localizedDescription])</span>;
+    &#125;
+    ...</code></pre>
+
+<blockquote>
+<p>当给外部设备的数据库发布一个服务和相关特性后,服务被缓存并且无法修改.</p>
+</blockquote>
+<h3 id="广播服务"><a href="#广播服务" class="headerlink" title="广播服务"></a>广播服务</h3><pre><code class="hljs scheme">[<span class="hljs-name">myPeripheralManager</span> startAdvertising:@&#123; CBAdvertisementDataServiceUUIDsKey : @[<span class="hljs-name">myFirstService.UUID</span>, mySecondService.UUID]&#125;]<span class="hljs-comment">;</span></code></pre>
+
+<p>当在本地外部设备发送广播时,外部设备管者的代理对象调用 peripheralManagerDidStartAdvertising:error: 方法.如果出现错误或者服务无法广播.实现该方法来获取错误信息.</p>
+<pre><code class="hljs erlang">- <span class="hljs-params">(void)</span>peripheralManagerDidStartAdvertising:<span class="hljs-params">(CBPeripheralManager *)</span>peripheral
+                                       error:<span class="hljs-params">(NSError *)</span>error &#123;
+ 
+    if <span class="hljs-params">(error)</span> &#123;
+        NSLog<span class="hljs-params">(@<span class="hljs-string">&quot;Error advertising: %@&quot;</span>, [error localizedDescription])</span>;
+    &#125;
+    ...</code></pre>
+
+<p>一旦广播数据开始,远程中心设备能够发现并和本地外部设备建立连接.</p>
+<h3 id="响应中心设备的读写请求"><a href="#响应中心设备的读写请求" class="headerlink" title="响应中心设备的读写请求"></a>响应中心设备的读写请求</h3><pre><code class="hljs erlang">- <span class="hljs-params">(void)</span>peripheralManager:<span class="hljs-params">(CBPeripheralManager *)</span>peripheral didReceiveReadRequest:<span class="hljs-params">(CBATTRequest *)</span>request &#123;
+    
+    if <span class="hljs-params">([request.characteristic.UUID isEqual:myCharacteristic.UUID])</span> &#123;
+        ...</code></pre>
+
+<p>如果特性的UUID匹配,下一步确定请求的索引位置是否超出特性值的边界.</p>
+<pre><code class="hljs applescript"><span class="hljs-keyword">if</span> (request.<span class="hljs-built_in">offset</span> &gt; myCharacteristic.value.<span class="hljs-built_in">length</span>) &#123;
+    
+    [myPeripheralManager respondToRequest:request withResult:CBATTErrorInvalidOffset];
+    
+<span class="hljs-built_in">    return</span>;
+&#125;</code></pre>
+
+<p>加入请求的offset合格.现在给请求特性属性赋值.</p>
+<pre><code class="hljs ini"><span class="hljs-attr">request.value</span> = [myCharacteristic.value subdataWithRange:NSMakeRange(request.<span class="hljs-literal">off</span>set, myCharacteristic.value.length - request.<span class="hljs-literal">off</span>set)]<span class="hljs-comment">;</span></code></pre>
+
+<p>设置好值后,响应远程中心设备请求.</p>
+<pre><code class="hljs groovy">[myPeripheralManager <span class="hljs-attr">respondToRequest:</span>request <span class="hljs-attr">withResult:</span>CBATTErrorSuccess];
+...</code></pre>
+
+<p>每调用 peripheralManager:didReceiveReadRequest: 方法一次,就会调用 respondToRequst:withResult: 一次.</p>
+<blockquote>
+<p>注意: 如果特性UUID不匹配或者无法完成读请求.调用 respondToRequest:withResult: 方法,并返回合适的错误原因.(CBATTError Constants)</p>
+</blockquote>
+<p>处理一个写入请求,直接将CBATTRequest 对象的值写入特性.</p>
+<pre><code class="hljs ini"><span class="hljs-attr">myCharacteristic.value</span> = request.value<span class="hljs-comment">;</span></code></pre>
+
+<p>传入的写入请求数组中包含CBATTRequest 对象.每个对象写入特性都会调用  respondToRequest:withResult: 方法.</p>
+<pre><code class="hljs scheme">[<span class="hljs-name">myPeripheralManager</span> respondToRequest:[<span class="hljs-name">request</span> objectAtIndeex:0] withResult:CBATTErrorSuccess]<span class="hljs-comment">;</span></code></pre>
+
+<h3 id="给订阅的中心设备发送更新的特性值"><a href="#给订阅的中心设备发送更新的特性值" class="headerlink" title="给订阅的中心设备发送更新的特性值"></a>给订阅的中心设备发送更新的特性值</h3><p>中心设备订阅通知后会调用该方法</p>
+<pre><code class="hljs erlang">- <span class="hljs-params">(void)</span>peripheralManager:<span class="hljs-params">(CBPeripheralManager *)</span>peripheral central:<span class="hljs-params">(CBCentral *)</span>central didSubscribeToCharacteristic:<span class="hljs-params">(CBCharacteristic *)</span>characteristic &#123;
+    
+    NSLog<span class="hljs-params">(@<span class="hljs-string">&quot;Central subscribed to characteristic %@&quot;</span>, characteristic)</span>;
+    ...</code></pre>
+
+<pre><code class="hljs groovy">NSData *updatedValue = <span class="hljs-comment">//fetch the characteristic&#x27;s new value </span>
+
+BOOL didSendValue = [myPeripheralManager <span class="hljs-attr">updateValue:</span>updatedValue <span class="hljs-attr">forCharacteristic:</span>characteristic <span class="hljs-attr">onSubscribedCentrals:</span>nil];</code></pre>
+
+<h2 id="iOS-Apps-中-Core-Bluetooth-的后台处理"><a href="#iOS-Apps-中-Core-Bluetooth-的后台处理" class="headerlink" title="iOS Apps 中 Core Bluetooth 的后台处理"></a>iOS Apps 中 Core Bluetooth 的后台处理</h2><p>对于iOS apps,了解app在后台还是前台运行非常重要.一个app在后台的行为必须不同于前台.因为系统提供的资源是有限的.对于在iOS上所有的后台操作讨论,请看<a target="_blank" rel="noopener" href="https://developer.apple.com/library/content/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/BackgroundExecution/BackgroundExecution.html#//apple_ref/doc/uid/TP40007072-CH4">Background Execution</a> in <a target="_blank" rel="noopener" href="https://developer.apple.com/library/content/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40007072">App Programming Guide for iOS</a></p>
+<p>默认情况下,许多普通的Core Bluetooth 任务—中心设备和外部设备都有— 在后台或者挂起模式下都是禁用的.也就是说,您需要声明您的app去支持Core Bluetooth后台执行模式,从而允许您的app能够从挂起状态中唤醒去处理某些蓝牙相关的事件.即使您的app不需要所有范围内的后台处理支持.当重要事件发生后仍然可以要求系统提示.</p>
+<p>即使您的app支持一种或者两种Core Bluetooth 后台执行模式,但是它也不能永远运行. 某些情况下,系统会中为了给前台运行的app释放内存从而终止您的app.从而使app激活的或者添加的链接丢失.</p>
+<h3 id="只在前台使用Core-Bluetooth的Apps"><a href="#只在前台使用Core-Bluetooth的Apps" class="headerlink" title="只在前台使用Core Bluetooth的Apps"></a>只在前台使用Core Bluetooth的Apps</h3><p>绝大多数apps,除非您请求后台执行特定任务的许可,否则您的app短暂进入后台状态后就会转到挂起状态.在挂起状态下,您的app无法执行蓝牙相关任务.也不能感知任何蓝牙相关事件,直到它恢复到前台运行.</p>
+<p>在中心设备这边,只在前台执行的apps—那些没有声明支持Core Bluetooth后台执行模式任何一种的app,在后台状态或者挂起状态是无法浏览或者发现正在广播的外部设备. 在外部设备这边,当一个仅支持前台模式的app处于挂起状态时，所有蓝牙相关的事件发生时将通过系统添加到队列。并且当app恢复到前台时发送给它。也就是说，Core Bluetooth 提供一种方式，当某些中心设备角色事件发生时提醒用户。用户然后能够利用这些提示来决定是否一个特殊事件许可app返回到前台。<br>您可以在调用CBCentralManager 类的 connectPeripheral:options: 方法使用下列的外部设备链接可选项，利用这些提示来链接一个远程外部设备。</p>
+<ul>
+<li>CBConnectPeripheralOptionNotifyOnConnectionKey</li>
+<li>CBConnectPeripheralOptionNotifyOnDisconnectionKey</li>
+<li>CBConnectPeripheralOptionNotifyOnNotificationKey</li>
+</ul>
+<h4 id="Core-Bluetooth-后台执行模式"><a href="#Core-Bluetooth-后台执行模式" class="headerlink" title="Core Bluetooth 后台执行模式"></a>Core Bluetooth 后台执行模式</h4><p>当需要app在后台执行一些蓝牙相关任务时，必须在info.plist 文件中声明它支持一种蓝牙后台执行模式。<br>info.plist 中文件 添加 key 为 UIBackgroundModes, 然后给一个数组中添加下面的字符串：</p>
+<ul>
+<li>bluetooth-central</li>
+<li>bluetooth-peripheral</li>
+</ul>
+<h4 id="蓝牙-中心设备后台执行模式"><a href="#蓝牙-中心设备后台执行模式" class="headerlink" title="蓝牙-中心设备后台执行模式"></a>蓝牙-中心设备后台执行模式</h4><p>记住在后台浏览外部设备的操作跟在前台时不同的。</p>
+<ul>
+<li>CBCentralManagerScanOptionAllowDuplicatesKey 浏览可选键 被忽略，并且多个正在广播的外部设备发现合并成一个发现事件。</li>
+<li>如果所有正在扫描外部设备的app都在后台，中心设备的内部扫描广播的包也相继增长。结果，发现一个正在广播的外部设备的时间也会变长。<br>这些变动帮助最小化无限广播的使用,并且提高电池使用寿命。</li>
+</ul>
+<h4 id="蓝牙-外部设备-后台执行模式"><a href="#蓝牙-外部设备-后台执行模式" class="headerlink" title="蓝牙-外部设备 后台执行模式"></a>蓝牙-外部设备 后台执行模式</h4><p>当app处于后台状态 时，广播跟前台是不同的：</p>
+<ul>
+<li>CBAdvertisementDataLocalNameKey 被忽略，本地外部设备的名字也不会被广播。</li>
+<li>所有包含在CBAdvertisementDataServiceUUIDsKey对应值下的服务UUIDs被放置在一个特殊的“溢出”区。只有一个iOS设备明确要求扫描特它们时，才能被发现。</li>
+<li>如果所有正在广播的apps在后台状态，外部设备发送广播的频率会降低。</li>
+</ul>
+<h3 id="更好地使用后台执行模式"><a href="#更好地使用后台执行模式" class="headerlink" title="更好地使用后台执行模式"></a>更好地使用后台执行模式</h3><p>由于处理蓝牙相关事件会使用无线电，无线电的使用会给电池寿命带来负面影响<br>最小化在后台状态下的工作量。app被唤醒的蓝牙相关事件应该尽快处理以便它能再次挂起。<br>任何声明支持核心蓝牙后台执行模式的app 必须遵循一些原则：</p>
+<ul>
+<li>Apps 应该基于会话类 并且提供一个接口允许用户决定何时开始和结束蓝牙相关事件的发送。</li>
+<li>在被唤醒状态下，一个app有大约10秒时间去处理一项任务。 理想情况下，应该尽快处理任务并且允许再次进入后台。Apps 在后台执行过长时间会被系统限制或者杀死。</li>
+<li>Apps 不应该将唤醒作为一个机会去处理跟唤醒不相关的任务。</li>
+</ul>
+<h3 id="在后台执行长时间操作"><a href="#在后台执行长时间操作" class="headerlink" title="在后台执行长时间操作"></a>在后台执行长时间操作</h3><h4 id="状态保存和恢复"><a href="#状态保存和恢复" class="headerlink" title="状态保存和恢复"></a>状态保存和恢复</h4><p>对于一个给定的CBCentralManager对象， 系统记录下面内容：</p>
+<ul>
+<li>中心管理者的当时正在搜索的服务（并且包含开始扫描时所有指定扫描的可选项）</li>
+<li>中心管理者当时正在尝试连接或者已经连接的外部设备</li>
+<li>中心管理者当时订阅的特性</li>
+</ul>
+<p>对于CBPeripheralManager对象，系统记录下面内容：</p>
+<ul>
+<li>外部设备管理者当时正在广播的数据</li>
+<li>外部设备管理者发布给设备数据库的服务</li>
+<li>订阅外部设备服务特性值的中心设备。</li>
+</ul>
+<p>在创建中心管理者对象的时候就需要添加状态保存和恢复策略</p>
+<pre><code class="hljs groovy">myCentralManager = [[CBCentralManager alloc] <span class="hljs-attr">initWithDelegate:</span>self <span class="hljs-attr">queue:</span>nil <span class="hljs-attr">options:</span>@&#123; <span class="hljs-attr">CBCentralManagerOptionRestoreIdentifierKey :</span> @“myCentralManagerIdentifer”&#125;];</code></pre>
+<p>外部设备管理者使用CBPeripheralManagerOptionRestoreIdentiferKey 来初始化。</p>
+<p>app重新启动时，可以获取所有系统保存的唯一标识</p>
+<pre><code class="hljs objectivec">- (<span class="hljs-built_in">BOOL</span>)application:(<span class="hljs-built_in">UIApplication</span> *)application
+didFinishLaunchingWithOptions:(<span class="hljs-built_in">NSDictionary</span> *)launchOptions &#123;
+ 
+    <span class="hljs-built_in">NSArray</span> *centralManagerIdentifiers =
+        launchOptions[<span class="hljs-built_in">UIApplicationLaunchOptionsBluetoothCentralsKey</span>];
+    ...</code></pre>
+
+<h4 id="实现合适的恢复代理方法"><a href="#实现合适的恢复代理方法" class="headerlink" title="实现合适的恢复代理方法"></a>实现合适的恢复代理方法</h4><blockquote>
+<p>重要:对于存储状态并需要恢复状态的app,当app重启进入后台处理蓝牙相关事件时,先调用 centralManager:willRestoreState: 和 peripheralManager:willRestoreState: 方法.如果没有保存状态,则调用 centralManagerDidUpdateState: 和 peripheralManagerDidUpdateState: 代理方法.</p>
+</blockquote>
+<pre><code class="hljs pf">- (void)centralManager:(CBCentralManager *)central willRestoreState:(NSDictionary *)<span class="hljs-keyword">state</span>&#123;
+    
+    NSArray *peripherals = <span class="hljs-keyword">state</span>[CBCentralManagerRestoredStatePeripheralKey];
+    ...</code></pre>
+
+<h4 id="更新初始化进程"><a href="#更新初始化进程" class="headerlink" title="更新初始化进程"></a>更新初始化进程</h4><pre><code class="hljs objectivec"><span class="hljs-built_in">NSUInteger</span> serviceUUIDIndex =
+    [peripheral.services indexOfObjectPassingTest:^<span class="hljs-built_in">BOOL</span>(CBService *obj,
+    <span class="hljs-built_in">NSUInteger</span> index, <span class="hljs-built_in">BOOL</span> *stop) &#123;
+        <span class="hljs-keyword">return</span> [obj.UUID isEqual:myServiceUUIDString];
+    &#125;];
+ 
+<span class="hljs-keyword">if</span> (serviceUUIDIndex == <span class="hljs-built_in">NSNotFound</span>) &#123;
+    [peripheral discoverServices:@[myServiceUUIDString]];
+    ...</code></pre>
+
+<h2 id="中心设备和远程外部设备交互最佳实践"><a href="#中心设备和远程外部设备交互最佳实践" class="headerlink" title="中心设备和远程外部设备交互最佳实践"></a>中心设备和远程外部设备交互最佳实践</h2><h3 id="注意广播的使用和电量消耗"><a href="#注意广播的使用和电量消耗" class="headerlink" title="注意广播的使用和电量消耗"></a>注意广播的使用和电量消耗</h3><p>尽可能最小化广播的使用.因为无线广播会给iOS设备硬件的电池寿命造成负面影响.</p>
+<ul>
+<li>只有需要的时候才扫描设备</li>
+<li>只有必要时才去指明CBCentralManagerScanOptionAllowDuplicatesKey Option</li>
+<li>正确地浏览外部设备数据<pre><code class="hljs scheme">[<span class="hljs-name">peripheral</span> discoverServices:@[<span class="hljs-name">firstServiceUUID</span>, secondServiceUUID]]<span class="hljs-comment">;</span></code></pre>
+查找服务特性也同样适用这种方式.</li>
+<li>订阅经常变动的特性值</li>
+<li>所有需求数据满足时取消设备连接<pre><code class="hljs ini"><span class="hljs-section">[myCentralManager cancelPeripheralConnection:peripheral]</span><span class="hljs-comment">;</span></code></pre>
+
+</li>
+</ul>
+<h3 id="外部设备重连"><a href="#外部设备重连" class="headerlink" title="外部设备重连"></a>外部设备重连</h3><p>使用下面三种方式去重连外部设备:</p>
+<ul>
+<li>取回已知外部设备列表<br>使用 retrievePeripheralsWithIdentifiers: 方法.</li>
+<li>取回当前系统连接的外部设备列表<br>使用 retriveConnectedPeripheralsWithServices: 方法.如果要查找的外部设备在列表中,连接它.</li>
+<li>扫描并查找外部设备.<br>使用 scanForPeripheralsWithServices:options 方法.如果找到.连接它.</li>
+</ul>
+<p>下面是一个重连的流程示例:<br><img src="http://upload-images.jianshu.io/upload_images/3340896-6d4adcc223f2f43a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" srcset="/blog/img/loading.gif" alt="重连流程"></p>
+<h2 id="设置本地设备作为外部设备最佳实践"><a href="#设置本地设备作为外部设备最佳实践" class="headerlink" title="设置本地设备作为外部设备最佳实践"></a>设置本地设备作为外部设备最佳实践</h2><h3 id="广播时要考虑的内容"><a href="#广播时要考虑的内容" class="headerlink" title="广播时要考虑的内容"></a>广播时要考虑的内容</h3><p>遵循广播数据限制.<br>当创建一个广播字典时,只能指定 CBAdvertisementDataLocalNameKey, CBAdvertisementDataServiceUUIDsKey.如果指定其他key会报错.<br>同样广播数据占用的空间也要限制.至多使用28字节的空间来初始化广播数据.</p>
+<p>仅在需要的时候去广播数据,使用下面方法来停止广播</p>
+<pre><code class="hljs ini"><span class="hljs-section">[myPeripheralManager stopAdvetising]</span><span class="hljs-comment">;</span></code></pre>
+<p>让用户来决定何时广播</p>
+<h3 id="配置外部设备特性"><a href="#配置外部设备特性" class="headerlink" title="配置外部设备特性"></a>配置外部设备特性</h3><p>下面两个分组帮助我们在需要执行以下任务是提供一些指导:</p>
+<ul>
+<li>允许链接的中心设备订阅您的特性</li>
+<li>保护敏特性值,防止未配对中心设备的访问</li>
+</ul>
+<p>配置特性来支持通知</p>
+<pre><code class="hljs groovy">myCharacteristic = [[CBMutableCharacteristic alloc] <span class="hljs-attr">initWithType:</span>myCharacteristicUUID <span class="hljs-attr">properties:</span>CBCharacteristicPropertyRead | CBCharacteristicPropertyNotify <span class="hljs-attr">value:</span>nil <span class="hljs-attr">permissions:</span>CBAttributePermissionsReadable];
+</code></pre>
+
+<p>要求一个配对设备来访问敏感数据</p>
+<pre><code class="hljs groovy">emailCharacterristic = [[CBMutableCharacteristic alloc] <span class="hljs-attr">initWithType:</span>emailCharacteristicUUID <span class="hljs-attr">properties:</span>CBCharacteristicPropertyRead | CBCharacteristicPropertyNotifyEncryptionRequired <span class="hljs-attr">value:</span>nil <span class="hljs-attr">permission:</span>CBAttributePermissionsReadEncryptionRequired];
+</code></pre>
+
+<h1 id="项目Demo"><a href="#项目Demo" class="headerlink" title="项目Demo"></a>项目Demo</h1><p><a target="_blank" rel="noopener" href="https://github.com/913868456/OCDemo">蓝牙4.0 Core Bluetooth Demo</a><br>上面链接是 <strong>Core Bluetooth</strong> 编程的Demo，能够对<strong>Core Bluetooth</strong> 有一个基本的了解。本项目使用一个蓝牙手环作为测试设备，读取蓝牙手环内的一些服务。如果想要使用其他蓝牙设备运行项目，把 <strong>“MH08”</strong> 替换为自己的设备名称前缀即可。</p>
+<pre><code class="hljs objectivec"><span class="hljs-keyword">if</span> ([peripheral.name hasPrefix:<span class="hljs-string">@&quot;MH08&quot;</span>] ) &#123;
+       <span class="hljs-keyword">self</span>.bandPeripheral = peripheral;        <span class="hljs-comment">//强引用外部设备对象,否则会释放</span>
+       [<span class="hljs-keyword">self</span>.centralManager stopScan];          <span class="hljs-comment">//发现指定外设后,为了保护电池寿命和节约电量,中心管理者停止扫描</span>
+       <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;链接外部设备: %@&quot;</span>, peripheral.name);
+       [<span class="hljs-keyword">self</span>.centralManager connectPeripheral:peripheral options:<span class="hljs-literal">nil</span>];
+   &#125;</code></pre>
+<h1 id="GitHub-优秀开源"><a href="#GitHub-优秀开源" class="headerlink" title="GitHub 优秀开源"></a>GitHub 优秀开源</h1><p>由于使用官方提供的API编程特别凌乱，所以Github上有优秀开发者对其进行了封装。<br>详情请看<a target="_blank" rel="noopener" href="https://github.com/coolnameismy/BabyBluetooth">BabyBluetooth </a></p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a target="_blank" rel="noopener" href="https://developer.apple.com/library/content/documentation/NetworkingInternetWeb/Conceptual/CoreBluetooth_concepts/AboutCoreBluetooth/Introduction.html#//apple_ref/doc/uid/TP40013257-CH1-SW1">Core Bluetooth Programming Guide</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/categories/iOS/">iOS</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/CoreBluetooth/">CoreBluetooth</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/2018/01/05/iOS/%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">算法</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/2017/12/19/iOS/Block-%E7%BC%96%E7%A8%8B/">
+                        <span class="hidden-mobile">Block编程</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/debouncer.js" ></script>
+<script  src="/blog/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/blog/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/blog/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "CoreBluetooth 编程指南&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/blog/js/local-search.js" ></script>
+  <script>
+    var path = "/blog/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
